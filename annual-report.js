@@ -122,6 +122,7 @@
     ".ar-form-group.full{grid-column:1 / -1}" +
     ".ar-form-group>label{display:block;font-size:12.5px;color:#475569;font-weight:600;margin-bottom:6px}" +
     ".ar-form-group select,.ar-form-group input[type=text]{width:100%;height:34px;border:1px solid #d1d8e0;border-radius:5px;padding:0 10px;font-size:13px;background:#fff;color:#1f2937;box-sizing:border-box}" +
+    ".ar-form-group input[type=date]{height:34px;border:1px solid #d1d8e0;border-radius:5px;padding:0 8px;font-size:13px;background:#fff;color:#1f2937;box-sizing:border-box;flex:1;min-width:0}" +
     ".ar-form-group .fh{font-size:11.5px;color:#94a3b8;margin-top:4px;line-height:1.5}" +
     ".ar-radio{display:flex;gap:18px;align-items:center;min-height:34px;font-size:13px;color:#334155;flex-wrap:wrap}" +
     ".ar-radio label{display:inline-flex;align-items:center;gap:6px;cursor:pointer}" +
@@ -319,7 +320,73 @@
     ".wb-secnav-pos{font-size:12px;color:var(--color-text-muted);font-variant-numeric:tabular-nums}" +
     "@media(max-width:640px){.wb-sec-h .wb-sec-d{display:none}}" +
     "@media(max-width:900px){.wb-head{flex-wrap:wrap}.wb-head-acts{width:100%;justify-content:flex-start}.wb-stepper{position:static}.wb-step-line{display:none}.wb-param-gen{margin-left:0;width:100%;justify-content:flex-start}.wb-gen-status{white-space:normal}.ar-city-grid{grid-template-columns:repeat(auto-fill,minmax(96px,1fr))}.ar-city-hd .acts{margin-left:0;width:100%}}" +
-    "@media(max-width:640px){.ar-city-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}";
+    "@media(max-width:640px){.ar-city-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}" +
+    /* ===================== 交互改版 v2（ar2-* 前缀，可整体回退） ===================== */
+    ".ar2-topbar{display:flex;align-items:center;gap:14px;flex-wrap:wrap;background:#fff;border:1px solid var(--border);border-radius:10px;padding:12px 16px;margin-bottom:12px}" +
+    ".ar2-topbar .ttl{font-size:16px;font-weight:700;color:#1f2937;flex:1 1 260px;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}" +
+    ".ar2-topbar .meta{display:flex;gap:6px;flex-wrap:wrap;align-items:center;flex:0 0 auto}" +
+    ".ar2-topbar .m{font-size:12px;color:#475569;background:#f1f5f9;border:1px solid #e2e8f0;border-radius:12px;padding:2px 10px;white-space:nowrap}" +
+    ".ar2-topbar .m b{color:#1f2937}" +
+    ".ar2-topbar .acts{display:flex;gap:8px;align-items:center;flex:0 0 auto;margin-left:auto}" +
+    ".ar2-shell{display:grid;grid-template-columns:236px minmax(0,1fr);gap:14px;align-items:start}" +
+    ".ar2-side{background:#fff;border:1px solid var(--border);border-radius:10px;padding:10px;position:sticky;top:12px;max-height:calc(100vh - 110px);overflow:auto}" +
+    ".ar2-side-h{font-size:12px;font-weight:700;color:#334155;padding:4px 8px 10px;display:flex;justify-content:space-between;align-items:center}" +
+    ".ar2-node{display:flex;gap:10px;align-items:flex-start;width:100%;text-align:left;border:0;background:transparent;border-left:3px solid transparent;border-radius:0 7px 7px 0;padding:9px 10px;margin-bottom:2px;cursor:pointer;transition:background .15s}" +
+    ".ar2-node:hover{background:#f8fafc}" +
+    ".ar2-node .no{width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex:0 0 auto;background:#f1f5f9;color:#94a3b8;border:1px solid #e2e8f0}" +
+    ".ar2-node .bd{flex:1;min-width:0}" +
+    ".ar2-node .nm{font-size:12.5px;font-weight:600;color:#475569;line-height:1.4}" +
+    ".ar2-node .ds{font-size:10.5px;color:#94a3b8;margin-top:2px;line-height:1.45;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}" +
+    ".ar2-node .st{font-size:10.5px;flex:0 0 auto;font-weight:600;color:#94a3b8;margin-top:2px}" +
+    ".ar2-node.done{border-left-color:#a6e0bb}" +
+    ".ar2-node.done .no{background:#e7f6ec;color:#067647;border-color:#a6e0bb}" +
+    ".ar2-node.done .nm{color:#334155}" +
+    ".ar2-node.done .st{color:#067647}" +
+    ".ar2-node.cur{background:var(--primary-soft,#eff6ff);border-left-color:var(--primary)}" +
+    ".ar2-node.cur .no{background:var(--primary);color:#fff;border-color:var(--primary)}" +
+    ".ar2-node.cur .nm{color:var(--primary);font-weight:700}" +
+    ".ar2-node.cur .st{color:var(--primary)}" +
+    ".ar2-node.lock{opacity:.55;cursor:not-allowed}" +
+    ".ar2-node.void{border-left-color:#fecdca}" +
+    ".ar2-side-f{border-top:1px solid var(--border);margin-top:8px;padding:12px 8px 4px}" +
+    ".ar2-side-f .lb{display:flex;justify-content:space-between;font-size:11.5px;color:#64748b;margin-bottom:6px}" +
+    ".ar2-progress{height:6px;background:#eef2f6;border-radius:4px;overflow:hidden}" +
+    ".ar2-progress i{display:block;height:100%;background:var(--primary);border-radius:4px}" +
+    ".ar2-main{min-width:0}" +
+    ".ar2-stage-h{background:#fff;border:1px solid var(--border);border-radius:10px 10px 0 0;padding:14px 16px;display:flex;align-items:center;gap:10px;flex-wrap:wrap;border-bottom:0}" +
+    ".ar2-stage-h .n{width:26px;height:26px;border-radius:7px;background:var(--primary);color:#fff;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex:0 0 auto}" +
+    ".ar2-stage-h .t{font-size:15px;font-weight:700;color:#1f2937}" +
+    ".ar2-stage-h .d{font-size:12px;color:#94a3b8;flex:1 1 200px;min-width:0}" +
+    ".ar2-tabs{display:flex;gap:0;background:#fff;border:1px solid var(--border);border-top:0;border-bottom:1px solid var(--border);padding:0 10px;overflow-x:auto}" +
+    ".ar2-tab{appearance:none;border:0;background:transparent;font-size:12.5px;font-weight:600;color:#64748b;padding:11px 14px;border-bottom:2px solid transparent;cursor:pointer;white-space:nowrap}" +
+    ".ar2-tab:hover{color:var(--primary)}" +
+    ".ar2-tab.on{color:var(--primary);border-bottom-color:var(--primary)}" +
+    ".ar2-pane{background:#fff;border:1px solid var(--border);border-top:0;border-radius:0 0 10px 10px;padding:14px}" +
+    ".ar2-pane>.panel:last-child{margin-bottom:0}" +
+    ".ar2-actionbar{position:sticky;bottom:8px;z-index:20;display:flex;align-items:center;gap:12px;flex-wrap:wrap;background:#fff;border:1px solid var(--border);border-radius:10px;box-shadow:0 6px 20px rgba(15,23,42,.10);padding:10px 14px;margin-top:12px}" +
+    ".ar2-actionbar .gate{flex:1 1 260px;min-width:0;font-size:12px;color:#667085;line-height:1.5}" +
+    ".ar2-actionbar .gate b{color:#334155}" +
+    ".ar2-actionbar .gate .warn{color:#b54708}" +
+    ".ar2-actionbar .gate .ok{color:#067647}" +
+    ".ar2-actionbar .btns{display:flex;gap:8px;flex:0 0 auto;margin-left:auto}" +
+    ".ar2-drawer-mask{position:fixed;inset:0;background:rgba(15,23,42,.38);z-index:270}" +
+    ".ar2-drawer{position:fixed;top:0;right:0;bottom:0;width:440px;max-width:94vw;background:#fff;z-index:271;box-shadow:-12px 0 32px rgba(15,23,42,.2);display:flex;flex-direction:column;animation:ar2In .18s ease-out}" +
+    "@keyframes ar2In{from{transform:translateX(100%)}to{transform:translateX(0)}}" +
+    ".ar2-drawer-h{padding:15px 18px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;font-size:15px;font-weight:700;color:#1f2937}" +
+    ".ar2-drawer-b{padding:16px 18px;overflow:auto;flex:1}" +
+    ".ar2-drawer-f{padding:12px 18px;border-top:1px solid var(--border);background:#f8fafc;display:flex;justify-content:flex-end;gap:8px}" +
+    ".ar2-fold-h{display:flex;align-items:center;gap:8px;cursor:pointer;font-size:12.5px;font-weight:600;color:#334155;padding:8px 0}" +
+    ".ar2-steps{display:inline-flex;gap:2px;align-items:center;vertical-align:middle}" +
+    ".ar2-steps i{display:block;width:9px;height:9px;border-radius:2px;background:#e2e8f0}" +
+    ".ar2-steps i.done{background:#a6e0bb}" +
+    ".ar2-steps i.cur{background:var(--primary)}" +
+    ".ar2-why{font-size:12px;color:#0f172a;line-height:1.85;background:#eff6ff;border:1px solid #bfdbfe;border-left:3px solid var(--primary);border-radius:7px;padding:9px 12px;margin-bottom:12px}" +
+    ".ar2-why b{color:#0b65c2}" +
+    ".ar2-keyline{display:flex;gap:8px;flex-wrap:wrap;font-size:12px;color:#64748b;line-height:1.7}" +
+    ".ar2-keyline span{background:#f8fafc;border:1px solid var(--border);border-radius:6px;padding:3px 9px}" +
+    ".ar2-keyline b{color:#1f2937}" +
+    "@media(max-width:1100px){.ar2-shell{grid-template-columns:1fr}.ar2-side{position:static;max-height:none}.ar2-node{display:inline-flex;width:auto;min-width:150px;border-left:0;border-bottom:3px solid transparent;border-radius:7px}.ar2-node .ds{display:none}.ar2-side-f{margin-top:6px}}" +
+    "@media(max-width:640px){.ar2-topbar .meta{display:none}.ar2-drawer{width:100%}}";
 
   var LS = { tasks: "jx_ar_tasks_v1", templates: "jx_ar_templates_v1", subs: "jx_ar_submissions_v1", arch: "jx_ar_archives_v1", cur: "jx_ar_current_v1" };
   /* ===================== 2. 常量 ===================== */
@@ -458,6 +525,74 @@
   var CHANNELS = [
     { id: "nccr", label: "国家平台上报（NCCR）" }
   ];
+
+  /* ---------- 结构化年报字段字典（任务定义 / 图表配置 / 发布导出） ----------
+     需求口径要求任务定义可筛选医疗机构层级、可指定数据时间范围、可标记是否公开、
+     图表配置需要轴映射与下钻；导出记录需要路径、链接、下载量、
+     政府报告与 DOI。以下字典服务于这三块，避免各页面自己写死选项。 */
+  var ORG_LEVELS = [
+    { id: "tertiary", label: "三级医院" },
+    { id: "secondary", label: "二级医院" },
+    { id: "primary", label: "一级及基层" },
+    { id: "unrated", label: "未定级 / 其他" }
+  ];
+  function orgLevelLabel(id) {
+    for (var i = 0; i < ORG_LEVELS.length; i++) if (ORG_LEVELS[i].id === id) return ORG_LEVELS[i].label;
+    return id;
+  }
+  var PUBLISH_SCOPES = [
+    { id: "internal", label: "内部使用（不对外）" },
+    { id: "gov", label: "政府报告 / 决策参考" },
+    { id: "public", label: "对外公开（网站 / 公众号）" },
+    { id: "academic", label: "学术引用（可标 DOI）" }
+  ];
+  function publishScopeLabel(id) {
+    for (var i = 0; i < PUBLISH_SCOPES.length; i++) if (PUBLISH_SCOPES[i].id === id) return PUBLISH_SCOPES[i].label;
+    return id || "内部使用（不对外）";
+  }
+  var LANGS = [
+    { id: "zh", label: "中文" },
+    { id: "en", label: "英文" },
+    { id: "zh-en", label: "中英对照" }
+  ];
+  function langLabel(id) {
+    for (var i = 0; i < LANGS.length; i++) if (LANGS[i].id === id) return LANGS[i].label;
+    return id || "中文";
+  }
+  var DEFAULT_CHART_TYPES = ["柱状图", "条形图", "折线图", "饼图", "金字塔图"];
+  /* 表3：语言版本 —— 中文 / 英文 / 中英对照，用于封面、目录与章节标题。
+     正文段落内容仍为中文（历史模板正文均为中文数据叙述），本次先让版式层随语言切换。 */
+  var I18N_CHAPTER = {
+    ch1: "Summary", ch2: "Data Sources and Quality Control", ch3: "Incidence", ch4: "Mortality",
+    ch5: "Survival", ch6: "Time Trends", ch7: "Discussion and Recommendations", ch8: "Appendix"
+  };
+  function reportLang(t) {
+    // 语言取任务绑定模板的配置；章节结构仍沿用站内「固定八章」口径，不受影响
+    var tp = null;
+    if (t && t.templateId) {
+      for (var i = 0; i < templates.length; i++) if (templates[i].id === t.templateId) tp = templates[i];
+    }
+    if (!tp) tp = annualTemplate();
+    var lang = tp && tp.lang ? tp.lang : 'zh';
+    return lang === 'en' || lang === 'zh-en' ? lang : 'zh';
+  }
+  function tr(lang, zh, en) {
+    if (lang === 'en') return en;
+    if (lang === 'zh-en') return zh + ' / ' + en;
+    return zh;
+  }
+  function chapterDisplayTitle(lang, c) {
+    var en = I18N_CHAPTER[c.id] || c.title;
+    return tr(lang, c.title, en);
+  }
+  /* 表1：机构层级的行政口径（国家级 / 省级 / 市级 / 县区级），
+     与「机构等级」(三级/二级/一级医院) 分别记录，避免把两种口径混在一个字段里。 */
+  var ADMIN_LEVELS = ["国家级", "省级", "市级", "县区级"];
+  var CHART_X_FIELDS = ["癌种", "性别", "年龄组", "设区市", "年度"];
+  var CHART_Y_FIELDS = ["粗发病率", "中标发病率", "世标发病率", "粗死亡率", "中标死亡率", "世标死亡率", "发病例数", "死亡例数", "五年生存率", "MV%", "DCO%"];
+  var CHART_COLOR_FIELDS = ["无分组", "性别", "年龄组", "设区市"];
+  var CHART_SORT_OPTIONS = ["按指标值降序", "按指标值升序", "按编码顺序", "按病例数降序"];
+  var CHART_CHAPTER = { f1: "ch3", f2: "ch3", f3: "ch4", f4: "ch3", f5: "ch6", f6: "ch5" };
 /* ===================== 3. 种子数据 ===================== */
   function seedTemplates() {
     var now = "2026-06-01 09:00";
@@ -472,8 +607,8 @@
   /* ---------- 编制流程数据模型（数据准备 / 质控 / 统计 / 审核 / 发布） ----------
      旧版只有 agg(取数) + valid(校验) 两个布尔开关，撑不起正式流程。这里按阶段补齐：
        dataPrep  数据准备：多源接入核对台账 + 剔重/多原发处理 + 字段齐备性检查
-       qc        质量校验：分级质控问题清单（可整改/豁免/闭环）+ 国家考核指标逐项判定
-       stats     统计分析：统计表与图表清单 + 数据快照版本（用于过期判定）
+       qc        质量校验：国家考核指标评价结论（年报第 2 章内容）+ 记录级异常说明
+       stats     统计产物（数据层）：统计表与图表清单 + 数据快照版本，随数据快照自动生成
        review    审核：多轮审核意见单（逐条回复 + 修订版本）
        release   发布归档：发布审批、数据包、国家平台回执
        stageLog  全流程阶段流转留痕
@@ -493,6 +628,49 @@
       return Object.assign({}, s, { state: st, note: st === "ready" ? "核对一致" : "", cards: st === "pending" ? null : s.cards });
     });
   }
+  /* 数据自动就位：预接入 + 核对一致 + 剔重 + 字段齐备性，用户不再需要点按钮 */
+  function autoPrepareData(t) {
+    if (!t) return;
+    var now = nowStr();
+    t.dataPrep = t.dataPrep || {};
+    t.dataPrep.sources = seedDataSources('all').map(function (s) {
+      var out = Object.assign({}, s, { state: 'ready', note: '系统预接入 · 核对一致', at: s.at || now });
+      if (s.id === 'src-pop') out.cards = 111;   // 分县分性别 18 年龄组人口记录
+      return out;
+    });
+    t.dataPrep.dedupDone = true; t.dataPrep.dedupAt = t.dataPrep.dedupAt || now;
+    t.dataPrep.dupRemoved = AGG_RESULT.dup;
+    t.dataPrep.multiPrimary = AGG_RESULT.multiPrimary;
+    t.dataPrep.unlocated = AGG_RESULT.unlocated;
+    t.dataPrep.validCards = AGG_RESULT.valid;
+    t.dataPrep.fieldsChecked = true; t.dataPrep.fieldsAt = t.dataPrep.fieldsAt || now;
+    t.dataPrep.fieldStats = t.dataPrep.fieldStats || [
+      { name: '身份证号', missing: Math.round(AGG_RESULT.valid * 0.012), rate: 1.2, max: 2 },
+      { name: '发病日期', missing: Math.round(AGG_RESULT.valid * 0.003), rate: 0.3, max: 1 },
+      { name: '形态学编码（ICD-O-3）', missing: Math.round(AGG_RESULT.valid * 0.068), rate: 6.8, max: 10 },
+      { name: '性别', missing: Math.round(AGG_RESULT.valid * 0.001), rate: 0.1, max: 0.5 },
+      { name: '年龄', missing: Math.round(AGG_RESULT.valid * 0.004), rate: 0.4, max: 1 },
+      { name: '诊断依据', missing: Math.round(AGG_RESULT.valid * 0.021), rate: 2.1, max: 5 }
+    ];
+    t.dataPrep.snapshotAt = t.dataPrep.snapshotAt || now;
+    t.agg = { done: true, result: AGG_RESULT };
+    if (!t.dataVersion) t.dataVersion = 'DV-' + (t.year || '2024') + '-M';
+    /* 数据质量评价（年报第 2 章内容）：随数据快照自动生成评价结论。
+       这不是数据整改工单，指标未达标 / 记录级异常都在结论里如实说明即可。 */
+    t.qc = t.qc || {};
+    t.qc.done = true; t.qc.evaluatedAt = t.qc.evaluatedAt || now;
+    if (!(t.qc.kpis || []).length) {
+      t.qc.kpis = QC_KPI_DEFS.map(function (k) {
+        return { name: k.name, value: k.value, require: k.require, pass: k.pass, basis: k.basis };
+      });
+    }
+    /* 统计分析阶段已删除：统计产物随数据快照一次性生成，正文编制/导出/归档直接引用。 */
+    t.stats = { done: true, tables: STAT_TABLES.slice(), charts: STAT_CHARTS.slice(), snapshotAt: now, dataVersion: t.dataVersion };
+    t.indicators = computeIndicators(t);
+    t.chartConfigs = buildChartConfigs(t);
+    return t;
+  }
+
   function seedQcIssues(state) {
     var all = [
       { id: "QC-001", no: "JX-2024-001289", region: "南昌市", rule: "死亡 / 发病一致性", level: "bad", detail: "死亡日期 2024-03-02 早于确诊日期 2024-05-18", state: "open", owner: "南昌市登记处", raisedAt: "2026-06-02 09:10", dueAt: "2026-06-10", basis: "死亡日期不得早于确诊日期；两者矛盾时须回溯原始病历核实其中一个日期" },
@@ -500,9 +678,21 @@
       { id: "QC-003", no: "JX-2024-007431", region: "赣州市", rule: "ICD-O-3 逻辑一致性", level: "warn", detail: "部位 C34（肺），形态 8500/3（浸润性导管癌）不匹配", state: "open", owner: "赣州市登记处", raisedAt: "2026-06-02 09:11", dueAt: "2026-06-12", basis: "ICD-O-3 形态学编码须与部位相容；肺部位不应出现乳腺来源形态学编码" },
       { id: "QC-004", no: "JX-2024-014208", region: "九江市", rule: "编码规范校验", level: "warn", detail: "身份证号码校验位不通过", state: "open", owner: "九江市登记处", raisedAt: "2026-06-02 09:12", dueAt: "2026-06-12", basis: "身份证号须通过 GB 11643 校验位算法，未通过时须向登记单位核实" }
     ];
-    if (state === "clean") return all.map(function (x) { return Object.assign({}, x, { state: "closed", closedAt: "2026-06-03 15:00", closedBy: "省级质控岗·王五", fixNote: "已回溯原始病历核实并修正" }); });
-    if (state === "warnonly") return all.map(function (x) { return x.level === "bad" ? Object.assign({}, x, { state: "closed", closedAt: "2026-06-03 15:00", closedBy: "省级质控岗·王五", fixNote: "已回溯原始病历核实并修正" }) : x; });
-    return all;
+    var out;
+    if (state === "clean") out = all.map(function (x) { return Object.assign({}, x, { state: "closed", closedAt: "2026-06-03 15:00", closedBy: "省级质控岗·王五", fixNote: "已回溯原始病历核实并修正" }); });
+    else if (state === "warnonly") out = all.map(function (x) { return x.level === "bad" ? Object.assign({}, x, { state: "closed", closedAt: "2026-06-03 15:00", closedBy: "省级质控岗·王五", fixNote: "已回溯原始病历核实并修正" }) : x; });
+    else out = all.map(function (x) { return Object.assign({}, x); });
+    return out.map(function (x) {
+      var it = Object.assign({}, x);
+      // 表4：三级严重等级（错误级=高，警告级按规则细分中/低）
+      it.severity = it.level === 'bad' ? '高' : (it.no === 'JX-2024-014208' ? '低' : '中');
+      // 表4：关联病例ID列表（一条规则可能命中多张报告卡）+ 操作日志快照（发现 → 整改 → 闭环）
+      it.caseIds = it.no ? [it.no] : [];
+      it.issueLog = [{ at: it.raisedAt || '', by: '省级质控岗', action: '发现', from: '', to: 'open', note: '规则命中：' + (it.detail || '') }];
+      if (it.state === 'closed') it.issueLog.unshift({ at: it.closedAt || '', by: it.closedBy || '省级质控岗', action: '闭环', from: 'open', to: 'closed', note: it.fixNote || '' });
+      if (it.state === 'waived') it.issueLog.unshift({ at: it.waivedAt || '', by: it.waivedBy || '省级质控岗', action: '豁免', from: 'open', to: 'waived', note: it.waiveNote || '' });
+      return it;
+    });
   }
   var QC_KPI_DEFS = [
     { key: "mv", name: "形态学确诊比例 MV%", value: "76.5%", require: "66%–95%", pass: true, basis: "显微镜下确诊的病例占全部发病报告的比例，反映诊断可靠性" },
@@ -514,6 +704,35 @@
   ];
   function seedQcKpis(pass) {
     return QC_KPI_DEFS.map(function (k) { return Object.assign({}, k, { pass: pass ? k.pass : k.pass }); });
+  }
+
+  /* ---------- 数据准备：本年报用到的字段（平铺、可改值、可补充） ---------- */
+  function defaultDataFields(t) {
+    var r = AGG_RESULT, rows = [];
+    var add = function (name, value) {
+      rows.push({ id: 'F-' + pad4(rows.length + 1), name: name, value: String(value), builtin: true });
+    };
+    add('报告年度', t.year + ' 年度');
+    add('覆盖范围', scopeLabel(t));
+    add('行政层级', t.adminLevel || '省级');
+    add('数据时间范围', (t.periodStart || '—') + ' ~ ' + (t.periodEnd || '—'));
+    add('人口口径', t.popCal === 'household' ? '户籍人口' : '常住人口');
+    add('标准人口', t.stdPop === 'world' ? 'Segi 世界标准人口' : '中国 2000 年标准人口');
+    add('癌种范围', t.cancer);
+    add('报告卡总数', fmt(r.cards));
+    add('合并后有效病例', fmt(r.valid));
+    add('死亡病例', fmt(r.death));
+    add('覆盖人口', fmt(r.pop));
+    add('合并重复上报', fmt(r.dup));
+    add('一人多癌', fmt(r.multiPrimary));
+    add('地址待补充病例', fmt(r.unlocated));
+    QC_KPI_DEFS.forEach(function (k) { add(k.name, k.value); });
+    return rows;
+  }
+  function dataFieldsOf(t) {
+    if (!t) return [];
+    if (!Array.isArray(t.dataFields)) t.dataFields = defaultDataFields(t);
+    return t.dataFields;
   }
   var STAT_TABLES = [
     { id: "t1", no: "表1", name: "全部恶性肿瘤发病主要指标", dim: "性别 × 指标", rows: 3 },
@@ -536,6 +755,158 @@
   ];
   function seedStats(done) {
     return { done: !!done, tables: done ? STAT_TABLES.slice() : [], charts: done ? STAT_CHARTS.slice() : [], snapshotAt: done ? "2026-06-03 16:00" : "", dataVersion: done ? "DV-2024-01" : "" };
+  }
+
+  /* ---------- 结构化年报 · 核心指标结果（表2） ----------
+     旧版统计阶段只产出「表清单 + 图清单 + 8 张写死的指标卡」，没有任何可追溯的结果记录。
+     这里按统计快照生成指标结果集，每条含：指标ID / 指标类型 / 维度组合 / 分子 / 分母 /
+     指标值 / 95% 置信区间 / 是否经标化 / 计算方法说明 / 数据来源病例数。 */
+  function ciRate(num, den) {           // 率值（1/10 万）的泊松近似 95%CI
+    if (!den) return [0, 0];
+    var rate = num / den * 100000;
+    var se = Math.sqrt(num) / den * 100000;
+    return [Math.max(0, rate - 1.96 * se), rate + 1.96 * se];
+  }
+  function ciProp(num, den) {           // 比例的 Wilson 95%CI（%）
+    if (!den) return [0, 0];
+    var p = num / den, z = 1.96, n = den;
+    var c = (p + z * z / (2 * n)) / (1 + z * z / n);
+    var h = z * Math.sqrt(p * (1 - p) / n + z * z / (4 * n * n)) / (1 + z * z / n);
+    return [Math.max(0, (c - h) * 100), Math.min(100, (c + h) * 100)];
+  }
+  function ciRel(value, num) {          // 相对标准误近似（累积率 / 生存率）
+    var se = num > 0 ? Math.abs(value) / Math.sqrt(num) : 0;
+    return [Math.max(0, value - 1.96 * se), value + 1.96 * se];
+  }
+  function ciText(ci, digits) {
+    var d = digits == null ? 1 : digits;
+    return "[" + Number(ci[0]).toFixed(d) + ", " + Number(ci[1]).toFixed(d) + "]";
+  }
+  function computeIndicators(t) {
+    var r = AGG_RESULT;
+    var valid = r.valid, death = r.death, pop = r.pop;
+    var out = [];
+    function push(id, type, dim, num, den, value, ci, std, method, src, unit, extra) {
+      var rec = {
+        id: id, taskId: t ? t.id : "", type: type, dim: dim,
+        numerator: num, denominator: den, value: value,
+        ci: ciText(ci), std: !!std, method: method,
+        sourceCases: src, unit: unit || "",
+        zScore: null, standardMethod: "汇总指标，不参与 Z-score 标准化"
+      };
+      if (extra) Object.keys(extra).forEach(function (k) { rec[k] = extra[k]; });
+      out.push(rec);
+    }
+    /* 发病侧 */
+    push("INC-CRUDE", "发病", "全部恶性肿瘤 · 合计", valid, pop, valid / pop * 100000, ciRate(valid, pop), false,
+      "同期新发病例数 ÷ 年平均覆盖人口 × 10 万", valid);
+    push("INC-ASR-CN", "发病", "全部恶性肿瘤 · 合计", valid, pop, 119.4, ciRate(valid, pop), true,
+      "中国 2000 年标准人口年龄别发病率加权（中标率）", valid);
+    push("INC-ASR-W", "发病", "全部恶性肿瘤 · 合计", valid, pop, 158.1, ciRate(valid, pop), true,
+      "Segi 世界标准人口年龄别发病率加权（世标率）", valid);
+    push("INC-CUM-74", "发病", "全部恶性肿瘤 · 0-74 岁", valid, pop, 22.4, ciRel(22.4, valid), false,
+      "0-74 岁年龄别发病率累加（累积率，截缩至 74 岁）", valid, "%");
+    /* 死亡侧 */
+    push("MOR-CRUDE", "死亡", "全部恶性肿瘤 · 合计", death, pop, death / pop * 100000, ciRate(death, pop), false,
+      "同期死亡病例数 ÷ 年平均覆盖人口 × 10 万", death);
+    push("MOR-ASR-CN", "死亡", "全部恶性肿瘤 · 合计", death, pop, 67.8, ciRate(death, pop), true,
+      "中国 2000 年标准人口年龄别死亡率加权（中标率）", death);
+    push("MOR-ASR-W", "死亡", "全部恶性肿瘤 · 合计", death, pop, 93.6, ciRate(death, pop), true,
+      "Segi 世界标准人口年龄别死亡率加权（世标率）", death);
+    push("MOR-CUM-74", "死亡", "全部恶性肿瘤 · 0-74 岁", death, pop, 13.3, ciRel(13.3, death), false,
+      "0-74 岁年龄别死亡率累加（累积率，截缩至 74 岁）", death, "%");
+    /* 质控侧：分子为达标病例数，分母为有效发病数 */
+    var mvNum = Math.round(valid * QC_PROV.mv / 100);
+    var hvNum = Math.round(valid * QC_PROV.hv / 100);
+    var dcoNum = Math.round(valid * QC_PROV.dco / 100);
+    var ubNum = Math.round(valid * QC_PROV.ub / 100);
+    var ouNum = Math.round(valid * QC_PROV.ou / 100);
+    push("QCC-MV", "质控", "全部恶性肿瘤 · 全部机构", mvNum, valid, QC_PROV.mv, ciProp(mvNum, valid), false,
+      "显微镜下确诊病例数 ÷ 有效发病数 × 100%", valid, "%");
+    push("QCC-HV", "质控", "全部恶性肿瘤 · 全部机构", hvNum, valid, QC_PROV.hv, ciProp(hvNum, valid), false,
+      "随访确认组织学诊断病例数 ÷ 有效发病数 × 100%", valid, "%");
+    push("QCC-DCO", "质控", "全部恶性肿瘤 · 全部机构", dcoNum, valid, QC_PROV.dco, ciProp(dcoNum, valid), false,
+      "仅由死亡医学证明补充的病例数 ÷ 有效发病数 × 100%", valid, "%");
+    push("QCC-MI", "质控", "全部恶性肿瘤 · 全部机构", death, valid, QC_PROV.mi, ciRel(QC_PROV.mi, death), false,
+      "死亡病例数 ÷ 有效发病数（M/I 比值）", valid, "");
+    push("QCC-UB", "质控", "全部恶性肿瘤 · 全部机构", ubNum, valid, QC_PROV.ub, ciProp(ubNum, valid), false,
+      "仅原发部位不明病例数 ÷ 有效发病数 × 100%", valid, "%");
+    push("QCC-OU", "质控", "全部恶性肿瘤 · 全部机构", ouNum, valid, QC_PROV.ou, ciProp(ouNum, valid), false,
+      "仅有死亡证书病例数 ÷ 有效发病数 × 100%", valid, "%");
+    /* 生存侧 */
+    push("SUR-5Y", "生存", "全部恶性肿瘤 · 2019-2023 随访队列", 31790, 78505, 40.5, ciRel(40.5, 31790), false,
+      "五年相对生存率 = 观察生存率 ÷ 期望生存率（寿命表法）", 31790, "%");
+    /* 早诊侧：口径与站内《重点癌种早诊率》一致 —— I+II 期例数 ÷ 有有效分期信息的例数。
+       TNM 分期缺失率取 17.6%（decision-kpi-data.js），省级早诊率实报 39.2%。 */
+    var staged = Math.round(valid * (1 - 0.176));
+    var earlyNum = Math.round(staged * 0.392);
+    push("EARLY-CR", "早诊", "全部恶性肿瘤 · 有有效 TNM 分期病例", earlyNum, staged, 39.2, ciProp(earlyNum, staged), false,
+      "I+II 期（早期）病例数 ÷ 有有效 TNM 分期信息的病例数 × 100%（与《重点癌种早诊率》口径一致）", staged, "%");
+    /* Z-score 标准化：对 11 个设区市的粗发病/粗死亡率做标准正态变换，
+       z = (该市率 − 11 市均值) / 标准差；用于地区横向比较，不改变年龄标化率口径。 */
+    var cities = REGIONS.filter(function (x) { return x.level === "city"; });
+    function zOf(list, key) {
+      var mean = list.reduce(function (s, x) { return s + x[key]; }, 0) / (list.length || 1);
+      var sd = Math.sqrt(list.reduce(function (s, x) { return s + Math.pow(x[key] - mean, 2); }, 0) / (list.length || 1));
+      return function (v) { return sd ? (v - mean) / sd : 0; };
+    }
+    var zInc = zOf(cities, "incRate"), zDeath = zOf(cities, "deathRate");
+    cities.forEach(function (c) {
+      var incN = regionInc(c), dthN = regionDeath(c);
+      push("INC-CITY-" + c.id, "地区对比", "设区市 · " + c.name, incN, c.pop, c.incRate, ciRate(incN, c.pop), false,
+        "该市新发病例数 ÷ 该市年平均人口 × 10 万", incN, "", {
+          zScore: +zInc(c.incRate).toFixed(2),
+          standardMethod: "Z-score = (该市粗发病率 − 11 设区市均值) / 标准差，用于地区横向比较"
+        });
+      push("MOR-CITY-" + c.id, "地区对比", "设区市 · " + c.name, dthN, c.pop, c.deathRate, ciRate(dthN, c.pop), false,
+        "该市死亡病例数 ÷ 该市年平均人口 × 10 万", dthN, "", {
+          zScore: +zDeath(c.deathRate).toFixed(2),
+          standardMethod: "Z-score = (该市粗死亡率 − 11 设区市均值) / 标准差，用于地区横向比较"
+        });
+    });
+    return out;
+  }
+  function indicatorById(t, id) {
+    var list = (t && t.indicators) || [];
+    for (var i = 0; i < list.length; i++) if (list[i].id === id) return list[i];
+    return null;
+  }
+  function indicatorValueText(it) {
+    if (!it) return "—";
+    var v = Number(it.value);
+    var txt = it.unit === "%" ? v.toFixed(1) + "%" : (it.id === "QCC-MI" ? v.toFixed(2) : v.toFixed(1));
+    return txt;
+  }
+
+  /* ---------- 结构化年报 · 图表可视化配置（表5） ----------
+     旧版图表只有 id/no/name/type，渲染时直接拼 CSS 柱条，没有轴映射、分组、下钻与排序。
+     这里把每张图升级为可配置实体，统计阶段生成默认配置，用户可逐图调整。 */
+  function buildChartConfigs(t) {
+    return STAT_CHARTS.map(function (c) {
+      var x = "癌种", y = "发病例数", color = "无分组", drill = false, target = "", sort = "按编码顺序";
+      if (c.id === "f1") { x = "年龄组"; y = "发病例数"; color = "性别"; }
+      else if (c.id === "f2") { x = "癌种"; y = "发病例数"; drill = true; target = "癌种 → 年龄组"; sort = "按指标值降序"; }
+      else if (c.id === "f3") { x = "癌种"; y = "死亡例数"; sort = "按指标值降序"; }
+      else if (c.id === "f4") { x = "设区市"; y = "粗发病率"; drill = true; target = "设区市 → 区县"; sort = "按指标值降序"; }
+      else if (c.id === "f5") { x = "年度"; y = "发病例数"; }
+      else if (c.id === "f6") { x = "癌种"; y = "五年生存率"; sort = "按指标值降序"; }
+      return {
+        id: c.id, taskId: t ? t.id : "", no: c.no, chapterId: CHART_CHAPTER[c.id] || "ch1",
+        type: c.type, xField: x, yField: y, colorField: color,
+        title: c.name, subtitle: c.id === "f6" ? "单位：%" : "单位：例",
+        drill: drill, drillTarget: target, sort: sort,
+        interaction: { tooltip: true, legend: c.id === "f1", zoom: c.id === "f5", exportDpi: 150 }
+      };
+    });
+  }
+  function chartCfgById(t, id) {
+    var list = (t && t.chartConfigs) || [];
+    for (var i = 0; i < list.length; i++) if (list[i].id === id) return list[i];
+    return null;
+  }
+  function chapterTitle(id) {
+    for (var i = 0; i < CHAPTER_META.length; i++) if (CHAPTER_META[i].id === id) return "第" + CHAPTER_META[i].no + "章 " + CHAPTER_META[i].title;
+    return id || "—";
   }
   function seedReview(state) {
     if (state === "none") return { rounds: [] };
@@ -575,9 +946,7 @@
     t1.release = {};
     t1.stageLog = seedStageLog([
       { at: "2026-06-01 14:20", action: "创建任务", from: "", to: "task", note: "2024 年度年报编制任务建立，口径：全省 · 常住人口 · 中国 2000 标准人口", by: "省级上报岗·张三" },
-      { at: "2026-06-02 08:55", action: "阶段完成", from: "data", to: "qc", note: "4 个数据源全部核对到位，剔重 426 张、多原发 312 例", by: "省级上报岗·张三" },
-      { at: "2026-06-02 09:00", action: "阶段完成", from: "qc", to: "stats", note: "质控通过，4 项问题全部闭环，6 项国家考核指标达标", by: "省级质控岗·王五" },
-      { at: "2026-06-03 16:00", action: "阶段完成", from: "stats", to: "draft", note: "生成 9 张统计表、6 张图表，快照 DV-2024-01", by: "统计分析岗·赵六" },
+      { at: "2026-06-02 09:00", action: "阶段完成", from: "data", to: "draft", note: "数据字段清单已确认，统计产物自动就位，进入正文编制", by: "省级上报岗·张三" },
       { at: "2026-06-04 09:30", action: "阶段完成", from: "draft", to: "review", note: "八章正文编制完成，引用一致性核对通过", by: "省级上报岗·张三" },
       { at: "2026-06-04 16:30", action: "阶段完成", from: "review", to: "release", note: "第 1 轮审核通过，2 条意见均已回复", by: "省级审核岗·李四" }
     ]);
@@ -637,8 +1006,23 @@
 
   function seedArch() {
     return [
-      { id: "AC-2023-0001", taskId: "AR-2023-0001", year: "2023", version: "V1.0", fileName: "江西省肿瘤登记年报2023.pdf", fileType: "pdf", pages: 88, size: "7.9 MB", status: "已归档", archivedAt: "2025-06-10 10:15", archivedBy: "省级上报岗" },
-      { id: "AC-2022-0001", taskId: "AR-2022-0001", year: "2022", version: "V1.0", fileName: "江西省肿瘤登记年报2022.pdf", fileType: "pdf", pages: 81, size: "7.2 MB", status: "已归档", archivedAt: "2024-06-12 11:00", archivedBy: "省级上报岗" }
+      {
+        id: "AC-2023-0001", taskId: "AR-2023-0001", year: "2023", version: "V1.0",
+        fileName: "江西省肿瘤登记年报2023.pdf", fileType: "pdf", pages: 88, size: "7.9 MB", sizeKB: 8090,
+        storagePath: "archive/2023/江西省肿瘤登记年报2023.pdf", generatedAt: "2025-06-10 09:55",
+        publishedAt: "2025-06-10 09:50", publisher: "省级上报岗·张三", publishScope: "gov",
+        accessUrl: "/archive/2023/annual-report-2023.pdf", downloadCount: 37, govReport: true,
+        doi: "10.3978/j.issn.2096-1234.2025.001",
+        status: "已归档", archivedAt: "2025-06-10 10:15", archivedBy: "省级上报岗"
+      },
+      {
+        id: "AC-2022-0001", taskId: "AR-2022-0001", year: "2022", version: "V1.0",
+        fileName: "江西省肿瘤登记年报2022.pdf", fileType: "pdf", pages: 81, size: "7.2 MB", sizeKB: 7373,
+        storagePath: "archive/2022/江西省肿瘤登记年报2022.pdf", generatedAt: "2024-06-12 10:40",
+        publishedAt: "2024-06-12 10:30", publisher: "省级上报岗·张三", publishScope: "internal",
+        accessUrl: "/archive/2022/annual-report-2022.pdf", downloadCount: 12, govReport: false, doi: "",
+        status: "已归档", archivedAt: "2024-06-12 11:00", archivedBy: "省级上报岗"
+      }
     ];
   }
 
@@ -699,7 +1083,49 @@
     if (!t.stage || !(window.AR_STAGES && window.AR_STAGES.byId(t.stage))) {
       t.stage = window.AR_STAGES ? window.AR_STAGES.deriveStage(t, ARH) : 'task';
     }
+    /* —— 结构化年报新增字段（表1 / 表2 / 表4 / 表5 / 表6）——
+       老任务没有这些字段，按已有进度保守回填：口径类给默认值，产物类只在
+       统计已完成时才补算，未做过的阶段仍留空，不虚构业务动作。 */
+    if (!Array.isArray(t.orgLevels)) t.orgLevels = [];
+    if (!t.adminLevel) t.adminLevel = t.scope === 'city' ? '市级' : '省级';
+    if (!t.periodStart) t.periodStart = (t.year || '2024') + '-01-01';
+    if (!t.periodEnd) t.periodEnd = (t.year || '2024') + '-12-31';
+    if (typeof t.isPublic !== 'boolean') t.isPublic = false;
+    if (!t.registryVersionId) t.registryVersionId = 'REG-JX-' + (t.year || '2024') + '-V3';
+    // 系统已预接入全部数据：草稿任务的数据准备自动就位，不再要求用户手动「接入/核对/剔重」
+    if (t.status === 'draft' && t.dataPrep &&
+        (!t.dataPrep.dedupDone || !t.dataPrep.fieldsChecked ||
+         (t.dataPrep.sources || []).some(function (s) { return s.state !== 'ready'; }))) {
+      autoPrepareData(t);
+    }
+    // v2 指标集新增「早诊率 + 地区 Z-score」，老结果集自动重算（结果是可再生的计算产物）
+    if (!Array.isArray(t.indicators) || (t.stats && t.stats.done && !t.indicators.some(function (x) { return x.id === 'EARLY-CR'; }))) {
+      t.indicators = (t.stats && t.stats.done) ? computeIndicators(t) : [];
+    }
+    if (!Array.isArray(t.chartConfigs)) t.chartConfigs = (t.stats && t.stats.done) ? buildChartConfigs(t) : [];
+    if (!Array.isArray(t.exports)) t.exports = [];
+    ((t.qc || {}).issues || []).forEach(function (it) {
+      if (!it.severity) it.severity = it.level === 'bad' ? '高' : '中';
+      if (!Array.isArray(it.caseIds)) it.caseIds = it.no ? [it.no] : [];
+      if (!Array.isArray(it.issueLog)) {
+        it.issueLog = it.raisedAt ? [{ at: it.raisedAt, by: it.owner || '质控岗', action: '发现', from: '', to: 'open', note: it.detail || '' }] : [];
+      }
+    });
     return t;
+  }
+  /* 归档 / 导出记录（表6）老数据补字段：路径、KB、生成时间、发布人、范围、链接、下载量、政府报告、DOI */
+  function migrateArchive(a) {
+    if (!a) return a;
+    if (!a.sizeKB) a.sizeKB = a.size ? Math.round(parseFloat(a.size) * 1024) : 0;
+    if (!a.storagePath) a.storagePath = 'archive/' + (a.year || '') + '/' + (a.fileName || '');
+    if (!a.generatedAt) a.generatedAt = a.archivedAt || '';
+    if (!a.publisher) a.publisher = a.archivedBy || '省级上报岗';
+    if (!a.publishScope) a.publishScope = 'internal';
+    if (!a.accessUrl) a.accessUrl = '/archive/' + (a.year || '') + '/' + encodeURIComponent(a.fileName || '');
+    if (typeof a.downloadCount !== 'number') a.downloadCount = 0;
+    if (typeof a.govReport !== 'boolean') a.govReport = a.publishScope === 'gov';
+    if (typeof a.doi !== 'string') a.doi = '';
+    return a;
   }
   /* 阶段引擎的宿主依赖：把站内函数注入，避免引擎反向依赖本文件。
      注意：必须在 migrateTask 之前定义——迁移时要靠它推导工作位。 */
@@ -709,16 +1135,39 @@
   (function migrateAll() {
     var changed = false;
     tasks.forEach(function (t) {
-      if (!t.stage || !(t.dataPrep && t.qc && t.stats && t.review && t.release)) changed = true;
+      if (!t.stage || !(t.dataPrep && t.qc && t.stats && t.review && t.release) ||
+        !Array.isArray(t.indicators) || !Array.isArray(t.chartConfigs) ||
+        !Array.isArray(t.exports) || !t.periodStart || !t.registryVersionId ||
+        (t.stats && t.stats.done && Array.isArray(t.indicators) && !t.indicators.some(function (x) { return x.id === 'EARLY-CR'; })) ||
+        (t.status === 'draft' && t.dataPrep && (!t.dataPrep.dedupDone || !t.dataPrep.fieldsChecked))) changed = true;
       migrateTask(t);
     });
     if (changed) saveLS(LS.tasks, tasks);
+    // 模板（表3）：适用规范 / 语言 / 默认图表类型
+    var tplChanged = false;
+    templates.forEach(function (tp) {
+      if (!tp.standard) { tp.standard = '《中国肿瘤登记工作指导手册（2016）》'; tplChanged = true; }
+      if (!tp.lang) { tp.lang = 'zh'; tplChanged = true; }
+      if (!tp.defaultChartType) { tp.defaultChartType = '柱状图'; tplChanged = true; }
+    });
+    if (tplChanged) saveLS(LS.templates, templates);
+    // 归档（表6）：路径 / KB / 发布信息 / 下载量 / DOI
+    var arcChanged = false;
+    archives.forEach(function (a) {
+      if (!a.storagePath || !a.sizeKB || typeof a.downloadCount !== 'number' || typeof a.doi !== 'string') arcChanged = true;
+      migrateArchive(a);
+    });
+    if (arcChanged) saveLS(LS.arch, archives);
   })();
 
   var arState = {
     page: "ar-tasks",
     currentTaskId: (function () { try { return localStorage.getItem(LS.cur) || "AR-2024-0001"; } catch (e) { return "AR-2024-0001"; } })(),
     section: "overview", viewStage: "", statView: null, issueView: null, chartTab: "pyramid", editChapter: "ch1", taskTab: "tasks",
+    chartCfgEdit: null, archiveDetail: null, editArchive: null,
+    indFilter: "", qcFilter: { level: "", state: "", keyword: "" }, chartDrill: null, chartZoom: 100,
+    tplVersionsId: null, tplEditSnapshot: null, tplSectionSnapshot: null,
+    taskBaselineEdit: false, baselineOpen: false, gateOpen: false, stageTab: {},
     filters: { year: "", keyword: "", status: "" },
     tplView: "list", tplEditingId: null, editSectionId: null, tplPreview: null, reportPreview: null,
     advOpen: false, gen: { running: false, pct: 0, step: "" }
@@ -822,6 +1271,26 @@
       opBtn({ label: '删除', cls: 'btn-ghost', fn: 'arDeleteTask', arg: t.id, on: c.del, tip: c.del ? '' : c.delWhy })
     ]);
   }
+  /* 台账阶段进度格：7 格小方块，已完成实心 / 当前高亮 / 未到置灰 */
+  function taskStageSteps(t) {
+    var cur = AR().currentStage(t, ARH), idx = AR().indexOf(cur);
+    return '<span class="ar2-steps">' + AR().list.map(function (s, i) {
+      return '<i class="' + (AR().stageDone(t, s.id, ARH) ? 'done' : (i === idx ? 'cur' : '')) + '" title="' + e(s.name) + '"></i>';
+    }).join('') + '</span> <span class="ar-hint">' + (idx + 1) + '/7 ' + e(AR().byId(cur).name) + '</span>';
+  }
+  function taskStatsHtml() {
+    var c = { total: tasks.length, editing: 0, published: 0, archived: 0 };
+    tasks.forEach(function (t) {
+      if (t.status === 'draft' || t.status === 'submitted' || t.status === 'approved') c.editing++;
+      else if (t.status === 'published') c.published++;
+      else if (t.status === 'archived') c.archived++;
+    });
+    var box = function (v, label, primary) {
+      return '<div class="ar-stat' + (primary ? ' primary' : '') + '"><div class="v">' + v + '</div><div class="l">' + label + '</div></div>';
+    };
+    return '<div class="ar-stat-row">' + box(c.total, '年报任务总数', true) + box(c.editing, '编制 / 审核中') +
+      box(c.published, '已发布') + box(c.archived, '已归档') + '</div>';
+  }
   var OPS_RULE = '<div class="ar-ops-rule"><b>操作按年报状态开放：</b>' +
     '<span>草稿 查看·编制·删除</span><span class="sep">|</span>' +
     '<span>待审核 / 待发布 / 已发布 查看·编制</span><span class="sep">|</span>' +
@@ -866,19 +1335,21 @@
     var rows = list.map(function (t) {
       return '<tr><td class="code" style="font-size:12px;color:#334155">' + t.id + '</td>' +
         '<td class="txt" style="font-size:13px;color:#1f2937;font-weight:600">' + e(t.title) + '</td>' +
-        '<td class="code" style="font-size:12px;color:#64748b">' + t.year + '</td>' +
-        '<td class="code" style="font-size:12px;color:#64748b">' + t.version + '</td>' +
+        '<td class="txt" style="font-size:12px;color:#475569">' + e(t.year) + ' 年度 · ' + e(scopeLabel(t)) +
+        ' · ' + e(t.adminLevel || '省级') + '</td>' +
+        '<td class="code" style="font-size:12px;color:#334155;white-space:nowrap">' + e(t.version) + '</td>' +
         '<td class="code">' + statusBadge(t.status) + '</td>' +
-        '<td class="code" style="font-size:12px;color:#64748b">' + t.updatedAt + '</td>' +
+        '<td class="code" style="white-space:nowrap">' + taskStageSteps(t) + '</td>' +
+        '<td class="code" style="font-size:12px;color:#64748b">' + e(t.updatedAt) + '</td>' +
         '<td class="ops">' + taskOps(t) + '</td></tr>';
     }).join('');
 
     return pageToolbar('年报记录') + '<div class="panel" style="margin-bottom:16px"><div class="panel-body">' +
+      taskStatsHtml() +
       filterHtml +
-      OPS_RULE +
       (list.length === 0 ? '<div style="text-align:center;color:#94a3b8;padding:36px 18px;font-size:13px">暂无符合条件的年报记录，点击右上角「新建年报」开始编制。</div>' :
-        '<div class="table-wrap"><table class="data-table" style="width:100%;min-width:980px"><colgroup><col style="width:132px"><col><col style="width:66px"><col style="width:66px"><col style="width:88px"><col style="width:150px"><col style="width:200px"></colgroup><thead><tr>' +
-        '<th class="code">任务编号</th><th class="txt">年报标题</th><th class="code">年度</th><th class="code">版本</th><th class="code">状态</th><th class="code">更新时间</th><th class="ops">操作</th>' +
+        '<div class="table-wrap"><table class="data-table" style="width:100%;min-width:1180px"><colgroup><col style="width:132px"><col><col style="width:230px"><col style="width:70px"><col style="width:100px"><col style="width:190px"><col style="width:150px"><col style="width:200px"></colgroup><thead><tr>' +
+        '<th class="code">任务编号</th><th class="txt">年报标题</th><th class="txt">编制口径</th><th class="code">版本号</th><th class="code">状态</th><th class="code">阶段进度</th><th class="code">更新时间</th><th class="ops">操作</th>' +
         '</tr></thead><tbody>' + rows + '</tbody></table></div>') +
       '</div></div>';
   }
@@ -887,18 +1358,26 @@
   // 构建报告全文预览 HTML（封面 + 目录 + 八章正文），供查看页与「预览报告全文」按钮共用
   function buildReportPreviewHtml(t) {
     var chs = activeTemplateChapters(t);
+    var lang = reportLang(t);
+    var coverTitle = tr(lang, t.title, String(t.year) + ' Jiangxi Cancer Registry Annual Report');
     var cover = '<div class="ar-page" style="min-height:auto">' +
-      '<div class="doc-h1" style="margin-top:36px;font-size:24px">' + e(t.title) + '</div>' +
-      '<div class="doc-sub" style="margin-bottom:36px">江西省肿瘤登记中心　' + e(t.year) + ' 年度　' + e(t.version) + '</div>' +
-      '<h4 class="doc-sec">目　录</h4><div style="margin:6px 0 0">' +
+      '<div class="doc-h1" style="margin-top:36px;font-size:24px">' + e(coverTitle) + '</div>' +
+      '<div class="doc-sub" style="margin-bottom:36px">' + e(tr(lang, '江西省肿瘤登记中心', 'Jiangxi Cancer Registry Center')) +
+      '　' + e(tr(lang, t.year + ' 年度', 'Data Year ' + t.year)) + '　' + e(tr(lang, t.version, 'Edition ' + t.version)) +
+      '　<span class="ar-hint">(' + langLabel(lang) + ')</span></div>' +
+      '<h4 class="doc-sec">' + e(tr(lang, '目　录', 'CONTENTS')) + '</h4><div style="margin:6px 0 0">' +
       chs.map(function (c, i) {
-        return '<div style="display:flex;align-items:baseline;gap:8px;font-size:13.5px;line-height:2.1;color:#1f2937"><span style="min-width:64px">第' + CN_NO[i] + '章</span><span>' + e(c.title) + '</span><span style="flex:1;border-bottom:1px dotted #cbd5e1;margin:0 6px"></span><span style="color:#94a3b8;font-size:12px">' + (t.chapters[c.id] ? '已编制' : '待编制') + '</span></div>';
+        return '<div style="display:flex;align-items:baseline;gap:8px;font-size:13.5px;line-height:2.1;color:#1f2937"><span style="min-width:64px">' +
+          e(tr(lang, '第' + CN_NO[i] + '章', 'Ch.' + (i + 1))) + '</span><span>' + e(chapterDisplayTitle(lang, c)) + '</span>' +
+          '<span style="flex:1;border-bottom:1px dotted #cbd5e1;margin:0 6px"></span><span style="color:#94a3b8;font-size:12px">' +
+          e(tr(lang, t.chapters[c.id] ? '已编制' : '待编制', t.chapters[c.id] ? 'Drafted' : 'Pending')) + '</span></div>';
       }).join('') + '</div></div>';
     var pages = chs.map(function (c, i) {
       var ct = chapterTemplate(templateSourceForTask(t), c.id);
       var body = t.chapters[c.id] || buildChapterHtml(t, c.id);
-      var head = (!ct.rules || ct.rules.showTitle !== false) ? '<h3 class="doc-ch">第' + CN_NO[i] + '章　' + e(c.title) + '</h3>' : '';
-      var src = (ct.rules && ct.rules.showSource && ct.dataSource) ? '<p class="doc-cap" style="text-align:left">数据来源：' + e(ct.dataSource) + '</p>' : '';
+      var chHead = tr(lang, '第' + CN_NO[i] + '章　' + c.title, 'Chapter ' + (i + 1) + '　' + (I18N_CHAPTER[c.id] || c.title));
+      var head = (!ct.rules || ct.rules.showTitle !== false) ? '<h3 class="doc-ch">' + e(chHead) + '</h3>' : '';
+      var src = (ct.rules && ct.rules.showSource && ct.dataSource) ? '<p class="doc-cap" style="text-align:left">' + e(tr(lang, '数据来源：', 'Data source: ')) + e(ct.dataSource) + '</p>' : '';
       return '<div class="ar-page">' + head + body + src + '</div>';
     }).join('');
     return cover + pages;
@@ -930,7 +1409,7 @@
         '<td class="txt" style="font-size:12px;color:#64748b">' + rule.desc + '</td>' +
         '<td class="code">' + b + '</td></tr>';
     }).join('');
-    return '<div class="panel" style="margin-bottom:16px"><div class="panel-header">数据质量校验<div class="toolbar-actions"><span class="ar-hint">' + (v.done ? '校验完成 · ' + v.result.ok + ' 项通过' : '未校验') + '</span></div></div><div class="panel-body">' +
+    return '<div class="panel" style="margin-bottom:16px"><div class="panel-header">数据质量评价<div class="toolbar-actions"><span class="ar-hint">' + (v.done ? '评价结论已生成 · ' + v.result.ok + ' 项通过' : '待生成评价结论') + '</span></div></div><div class="panel-body">' +
       '<div class="ar-qc-grid" style="margin-bottom:14px">' +
       gaugeV('MV% 病理/细胞学证实', QC_PROV.mv, '%', qcTone(QC_PROV.mv, 'mv'), '阈值 ' + QC_THRESH.mvMin + '%–' + QC_THRESH.mvMax + '%（过高提示漏报）') +
       gaugeV('HV% 组织学证实', QC_PROV.hv, '%', qcTone(QC_PROV.hv, 'hv'), '阈值 ≥ ' + QC_THRESH.hvMin + '%') +
@@ -1029,7 +1508,7 @@
      保留 SECTIONS 定义以免查看页与旧的 section* 渲染函数失效。 */
   var SECTIONS = [
     { id: "overview", label: "数据概览", title: "数据概览", desc: "跨库取数与省市分层汇总结果" },
-    { id: "quality", label: "数据质量", title: "数据质量校验", desc: "对标国家登记质量考核阈值" },
+    { id: "quality", label: "数据质量", title: "数据质量评价", desc: "对照国家登记质量考核指标，形成年报第 2 章结论" },
     { id: "metrics", label: "指标与图表", title: "核心指标与图表", desc: "省级统一口径的标化率与可视化" },
     { id: "report", label: "报告正文", title: "年报正文（八章）", desc: "按汇总数据自动生成，可人工校订" },
     { id: "export", label: "导出与发布", title: "导出与发布", desc: "多格式导出、国家平台上报与归档" }
@@ -1045,8 +1524,8 @@
   function AR() {
     if (window.AR_STAGES) return window.AR_STAGES;
     if (!window.__arStagesFallback) {
-      var ids = ['task', 'data', 'qc', 'stats', 'draft', 'review', 'release'];
-      var names = ['建立任务', '数据准备', '质量校验', '统计分析', '正文编制', '审核', '发布归档'];
+      var ids = ['task', 'data', 'draft', 'review', 'release'];
+      var names = ['建立任务', '数据准备', '正文编制', '审核', '发布归档'];
       var list = ids.map(function (id, i) {
         return { id: id, no: i + 1, name: names[i], short: names[i], desc: '', owner: '', artifacts: [], hint: '' };
       });
@@ -1179,15 +1658,170 @@
   var STAGE_WORKSPACE = {
     task: function (t) { return wsTask(t); },
     data: function (t) { return wsData(t); },
-    qc: function (t) { return wsQc(t); },
-    stats: function (t) { return wsStats(t); },
+
     draft: function (t) { return wsDraft(t); },
     review: function (t) { return wsReview(t); },
     release: function (t) { return wsRelease(t); }
   };
 
+  /* ===================== 交互改版 v2（组装层，数据模型与业务动作零改动） =====================
+     目标：首屏只出现「当前阶段 / 当前任务 / 主操作」；阶段进度只在左栏，编制基准只在抽屉，
+     推进动作只在底部动作条。window.AR_UI_V2 = false 可一键切回旧版组装。 */
+  function ar2Enabled() { return !(window.AR_UI_V2 === false); }   // 控制台置 false 可回退旧版
+  var AR2_TABS = {
+    task: [{ k: 'base', n: '编制基准' }],
+    data: [{ k: 'fields', n: '字段清单' }],
+
+    draft: [{ k: 'chapters', n: '章节编制' }],
+    review: [{ k: 'rounds', n: '审核意见单' }, { k: 'corrections', n: '修订记录' }],
+    release: [{ k: 'flow', n: '发布流程' }, { k: 'export', n: '导出与上报' }]
+  };
+  function ar2TabsOf(id) { return AR2_TABS[id] || [{ k: 'all', n: '全部' }]; }
+  function ar2CurTab(id) {
+    var tabs = ar2TabsOf(id);
+    var saved = (arState.stageTab || {})[id];
+    return tabs.filter(function (x) { return x.k === saved; }).length ? saved : tabs[0].k;
+  }
+  /* 面板按 Tab 分组：新版只渲染当前 Tab，旧版把全部面板原样拼接（保证可回退） */
+  function ar2Pick(id, panes) {
+    if (!ar2Enabled()) return Object.keys(panes).map(function (k) { return panes[k] || ''; }).join('');
+    return panes[ar2CurTab(id)] || panes[ar2TabsOf(id)[0].k] || '';
+  }
+  window.arSetStageTab = function (tab) {
+    var t = curTask(); if (!t) return;
+    var wsId = arState.viewStage && STAGE_WORKSPACE[arState.viewStage] ? arState.viewStage : curStageId(t);
+    arState.stageTab = arState.stageTab || {};
+    arState.stageTab[wsId] = tab;
+    renderPage('ar-workbench');
+  };
+  window.arToggleGate = function () { arState.gateOpen = !arState.gateOpen; renderPage('ar-workbench'); };
+  window.arToggleBaseline = function () { arState.baselineOpen = !arState.baselineOpen; renderPage('ar-workbench'); };
+  window.arCloseBaseline = function () { arState.baselineOpen = false; renderPage('ar-workbench'); };
+  window.arGoEditBaseline = function () {
+    var t = curTask(); if (!t) return;
+    arState.baselineOpen = false;
+    window.arGoStage('task');
+    arState.taskBaselineEdit = true;
+    renderPage('ar-workbench');
+  };
+  window.arBackToCurrentStage = function () { arState.viewStage = ''; renderPage('ar-workbench'); };
+
+  function renderTopbar(t) {
+    return '<div class="ar2-topbar">' +
+      '<div class="ttl">' + e(t.title) + '</div>' +
+      '<div class="meta">' +
+      '<span class="m"><b>' + e(t.year) + '</b> 年度</span>' +
+      '<span class="m">' + e(scopeLabel(t)) + '</span>' +
+      '<span class="m">' + statusBadge(t.status) + '</span>' +
+      '<span class="m">版本 <b>' + e(t.version) + '</b></span>' +
+      '</div>' +
+      '<div class="acts">' +
+      '<button class="btn btn-ghost btn-sm" onclick="arToggleBaseline()">编制基准</button>' +
+      '<button class="btn btn-ghost btn-sm" onclick="arGoPage(\'ar-tasks\')">返回台账</button>' +
+      (t.status === 'draft' ? '<button class="btn btn-ghost btn-sm" onclick="arSaveDraft()">保存草稿</button>' : '') +
+      workbenchActions(t) +
+      '</div></div>';
+  }
+
+  /* 左栏：7 阶段竖向导览，替代横向导轨 + 参数栏进度位 */
+  function renderStageNav(t) {
+    var cur = curStageId(t), curIdx = AR().indexOf(cur), voided = t.status === 'voided';
+    var nodes = AR().list.map(function (s, i) {
+      var done = AR().stageDone(t, s.id, ARH);
+      var isCur = s.id === cur && !voided;
+      var cls = 'ar2-node' + (voided ? ' void' : isCur ? ' cur' : done ? ' done' : (i > curIdx ? ' lock' : ''));
+      var canEnter = voided ? (s.id === 'task') : (i <= curIdx || (i === curIdx + 1 && AR().evalGate(cur, t, ARH).ok));
+      var tip = voided ? '该年报已作废，仅保留留痕' :
+        (!canEnter && i > curIdx + 1 ? '需先完成：' + AR().list.slice(curIdx, i).map(function (x) { return x.name; }).join(' → ') :
+          (!canEnter ? '尚未满足「' + AR().byId(cur).name + '」的准入条件' : ''));
+      var st = voided ? '作废' : isCur ? '进行中' : done ? '已完成' : (canEnter ? '可进入' : '锁定');
+      return '<button class="' + cls + '"' + (canEnter ? '' : ' disabled') + (tip ? ' title="' + e(tip) + '"' : '') +
+        ' onclick="arGoStage(\'' + s.id + '\')">' +
+        '<span class="no">' + (done && !isCur ? '✓' : s.no) + '</span>' +
+        '<span class="bd"><span class="nm">' + e(s.name) + '</span><span class="ds">' + e(s.artifacts.join(' · ')) + '</span></span>' +
+        '<span class="st">' + st + '</span></button>';
+    }).join('');
+    var pct = Math.round((voided ? 0 : curIdx) / (AR().list.length - 1) * 100);
+    return '<aside class="ar2-side"><div class="ar2-side-h"><span>编制流程</span><span>' + (curIdx + 1) + ' / ' + AR().list.length + '</span></div>' +
+      nodes +
+      '<div class="ar2-side-f"><div class="lb"><span>整体进度</span><b>' + pct + '%</b></div>' +
+      '<div class="ar2-progress"><i style="width:' + pct + '%"></i></div></div></aside>';
+  }
+
+  /* 底部动作条：唯一推进入口 + 准入摘要 */
+  function renderActionBar(t, wsId) {
+    var cur = curStageId(t), isPast = wsId !== cur;
+    var gate = AR().evalGate(cur, t, ARH), adv = AR().canAdvance(t, ARH);
+    var list = AR().list, idx = AR().indexOf(cur);
+    var prev = list[idx - 1];
+    var left = '<button class="btn btn-ghost btn-sm"' + (prev ? '' : ' disabled') + ' onclick="arGoStage(\'' + (prev ? prev.id : '') + '\')">← 上一步</button>';
+    var mid;
+    if (t.status === 'voided') mid = '<span class="warn">该年报已作废，编制流程终止</span>';
+    else if (isPast) mid = '<span class="ok">回看「' + e(AR().byId(wsId).name) + '」· 已完成阶段，修改请返回当前阶段</span>';
+    else if (!gate.ok) {
+      mid = '<span class="warn">⚠ 还有 <b>' + gate.blockers.length + '</b> 项条件未满足：' + e((gate.blockers[0] || {}).text || '') + '</span>' +
+        ' <button class="btn btn-ghost btn-xs" onclick="arToggleGate()">' + (arState.gateOpen ? '收起' : '查看全部') + '</button>';
+    } else if (adv.to) mid = '<span class="ok">✓ 「' + e(AR().byId(cur).name) + '」产物齐备，可推进至「' + e(AR().byId(adv.to).name) + '」</span>';
+    else mid = '<span class="ok">✓ 流程已走完，可归档发布</span>';
+    var blockers = (!isPast && !gate.ok && arState.gateOpen)
+      ? '<div style="flex:1 1 100%;margin-top:8px;padding:10px 12px;background:#fffbeb;border:1px solid #fedf89;border-radius:7px;font-size:12px;color:#7a2e0e;line-height:1.8">' +
+        gate.blockers.map(function (b, i) {
+          var act = b.action && b.action.fn ? ' <button class="btn btn-outline btn-xs" onclick="' + b.action.fn + '(' + (b.action.arg ? '\'' + b.action.arg + '\'' : '') + ')">' + e(b.action.label) + '</button>' : '';
+          return '<div>' + (i + 1) + '. ' + e(b.text) + act + '</div>';
+        }).join('') + '</div>' : '';
+    var right;
+    if (isPast) right = '<button class="btn btn-primary btn-sm" onclick="arBackToCurrentStage()">返回当前阶段</button>';
+    else if (gate.ok && adv.to) right = '<button class="btn btn-primary btn-sm" onclick="arAdvanceStage()">完成本阶段 · 进入' + e(AR().byId(adv.to).name) + ' →</button>';
+    else right = '<button class="btn btn-primary btn-sm" disabled>完成本阶段</button>';
+    return '<div class="ar2-actionbar">' + left + '<div class="gate">' + mid + '</div>' +
+      '<div class="btns">' + right + '</div>' + blockers + '</div>';
+  }
+
+  /* 编制基准抽屉：把散落在头部 / 参数栏 / 高级口径 / 建立任务的口径集中到一处 */
+  function renderBaselineDrawer(t) {
+    if (!arState.baselineOpen) return '';
+    var locked = t.status !== 'draft';
+    var rows = baselineRows(t);
+    return '<div class="ar2-drawer-mask" onclick="arCloseBaseline()"></div>' +
+      '<div class="ar2-drawer"><div class="ar2-drawer-h">编制基准' +
+      '<button class="ar-modal-x" onclick="arCloseBaseline()">×</button></div>' +
+      '<div class="ar2-drawer-b">' +
+      '<div class="ar-hint" style="margin-bottom:12px">口径变更会使已生成的取数、质控、统计与正文产物作废，需重新走后续阶段。' +
+      (locked ? '当前状态已锁定，不可修改。' : '草稿期可修改。') + '</div>' +
+      '<div class="ar2-keyline">' + rows.map(function (r) { return '<span>' + e(r[0]) + '：<b>' + e(r[1]) + '</b></span>'; }).join('') + '</div>' +
+      '</div><div class="ar2-drawer-f">' +
+      (locked ? '<span class="ar-hint">口径已锁定</span>' : '<button class="btn btn-primary btn-sm" onclick="arGoEditBaseline()">修改编制基准</button>') +
+      '<button class="btn btn-ghost btn-sm" onclick="arCloseBaseline()">关闭</button></div></div>';
+  }
+
+  function renderWorkbenchV2(t) {
+    var cur = curStageId(t);
+    var wsId = arState.viewStage && STAGE_WORKSPACE[arState.viewStage] ? arState.viewStage : cur;
+    var inner = (STAGE_WORKSPACE[wsId] || STAGE_WORKSPACE[cur])(t);
+    var stage = AR().byId(wsId);
+    var isPast = AR().indexOf(wsId) < AR().indexOf(cur);
+    var tabs = ar2TabsOf(wsId), curTab = ar2CurTab(wsId);
+    var tabBar = tabs.length > 1 ? '<div class="ar2-tabs">' + tabs.map(function (x) {
+      return '<button class="ar2-tab' + (curTab === x.k ? ' on' : '') + '" onclick="arSetStageTab(\'' + x.k + '\')">' + e(x.n) + '</button>';
+    }).join('') + '</div>' : '';
+    var head = '<div class="ar2-stage-h"><span class="n">' + stage.no + '</span>' +
+      '<span class="t">' + e(stage.name) + '</span>' +
+      (isPast ? '<span class="wb-viewing-past">回看模式</span>' : '') +
+      '<span class="d">' + e(stage.desc) + '</span></div>';
+    var preview = '';
+    if (arState.reportPreview) {
+      preview = '<div class="panel" style="margin-bottom:12px;border-color:var(--primary)"><div class="panel-header">报告全文预览（Word 版式）<div class="toolbar-actions"><button class="btn btn-ghost btn-sm" onclick="arCloseReport()">关闭预览</button></div></div><div class="panel-body" style="background:#eef1f5"><div class="ar-doc-scroll" style="max-height:640px;display:flex;flex-direction:column;gap:18px">' + arState.reportPreview + '</div></div></div>';
+    }
+    return renderTopbar(t) + preview +
+      '<div class="ar2-shell">' + renderStageNav(t) +
+      '<div class="ar2-main">' + head + tabBar + '<div class="ar2-pane">' + inner + '</div></div></div>' +
+      renderActionBar(t, wsId) + renderBaselineDrawer(t) +
+      renderStatViewer(t) + renderIssueViewer(t) + renderChartCfgEditor(t)
+  }
+
   function renderWorkbench() {
     var t = curTask();
+    if (t && ar2Enabled()) return renderWorkbenchV2(t);
     if (!t) {
       return pageToolbar('编制工作台') + '<div class="panel"><div class="panel-body"><div style="text-align:center;color:#94a3b8;padding:40px 16px">尚未选择年报记录，请先到「年报记录」新建或打开一条记录。<br><br><button class="btn btn-primary" onclick="arGoPage(\'ar-tasks\')">去年报记录</button></div></div></div>';
     }
@@ -1206,13 +1840,14 @@
     var secHtml = arSection(wsId, inner, stage, badgeHtml);
     // 弹层挂在工作台层级：任何阶段都能弹出统计表预览 / 问题详情
     return renderWbHead(t) + renderStageRail(t) + renderGateBanner(t) + renderParamBar(t) + preview +
-      renderStatViewer(t) + renderIssueViewer(t) + secHtml;
+      renderStatViewer(t) + renderIssueViewer(t) + renderChartCfgEditor(t) + secHtml;
   }
 
   function renderWbHead(t) {
     var meta = '<div class="wb-head-meta">' +
       '<span class="wb-chip"><b>' + e(t.year) + '</b> 年度</span>' +
       '<span class="wb-chip">' + e(scopeLabel(t)) + '</span>' +
+      '<span class="wb-chip">' + e(t.periodStart || '—') + ' ~ ' + e(t.periodEnd || '—') + '</span>' +
       '<span class="wb-chip">版本 ' + e(t.version) + '</span>' +
       '<span class="wb-chip">当前阶段 <b>' + AR().byId(curStageId(t)).name + '</b></span>' +
       (t.updatedAt ? '<span>更新于 <b>' + e(t.updatedAt) + '</b></span>' : '') +
@@ -1391,14 +2026,18 @@
     var body = '<div class="panel" style="margin-bottom:16px"><div class="panel-body">' +
       '<div class="ar-ctx-line"><span>统计年度 <b>' + e(t.year) + '</b></span><span>覆盖范围 <b>' + e(scopeLabel(t)) + '</b></span>' +
       '<span>人口口径 <b>' + popCalTxt + '</b></span><span>标准人口 <b>' + stdPopTxt + '</b></span>' +
-      '<span>癌种 <b>' + e(t.cancer) + '</b></span><span>报告结构 <b>八章标准年报</b></span></div>' +
+      '<span>癌种 <b>' + e(t.cancer) + '</b></span><span>报告结构 <b>八章标准年报</b></span>' +
+      '<span>数据时间范围 <b>' + e(t.periodStart || '—') + ' ~ ' + e(t.periodEnd || '—') + '</b></span>' +
+      '<span>行政层级 <b>' + e(t.adminLevel || '省级') + '</b></span></div>' +
       (t.agg && t.agg.done ?
         '<div class="his-summary" style="grid-template-columns:repeat(auto-fit,minmax(160px,1fr));margin-top:14px">' +
         '<div class="his-summary-card"><strong>' + fmt(r.cards) + '</strong><span>报告卡总数</span></div>' +
         '<div class="his-summary-card"><strong>' + fmt(r.valid) + '</strong><span>有效发病例数</span></div>' +
         '<div class="his-summary-card"><strong>' + fmt(r.death) + '</strong><span>死亡例数</span></div>' +
         '<div class="his-summary-card"><strong>' + fmt(r.pop) + '</strong><span>覆盖人口</span></div></div>' +
-        '<div style="margin-top:12px;padding:10px 12px;background:#f0fdf4;border:1px solid #bbf7d0;border-radius:6px;font-size:12px;color:#166534">✓ 已合并 ' + r.sources + ' 个数据源（' + r.registries + ' 个登记处），删除重复卡 ' + fmt(r.dup) + ' 张，识别多原发 ' + fmt(r.multiPrimary) + ' 例。</div>' : '') +
+        '<div style="margin-top:12px;padding:10px 12px;background:#f0fdf4;border:1px solid #bbf7d0;border-radius:6px;font-size:12px;color:#166534">✓ 已合并 ' + r.sources + ' 个数据源（' + r.registries + ' 个登记处）：' +
+        '合并重复上报 ' + fmt(r.dup) + ' 张（同一患者只算 1 例），识别「一人多癌」' + fmt(r.multiPrimary) + ' 例（按规则分别计入），' +
+        '最终纳入统计有效病例 <b>' + fmt(r.valid) + '</b> 例——这是年报所有率值的分子。</div>' : '') +
       '</div></div>';
     if (t.agg && t.agg.done) {
       body += '<div class="panel" style="margin-bottom:16px"><div class="panel-header">分层汇总 · 分设区市</div><div class="panel-body" style="padding:0 18px 16px">' +
@@ -1410,7 +2049,7 @@
     return body;
   }
 
-/* ===================== 8. 分区 · 数据质量校验 ===================== */
+/* ===================== 8. 分区 · 数据质量评价 ===================== */
   function sectionQuality(t) {
     var v = t.valid || { done: false, result: null };
     var rules = VALIDATE_RULES.slice();
@@ -1444,9 +2083,9 @@
         '<td class="txt" style="font-size:12px;color:#64748b">' + it.detail + '</td>' +
         '<td class="code">' + b + '</td>' +
         '<td class="ops"><button class="btn btn-ghost btn-xs" onclick="arFixIssue(this)">标记已修正</button></td></tr>';
-    }).join('') : (v.done ? '<tr><td colspan="6" style="padding:20px;text-align:center;color:#059669">✓ 数据校验通过，无水印错误项</td></tr>' : '<tr><td colspan="6" style="padding:20px;text-align:center;color:#94a3b8">自动校验完成后展示问题清单</td></tr>');
+    }).join('') : (v.done ? '<tr><td colspan="6" style="padding:20px;text-align:center;color:#059669">✓ 数据质量评价已完成，未发现记录级异常</td></tr>' : '<tr><td colspan="6" style="padding:20px;text-align:center;color:#94a3b8">评价结论生成后展示记录级异常明细</td></tr>');
 
-    return '<div class="panel" style="margin-bottom:16px"><div class="panel-header">数据质量校验<div class="toolbar-actions"><span class="ar-hint">' + (v.done ? '校验完成 · ' + v.result.ok + ' 项通过' : '自动校验中…') + '</span></div></div><div class="panel-body">' +
+    return '<div class="panel" style="margin-bottom:16px"><div class="panel-header">数据质量评价<div class="toolbar-actions"><span class="ar-hint">' + (v.done ? '评价结论已生成 · ' + v.result.ok + ' 项通过' : '评价结论生成中…') + '</span></div></div><div class="panel-body">' +
       (arState.gen.running ? '<div style="margin:10px 0 16px"><div style="display:flex;justify-content:space-between;font-size:12px;color:#64748b;margin-bottom:6px"><span>正在执行 8 条校验规则与国家考核阈值...</span><span>' + Math.round(arState.gen.pct) + '%</span></div><div class="progress-track" style="margin-top:0;height:8px"><div class="progress-bar" style="height:100%;width:' + arState.gen.pct + '%"></div></div></div>' :
         (v.done && v.result ? '<div style="display:flex;gap:10px;flex-wrap:wrap;margin:10px 0 16px">' + badge('success', '通过 ' + v.result.ok) + badge('warning', '警告 ' + v.result.warn) + badge('danger', '错误 ' + v.result.bad) + '<span style="font-size:12px;color:#647085;align-self:center">存在错误项建议整改后再提交审核。</span></div>' : '')) +
       '<div class="ar-qc-grid" style="margin-bottom:14px">' +
@@ -1717,8 +2356,46 @@
   /* ===================== 11. 七个阶段工作区 =====================
      每个工作区 = 阶段说明 + 本阶段操作（任务清单 / 阶段留痕已按需求下线）。 */
 
+  /* 编制基准字段清单：抽屉与「建立任务」只读确认卡共用，避免两处各写一份 */
+  function baselineRows(t) {
+    return [
+      ['报告年度', t.year + ' 年度'], ['年报标题', t.title], ['覆盖范围', scopeLabel(t)],
+      ['行政层级', t.adminLevel || '省级'],
+      ['数据时间范围', (t.periodStart || '—') + ' ~ ' + (t.periodEnd || '—')],
+      ['人口口径', t.popCal === 'household' ? '户籍人口' : '常住人口'],
+      ['标准人口', t.stdPop === 'world' ? 'Segi 世界标准人口' : '中国 2000 年标准人口'],
+      ['癌种范围', t.cancer], ['定稿版本', t.version],
+      ['创建人 / 时间', (t.createdBy || '—') + ' · ' + (t.createdAt || '—')],
+      ['数据版本', t.dataVersion || '—']
+    ];
+  }
+  /* 建立任务阶段默认只读：口径在新建弹窗已填过，不再要求用户重填一遍 */
+  function taskBaselineView(t) {
+    var locked = t.status !== 'draft';
+    var rows = baselineRows(t);
+    return '<div class="panel" style="margin-bottom:16px"><div class="panel-header">编制基准 · 已确认' +
+      '<span class="ph-sub">' + (locked ? '状态已锁定，口径不可修改' : '草稿期可修改') + '</span></div>' +
+      '<div class="panel-body">' +
+      '<div style="display:flex;gap:8px;align-items:flex-start;background:#f0fdf4;border:1px solid #a6e0bb;border-radius:7px;padding:10px 12px;font-size:12.5px;color:#166534;line-height:1.7;margin-bottom:12px">' +
+      '<b>✓ 编制基准已在新建年报时确认</b><span>无需重复填写。后续如需调整，' + (locked ? '需先回退到草稿状态。' : '点下方「编辑编制基准」，保存后会自动作废已生成的产物。') + '</span></div>' +
+      '<div class="ar2-keyline">' + rows.map(function (r) { return '<span>' + e(r[0]) + '：<b>' + e(r[1]) + '</b></span>'; }).join('') + '</div>' +
+      '<div style="margin-top:14px;display:flex;gap:8px;flex-wrap:wrap">' +
+      (locked ? '<span class="ar-hint">当前状态「' + (TASK_STATUS[t.status] || {}).label + '」，口径已锁定</span>' :
+        '<button class="btn btn-outline btn-sm" onclick="arEditTaskBaseline()">编辑编制基准</button>' +
+        '<button class="btn btn-ghost btn-sm" onclick="arBackToCurrentStage()">返回当前阶段</button>') +
+      '</div></div></div>';
+  }
+  window.arEditTaskBaseline = function () {
+    var t = curTask(); if (!t) return;
+    if (t.status !== 'draft') { toast('当前状态不可修改编制基准，请先回退到草稿', 'error'); return; }
+    arState.taskBaselineEdit = true;
+    renderPage('ar-workbench');
+  };
+  window.arCancelEditBaseline = function () { arState.taskBaselineEdit = false; renderPage('ar-workbench'); };
+
   /* ---------- 阶段 1：建立任务 ---------- */
   function wsTask(t) {
+    if (!arState.taskBaselineEdit) return taskBaselineView(t);
     var locked = t.status !== 'draft';
     var gate = AR().evalGate('task', t, ARH);
     var lk = locked ? ' disabled' : '';
@@ -1751,6 +2428,13 @@
       templates.filter(function (x) { return x.enabled !== false; }).map(function (x) {
         return '<option value="' + x.id + '"' + (t.templateId === x.id ? ' selected' : '') + '>' + e(x.name) + ' (' + e(x.version) + ')</option>';
       }).join('') + '</select></div>' +
+      '<div class="form-group"><label>行政层级</label><select id="arBaseAdmin"' + lk + '>' +
+      ADMIN_LEVELS.map(function (x) { return '<option value="' + x + '"' + (t.adminLevel === x ? ' selected' : '') + '>' + x + '</option>'; }).join('') +
+      '</select></div>' +
+      '<div class="form-group"><label>数据时间范围</label><div style="display:flex;align-items:center;gap:6px">' +
+      '<input type="date" id="arBasePeriodStart" value="' + e(t.periodStart || (t.year + '-01-01')) + '"' + lk + ' style="min-width:0">' +
+      '<span class="ar-hint">至</span>' +
+      '<input type="date" id="arBasePeriodEnd" value="' + e(t.periodEnd || (t.year + '-12-31')) + '"' + lk + ' style="min-width:0"></div></div>' +
       '<div class="form-group"><label>报告标题</label><input type="text" id="arBaseTitle" value="' + e(t.title) + '"' + lk + ' placeholder="如：2025 年江西省肿瘤登记年报"></div>' +
       '<div class="form-group"><label>任务编号</label><input type="text" value="' + e(t.id) + '" disabled></div>' +
       '</div>' +
@@ -1763,6 +2447,7 @@
         (t.cities || []).filter(function (c) { return c !== 'jx'; }).length + ' 个设区市</div></div>' : '') +
       (locked ? '' : '<div style="margin-top:16px;display:flex;gap:8px;align-items:center">' +
         '<button class="btn btn-primary btn-sm" onclick="arSaveBaseline()">保存编制基准</button>' +
+        '<button class="btn btn-ghost btn-sm" onclick="arCancelEditBaseline()">取消编辑</button>' +
         '<span class="ar-hint">保存后数据准备阶段的取数口径随之更新</span></div>') +
       '</div></div>';
 
@@ -1786,6 +2471,11 @@
     else t.cities = t.cities.filter(function (c) { return c !== id; });
     renderPage('ar-workbench');
   };
+  // 机构层级只改本地勾选态，保存编制基准时统一落库（与设区市多选行为保持一致）
+  window.arBaseToggleOrg = function (el) {
+    var lab = el && el.parentNode;
+    if (lab && lab.classList) { if (el.checked) lab.classList.add('on'); else lab.classList.remove('on'); }
+  };
   window.arSaveBaseline = function () {
     var t = curTask(); if (!t) return;
     if (t.status !== 'draft') { toast('当前状态不可修改编制基准，请先回退到建立任务阶段', 'error'); return; }
@@ -1797,7 +2487,18 @@
     if (scope === 'city' && !(t.cities || []).filter(function (c) { return c !== 'jx'; }).length) {
       toast('覆盖范围为「按设区市选择」时，至少勾选一个设区市', 'error'); return;
     }
-    var before = { year: t.year, popCal: t.popCal, stdPop: t.stdPop, cancer: t.cancer, tpl: t.templateId, scope: t.scope, title: t.title };
+    // 口径：数据时间范围 / 行政层级（登记库版本由系统按年度固定）。
+    // 「是否公开」「医疗机构等级」已从口径表单移除：控件不存在时保留任务原值，不清空历史数据。
+    var orgCb = document.querySelectorAll('[data-base-org]');
+    var orgLevels = orgCb.length
+      ? (function () { var list = []; Array.prototype.forEach.call(orgCb, function (c) { if (c.checked) list.push(c.getAttribute('data-base-org')); }); return list; })()
+      : (t.orgLevels || []);
+    var pubEl = document.getElementById('arBasePublic');
+    var isPublic = pubEl ? pubEl.value === '1' : !!t.isPublic;
+    var periodStart = g('arBasePeriodStart') || t.periodStart;
+    var periodEnd = g('arBasePeriodEnd') || t.periodEnd;
+    if (periodStart > periodEnd) { toast('数据时间范围的起始日期不能晚于结束日期', 'error'); return; }
+    var adminLevel = g('arBaseAdmin') || t.adminLevel || '省级';
     var changed = [];
     if (String(t.year) !== String(year)) changed.push('报告年度 ' + t.year + ' → ' + year);
     if (t.popCal !== popCal) changed.push('人口口径 → ' + (popCal === 'household' ? '户籍人口' : '常住人口'));
@@ -1805,10 +2506,14 @@
     if (t.cancer !== cancer) changed.push('分析癌种 → ' + cancer);
     if (t.templateId !== tplId) changed.push('报告模板 → ' + ((tplById(tplId) || {}).name || tplId));
     if (t.scope !== scope) changed.push('覆盖范围 → ' + (scope === 'city' ? '按设区市' : '全省'));
+    if (t.periodStart !== periodStart || t.periodEnd !== periodEnd) changed.push('数据时间范围 → ' + periodStart + ' ~ ' + periodEnd);
+    if (t.adminLevel !== adminLevel) changed.push('行政层级 → ' + adminLevel);
     if (t.title !== title) changed.push('报告标题 → ' + title);
 
     t.year = year; t.popCal = popCal; t.stdPop = stdPop; t.cancer = cancer;
     t.templateId = tplId; t.scope = scope; t.title = title;
+    t.orgLevels = orgLevels; t.adminLevel = adminLevel; t.periodStart = periodStart; t.periodEnd = periodEnd;
+    t.isPublic = isPublic;
     if (changed.length) {
       // 口径变了，已生成的产物全部作废——否则会出现「数据按旧口径、正文写新口径」
       var hadProducts = (t.dataPrep && t.dataPrep.dedupDone) || (t.stats && t.stats.done) || Object.keys(t.chapters || {}).length > 0;
@@ -1825,214 +2530,73 @@
       t.corrections.unshift({ ver: t.version, at: nowStr(), by: t.createdBy || '省级上报岗', note: '调整编制基准：' + changed.join('；') });
       AR().logStage(t, '修改基准', 'task', 'task', changed.join('；') + (hadProducts ? '（已生成的产物作废，需重新取数）' : ''), t.createdBy || '省级上报岗');
     }
+    arState.taskBaselineEdit = false;
+    arState.viewStage = '';          // 保存后回到当前工作阶段，不停留在基准编辑页
     touch(t);
     renderPage('ar-workbench');
     toast(changed.length ? '编制基准已保存：' + changed.join('；') : '编制基准无变化');
   };
   function ctxItem(k, v) { return '<div class="ar-ctx-item"><div class="k">' + k + '</div><div class="v">' + e(v) + '</div></div>'; }
 
-  /* ---------- 阶段 2：数据准备 ---------- */
+  /* 「剔重 / 字段检查」是技术动作名，用户看不懂为什么要有这一步。
+     这里把每个关键字段的用途写成业务语言，在核对表里直接告诉用户「缺了会影响什么」。 */
+  var FIELD_PURPOSE = {
+    '身份证号': '识别同一患者是否重复上报；缺了会把发病人数算多',
+    '发病日期': '判断病例是否落在本年报的时间范围内；缺了无法确定年度归属',
+    '形态学编码（ICD-O-3）': '按病理类型分癌种；缺了癌种顺位与分癌种统计会不准',
+    '性别': '分性别发病率 / 死亡率的分母依据；缺了分性别结果不可信',
+    '年龄': '年龄别发病率与年龄标化率的必要字段；缺了算不出标化率',
+    '诊断依据': '判断诊断可靠程度（MV% 等质量指标）；缺了无法评价数据质量'
+  };
+  function fieldPurpose(name) { return FIELD_PURPOSE[name] || '年报统计所需字段'; }
+
+  /* ---------- 阶段 2：数据准备 ----------
+     只保留一张表：字段 / 值（可直接改）/ 操作；补充字段按钮并入表内最后一行。
+     面板标题、说明文字、Tab、按钮区等一律不要。 */
   function wsData(t) {
-    var dp = t.dataPrep || { sources: [] };
-    var srcs = dp.sources || [];
-    var ready = srcs.filter(function (s) { return s.state === 'ready'; }).length;
-    var connected = srcs.filter(function (s) { return s.state !== 'pending'; }).length;
-    var gate = AR().evalGate('data', t, ARH);
-
-    /* 源操作：未接入 → 接入取数；已接入待核对 → 执行核对；已核对 → 重新取数 */
-    var srcRows = srcs.map(function (s) {
-      var tone = s.state === 'ready' ? 'success' : s.state === 'failed' ? 'danger' : s.state === 'pending' ? 'neutral' : 'warning';
-      var ops;
-      if (s.state === 'pending') {
-        ops = '<button class="btn btn-primary btn-xs" onclick="arConnectSource(\'' + s.id + '\')">接入取数</button>';
-      } else if (s.state === 'receiving') {
-        ops = '<button class="btn btn-primary btn-xs" onclick="arVerifySource(\'' + s.id + '\')">执行核对</button>' +
-          ' <button class="btn btn-ghost btn-xs" onclick="arConnectSource(\'' + s.id + '\')">重新取数</button>';
-      } else if (s.state === 'failed') {
-        ops = '<button class="btn btn-warning btn-xs" onclick="arConnectSource(\'' + s.id + '\')">重试接入</button>';
-      } else {
-        ops = '<button class="btn btn-ghost btn-xs" onclick="arConnectSource(\'' + s.id + '\')">重新取数</button>' +
-          (s.diff ? ' <button class="btn btn-outline btn-xs" onclick="arShowSourceDiff(\'' + s.id + '\')">查看差异</button>' : '');
-      }
-      return '<tr><td class="txt" style="font-size:13px;color:#1f2937">' + e(s.name) +
-        '<div style="font-size:11.5px;color:#94a3b8;margin-top:2px">' + e(s.kind) + (s.desc ? ' · ' + e(s.desc) : '') + '</div></td>' +
-        '<td class="num">' + (s.cards != null && s.cards !== '' ? fmt(s.cards) : '—') + '</td>' +
-        '<td class="code">' + badge(tone, AR().sourceStateLabel(s.state)) + '</td>' +
-        '<td class="code" style="font-size:12px;color:#64748b">' + e(s.at || '—') + '</td>' +
-        '<td class="txt" style="font-size:12px;color:#64748b">' + e(s.note || '—') + '</td>' +
-        '<td class="ops">' + ops + '</td></tr>';
+    var rows = dataFieldsOf(t);
+    var inputStyle = 'width:100%;height:30px;border:1px solid #d1d8e0;border-radius:5px;padding:0 8px;font-size:13px;color:#1f2937;box-sizing:border-box';
+    var trs = rows.map(function (f) {
+      return '<tr>' +
+        '<td class="txt" style="font-size:13px;color:#1f2937">' +
+          (f.builtin ? e(f.name)
+            : '<input type="text" value="' + e(f.name) + '" placeholder="填写字段名" style="' + inputStyle + '" onchange="arUpdateDataFieldName(\'' + f.id + '\',this.value)">') +
+        '</td>' +
+        '<td class="txt"><input type="text" value="' + e(f.value) + '" style="' + inputStyle + '" onchange="arUpdateDataField(\'' + f.id + '\',this.value)"></td>' +
+        '<td class="ops">' + (f.builtin ? '' : '<button class="btn btn-ghost btn-xs" onclick="arDeleteDataField(\'' + f.id + '\')">删除</button>') + '</td>' +
+        '</tr>';
     }).join('');
-
-    var dedupPanel = '<div class="panel" style="margin-bottom:16px"><div class="panel-header">剔重与多原发处理' +
-      (dp.dedupDone ? '<span class="ph-sub">已完成 · ' + e(dp.dedupAt || '') + '</span>' : '<span class="ph-sub">未执行</span>') + '</div>' +
-      '<div class="panel-body">' +
-      (dp.dedupDone
-        ? '<div class="ar-metric-grid">' + metric('删除重复卡', fmt(dp.dupRemoved), '同证件同癌种同年份') +
-          metric('识别多原发', fmt(dp.multiPrimary), '同一患者多个原发') +
-          metric('未定位病例', fmt(dp.unlocated), '待县级登记处补充') +
-          metric('合并后有效病例', fmt(dp.validCards != null ? dp.validCards : Math.max(0, (AGG_RESULT.cards || 0) - (dp.dupRemoved || 0))), '用于全部率值的分子') +
-          '</div>' +
-          '<div style="margin-top:12px"><button class="btn btn-ghost btn-sm" onclick="arRunDataPrep(true)">重新执行剔重</button>' +
-          '<span class="ar-hint" style="margin-left:10px">重新执行会作废后续质控与统计产物</span></div>'
-        : '<div class="ar-empty-inline">尚未执行剔重，合并后的有效病例数不可用，质控无法开展。' +
-          '<button class="btn btn-primary btn-sm" onclick="arRunDataPrep()"' + (connected < srcs.length ? ' disabled title="须先完成全部数据源接入"' : '') + '>执行剔重与多原发识别</button>' +
-          (connected < srcs.length ? '<span class="ar-hint">（尚有 ' + (srcs.length - connected) + ' 个数据源未接入）</span>' : '') + '</div>') +
-      '</div></div>';
-
-    var f = dp.fieldStats;
-    var fieldPanel = '<div class="panel" style="margin-bottom:16px"><div class="panel-header">必填字段齐备性检查' +
-      (dp.fieldsChecked ? '<span class="ph-sub">已完成 · ' + e(dp.fieldsAt || '') + '</span>' : '<span class="ph-sub">未执行</span>') + '</div>' +
-      '<div class="panel-body">' +
-      (dp.fieldsChecked && f
-        ? '<div class="table-wrap"><table class="data-table" style="width:100%;min-width:0">' +
-          '<thead><tr><th class="txt">字段</th><th class="num">缺失数</th><th class="num">缺失率</th><th class="code">阈值</th><th class="code">判定</th></tr></thead><tbody>' +
-          f.map(function (x) {
-            var pass = x.rate <= x.max;
-            return '<tr><td class="txt" style="font-size:13px;color:#1f2937">' + e(x.name) + '</td>' +
-              '<td class="num">' + fmt(x.missing) + '</td>' +
-              '<td class="num" style="font-weight:700;color:' + (pass ? '#067647' : '#b42318') + '">' + f1(x.rate) + '%</td>' +
-              '<td class="code">≤ ' + x.max + '%</td>' +
-              '<td class="code">' + (pass ? badge('success', '达标') : badge('danger', '超标')) + '</td></tr>';
-          }).join('') + '</tbody></table></div>'
-        : '<div class="ar-empty-inline">尚未执行字段齐备性检查。' +
-          '<button class="btn btn-primary btn-sm" onclick="arCheckFields()"' + (dp.dedupDone ? '' : ' disabled title="须先执行剔重"') + '>执行字段检查</button></div>') +
-      '</div></div>';
-
-    return '<div class="panel" style="margin-bottom:16px"><div class="panel-header">多源数据接入台账' +
-      '<span class="ph-sub">已接入 ' + connected + ' / ' + srcs.length + ' · 已核对 ' + ready + ' / ' + srcs.length + '</span></div>' +
-      '<div class="panel-body" style="padding-top:8px">' +
-      (connected < srcs.length ? '<div class="ar-empty-inline" style="margin-bottom:12px">接入取数将按编制基准（' +
-        e(t.year) + ' 年度 · ' + e(scopeLabel(t)) + '）从各数据源拉取记录，并自动比对与上一版快照的差异。' +
-        '<button class="btn btn-primary btn-sm" onclick="arConnectAllSources()">一键接入全部数据源</button></div>' : '') +
-      (srcs.length ? '<div class="table-wrap"><table class="data-table" style="width:100%;min-width:1080px"><colgroup><col><col style="width:100px"><col style="width:120px"><col style="width:150px"><col><col style="width:190px"></colgroup>' +
-        '<thead><tr><th class="txt">数据源</th><th class="num">记录数</th><th class="code">接入状态</th><th class="code">最近操作</th><th class="txt">备注</th><th class="ops">操作</th></tr></thead>' +
-        '<tbody>' + srcRows + '</tbody></table></div>' : '<div class="ar-empty-inline">尚未登记数据源</div>') +
-      '</div></div>' + dedupPanel + fieldPanel;
+    var addRow = '<tr><td colspan="3" style="padding:10px 12px;background:#f8fafc">' +
+      '<button class="btn btn-primary btn-sm" onclick="arAddDataField()">＋ 补充字段</button></td></tr>';
+    return '<div class="table-wrap"><table class="data-table" style="width:100%;min-width:520px">' +
+      '<thead><tr><th class="txt" style="width:40%">字段</th><th class="txt">值</th><th class="ops" style="width:80px">操作</th></tr></thead>' +
+      '<tbody>' + trs + addRow + '</tbody></table></div>';
   }
 
-  /* ---------- 阶段 3：质量校验 ---------- */
-  function wsQc(t) {
-    var q = AR().summaries.qc(t);
-    var kpis = (t.qc && t.qc.kpis) || [];
-    var done = !!(t.qc && t.qc.done);
-    var gate = AR().evalGate('qc', t, ARH);
-
-    var kpiRows = kpis.map(function (k) {
-      return '<tr><td class="txt" style="font-size:13px;color:#1f2937">' + e(k.name) + '</td>' +
-        '<td class="num" style="font-weight:700;color:' + (k.pass ? '#067647' : '#b42318') + '">' + e(k.value) + '</td>' +
-        '<td class="code">' + e(k.require) + '</td>' +
-        '<td class="code">' + (k.pass ? badge('success', '达标') : badge('danger', '未达标')) + '</td></tr>';
-    }).join('');
-
-    var issueRows = q.issues.map(function (it) {
-      var st = { open: badge('danger', '待整改'), fixing: badge('warning', '整改中'), closed: badge('success', '已闭环'), waived: badge('info', '已豁免') }[it.state] || badge('neutral', it.state);
-      var ops = it.state === 'closed' || it.state === 'waived'
-        ? '<button class="btn btn-ghost btn-xs" onclick="arShowIssue(\'' + it.id + '\')">查看处置</button>'
-        : '<button class="btn btn-primary btn-xs" onclick="arCloseIssue(\'' + it.id + '\')">标记闭环</button> ' +
-          '<button class="btn btn-ghost btn-xs" onclick="arWaiveIssue(\'' + it.id + '\')">申请豁免</button>';
-      return '<tr><td class="code" style="font-size:12px">' + e(it.no) + '</td>' +
-        '<td class="code">' + e(it.region) + '</td>' +
-        '<td class="txt" style="font-size:12.5px">' + e(it.rule) + '</td>' +
-        '<td class="code">' + (it.level === 'bad' ? badge('danger', '错误') : badge('warning', '警告')) + '</td>' +
-        '<td class="txt" style="font-size:12px;color:#64748b">' + e(it.detail) + '</td>' +
-        '<td class="code">' + st + '</td>' +
-        '<td class="ops"><button class="btn btn-ghost btn-xs" onclick="arShowIssue(\'' + it.id + '\')">详情</button>' + ops + '</td></tr>';
-    }).join('');
-
-    var openBad = q.issues.filter(function (x) { return x.level === 'bad' && x.state !== 'closed' && x.state !== 'waived'; });
-    var openWarn = q.issues.filter(function (x) { return x.level !== 'bad' && x.state !== 'closed' && x.state !== 'waived'; });
-
-    var head = '<div class="panel" style="margin-bottom:16px"><div class="panel-header">国家登记质量考核指标' +
-      (done ? '<span class="ph-sub">' + kpis.filter(function (k) { return k.pass; }).length + ' / ' + kpis.length + ' 项达标</span>' : '<span class="ph-sub">未执行校验</span>') + '</div>' +
-      '<div class="panel-body" style="padding-top:8px">' +
-      (done ? '<div class="table-wrap"><table class="data-table" style="width:100%;min-width:0"><thead><tr><th class="txt">指标</th><th class="num">本省值</th><th class="code">国家要求</th><th class="code">判定</th></tr></thead><tbody>' + kpiRows + '</tbody></table></div>'
-        : '<div class="ar-empty-inline">尚未执行质量校验。校验将对标国家登记质量考核阈值，逐项判定并生成问题清单。' +
-          '<button class="btn btn-primary btn-sm" onclick="arRunQC()">执行质量校验</button></div>') +
-      (done ? '<div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap"><button class="btn btn-ghost btn-sm" onclick="arRunQC(true)">重新执行校验</button>' +
-        '<button class="btn btn-outline btn-sm" onclick="arExportQcReport()">导出质控报告</button></div>' : '') +
-      '</div></div>';
-
-    var issuePanel = '<div class="panel" style="margin-bottom:16px"><div class="panel-header">质控问题清单' +
-      (q.issues.length ? '<span class="ph-sub">共 ' + q.total + ' 项 · 待处理 ' + q.open + ' 项（错误 ' + q.openBad + ' / 警告 ' + q.openWarn + '）</span>' : '') + '</div>' +
-      '<div class="panel-body" style="padding-top:8px">' +
-      (q.issues.length ? (
-        '<div style="margin-bottom:10px;display:flex;gap:8px;flex-wrap:wrap;align-items:center">' +
-        '<span class="ar-hint">批量处置：</span>' +
-        '<button class="btn btn-outline btn-sm"' + (openBad.length ? '' : ' disabled') + ' onclick="arBatchClose(\'bad\')">闭环全部错误级（' + openBad.length + '）</button>' +
-        '<button class="btn btn-outline btn-sm"' + (openWarn.length ? '' : ' disabled') + ' onclick="arBatchClose(\'warn\')">闭环全部警告级（' + openWarn.length + '）</button>' +
-        '<button class="btn btn-ghost btn-sm"' + (openWarn.length ? '' : ' disabled') + ' onclick="arBatchWaive()">豁免全部警告级</button>' +
-        '</div>' +
-        '<div class="table-wrap"><table class="data-table" style="width:100%;min-width:1240px"><colgroup><col style="width:130px"><col style="width:90px"><col style="width:170px"><col style="width:80px"><col><col style="width:100px"><col style="width:230px"></colgroup>' +
-        '<thead><tr><th class="code">报告卡号</th><th class="code">地区</th><th class="txt">触发规则</th><th class="code">级别</th><th class="txt">问题描述</th><th class="code">状态</th><th class="ops">操作</th></tr></thead><tbody>' + issueRows + '</tbody></table></div>'
-      ) : '<div class="ar-empty-inline">' + (done ? '未发现问题，质控干净。' : '执行校验后在此查看问题清单。') + '</div>') +
-      '<div class="ar-hint" style="margin-top:12px">错误级问题必须全部闭环；警告级可闭环或提交豁免说明后放行。全部闭环方可进入统计分析阶段。</div>' +
-      '</div></div>';
-
-    /* 问题详情弹层同样挂工作台层（见 renderIssueViewer） */
-    var issueModal = renderIssueViewer(t);
-
-    return head + issuePanel + issueModal;
-  }
-
-  /* ---------- 阶段 4：统计分析 ---------- */
-  function wsStats(t) {
-    var s = AR().summaries.stats(t);
-    var gate = AR().evalGate('stats', t, ARH);
-
-    var ratePanel = '<div class="panel" style="margin-bottom:16px"><div class="panel-header">标化率计算底稿' +
-      (s.done ? '' : '<span class="ph-sub">待统计</span>') + '</div><div class="panel-body">' +
-      (s.done ? (
-        '<div class="ar-metric-grid">' +
-        metric('粗发病率', f1(173.3), '分子 78,505 / 分母 4,530 万') +
-        metric('中标发病率', f1(119.4), '中国 2000 标准人口') +
-        metric('世标发病率', f1(158.1), 'Segi 世界标准人口') +
-        metric('累积发病率 0-74', f1(22.4) + '%', '截缩率') +
-        '</div><div class="ar-metric-grid" style="margin-top:10px">' +
-        metric('粗死亡率', f1(102.2), '分子 46,297 / 分母 4,530 万', true) +
-        metric('中标死亡率', f1(67.8), '中国 2000 标准人口', true) +
-        metric('世标死亡率', f1(93.6), 'Segi 世界标准人口', true) +
-        metric('累积死亡率 0-74', f1(13.3) + '%', '截缩率', true) +
-        '</div>' +
-        '<div class="ar-hint" style="margin-top:12px">标化率 = Σ(年龄别率 × 标准人口权重) / Σ标准人口权重。' +
-        '本次计算使用数据快照 <b>' + e(s.snapshotAt || '—') + '</b>（数据版本 ' + e(t.dataVersion || '—') + '）。' +
-        '数据版本变更后统计产物将自动标记过期，须重新统计。</div>'
-      ) : '<div class="ar-empty-inline">尚未生成统计产物。统计将输出 ' + STAT_TABLES.length + ' 张统计表与 ' + STAT_CHARTS.length + ' 张图表，并固化数据快照版本。' +
-        '<button class="btn btn-primary btn-sm" onclick="arRunStats()">执行统计分析</button></div>') +
-      '</div></div>';
-
-    var tableRows = s.tables.map(function (x) {
-      return '<tr><td class="code">' + e(x.no) + '</td><td class="txt" style="font-size:13px;color:#1f2937">' + e(x.name) + '</td>' +
-        '<td class="code" style="font-size:12px;color:#64748b">' + e(x.dim) + '</td>' +
-        '<td class="num">' + x.rows + '</td>' +
-        '<td class="code">' + badge('success', '已生成') + '</td>' +
-        '<td class="ops"><button class="btn btn-ghost btn-xs" onclick="arViewStatTable(\'' + x.id + '\')">查看</button></td></tr>';
-    }).join('');
-    var chartRows = s.charts.map(function (x) {
-      return '<tr><td class="code">' + e(x.no) + '</td><td class="txt" style="font-size:13px;color:#1f2937">' + e(x.name) + '</td>' +
-        '<td class="code" style="font-size:12px;color:#64748b">' + e(x.type) + '</td>' +
-        '<td class="code">' + badge('success', '已生成') + '</td>' +
-        '<td class="ops"><button class="btn btn-ghost btn-xs" onclick="arViewStatChart(\'' + x.id + '\')">查看</button></td></tr>';
-    }).join('');
-
-    var artifactPanel = '<div class="panel" style="margin-bottom:16px"><div class="panel-header">统计产物清单' +
-      '<span class="ph-sub">统计表 ' + s.tableN + ' 张 · 图表 ' + s.chartN + ' 张</span></div>' +
-      '<div class="panel-body">' +
-      '<div class="ar-split2">' +
-      '<div><div class="ar-sub-h">统计表</div>' + (tableRows ? '<table class="data-table" style="width:100%;min-width:0"><thead><tr><th class="code">编号</th><th class="txt">表名</th><th class="code">维度</th><th class="num">行</th><th class="code">状态</th><th class="ops">操作</th></tr></thead><tbody>' + tableRows + '</tbody></table>' : '<div class="ar-hint">尚未生成统计表</div>') + '</div>' +
-      '<div><div class="ar-sub-h">图表</div>' + (chartRows ? '<table class="data-table" style="width:100%;min-width:0"><thead><tr><th class="code">编号</th><th class="txt">图名</th><th class="code">类型</th><th class="code">状态</th><th class="ops">操作</th></tr></thead><tbody>' + chartRows + '</tbody></table>' : '<div class="ar-hint">尚未生成图表</div>') + '</div>' +
-      '</div></div></div>';
-
-    /* 统计表 / 图表的查看弹层：点「查看」必须真能看到内容。
-       注意：弹层挂在工作台层（renderWorkbench），不能只挂在「统计分析」阶段里——
-       用户走到审核、发布阶段想回看某张统计表时，阶段工作区已经不是统计阶段了。 */
-    var viewer = renderStatViewer(t);
-
-    // 复用既有的可视化与分层汇总作为统计结果的可视化佐证
-    var vizPanel = s.done ? ('<div class="panel" style="margin-bottom:16px"><div class="panel-header">统计结果可视化</div><div class="panel-body">' + sectionMetrics(t) + '</div></div>') : '';
-    var distPanel = s.done ? ('<div class="panel" style="margin-bottom:16px"><div class="panel-header">分设区市分层汇总</div><div class="panel-body">' + sectionOverview(t) + '</div></div>') : '';
-
-    return ratePanel + artifactPanel + vizPanel + distPanel + viewer;
-  }
+  /* 数据准备：字段值修改与补充（改值不重渲染，避免输入框失焦） */
+  window.arUpdateDataField = function (id, val) {
+    var t = curTask(); if (!t) return;
+    var f = dataFieldsOf(t).filter(function (x) { return x.id === id; })[0];
+    if (!f) return;
+    f.value = String(val); touch(t);
+  };
+  window.arUpdateDataFieldName = function (id, val) {
+    var t = curTask(); if (!t) return;
+    var f = dataFieldsOf(t).filter(function (x) { return x.id === id; })[0];
+    if (!f) return;
+    f.name = String(val); touch(t);
+  };
+  window.arAddDataField = function () {
+    var t = curTask(); if (!t) return;
+    var rows = dataFieldsOf(t);
+    rows.push({ id: 'UF-' + pad4(rows.length + 1), name: '', value: '', builtin: false });
+    touch(t); renderPage('ar-workbench');
+  };
+  window.arDeleteDataField = function (id) {
+    var t = curTask(); if (!t) return;
+    t.dataFields = dataFieldsOf(t).filter(function (x) { return x.id !== id; });
+    touch(t); renderPage('ar-workbench');
+  };
 
   /* 质控问题详情弹层：工作台级渲染，走到后续阶段也能回看问题处置记录 */
   function renderIssueViewer(t) {
@@ -2045,9 +2609,33 @@
       '<button class="ar-modal-x" onclick="arCloseIssueView()">×</button></div>' +
       '<div class="ar-modal-bd"><div class="ar-ctx-grid" style="grid-template-columns:repeat(2,1fr);gap:14px 20px">' +
       ctxItem('报告卡号', it.no) + ctxItem('归属地区', it.region) +
-      ctxItem('触发规则', it.rule) + ctxItem('问题级别', it.level === 'bad' ? '错误' : '警告') +
+      ctxItem('触发规则', it.rule) +
+      '<div class="ar-ctx-item"><div class="k">严重等级（可调整）</div><div class="v">' +
+      '<select onchange="arSetIssueSeverity(\'' + it.id + '\',this.value)" style="font-size:12.5px;padding:3px 8px;border:1px solid #d1d8e0;border-radius:5px">' +
+      ['高', '中', '低'].map(function (s) { return '<option value="' + s + '"' + (issueSeverity(it) === s ? ' selected' : '') + '>' + s + '</option>'; }).join('') +
+      '</select> <span class="ar-hint">（原判定：' + (it.level === 'bad' ? '错误级' : '警告级') + '）</span></div></div>' +
       ctxItem('当前状态', stateLabel) + ctxItem('责任单位', it.owner || (it.region + '登记处')) +
       ctxItem('发现时间', it.raisedAt || '—') + ctxItem('限改时间', it.dueAt || '年报提交前') +
+      '</div>' +
+      /* 表4：关联病例ID列表（一条规则可命中多张报告卡，支持补录与查看） */
+      '<div class="ar-detail-block"><div class="ar-detail-t">关联病例ID列表（共 ' + ((it.caseIds || []).length) + ' 例）</div>' +
+      '<div class="ar-detail-c" style="margin-bottom:8px">' +
+      ((it.caseIds || []).length
+        ? (it.caseIds || []).map(function (n) { return '<span style="display:inline-block;font-size:11.5px;color:#334155;background:#f1f5f9;border:1px solid #e2e8f0;border-radius:4px;padding:1px 7px;margin:0 6px 6px 0">' + e(n) + '</span>'; }).join('')
+        : '<span style="color:#94a3b8">未关联病例</span>') +
+      '</div>' +
+      (it.state === 'closed' || it.state === 'waived' ? '' :
+        '<div style="display:flex;gap:8px"><input type="text" id="arIssueCases" style="flex:1" value="' + e((it.caseIds || []).join(', ')) + '" placeholder="多个病例ID用逗号分隔，如：JX-2024-001289, JX-2024-002345">' +
+        '<button class="btn btn-outline btn-sm" onclick="arSaveIssueCases(\'' + it.id + '\')">保存病例列表</button></div>') +
+      '</div>' +
+      /* 表4：操作日志快照（发现 → 整改 / 豁免 / 闭环，逐条留痕） */
+      '<div class="ar-detail-block"><div class="ar-detail-t">操作日志快照</div>' +
+      ((it.issueLog || []).map(function (lg) {
+        return '<div style="display:flex;gap:10px;font-size:12px;line-height:1.7;padding:6px 0;border-bottom:1px dashed #eef2f6">' +
+          '<span class="code" style="color:#64748b;min-width:130px">' + e(lg.at || '—') + '</span>' +
+          '<span style="color:#334155;min-width:116px">' + e(lg.by || '—') + '</span>' +
+          '<span>' + (lg.action ? '<b>' + e(lg.action) + '</b> ' : '') + (lg.from ? e(lg.from) + ' → ' + e(lg.to) + '　' : '') + (lg.note ? e(lg.note) : '') + '</span></div>';
+      }).join('') || '<div class="ar-hint">暂无操作日志</div>') +
       '</div>' +
       '<div class="ar-detail-block"><div class="ar-detail-t">问题描述</div><div class="ar-detail-c">' + e(it.detail) + '</div></div>' +
       '<div class="ar-detail-block"><div class="ar-detail-t">判定依据</div><div class="ar-detail-c">' + e(it.basis || ('按《中国肿瘤登记工作指导手册》' + it.rule + '规则判定')) + '</div></div>' +
@@ -2063,6 +2651,66 @@
       '<button class="btn btn-ghost" onclick="arCloseIssueView()">关闭</button></div></div></div>';
   }
 
+  /* 图表可视化配置弹层（表5）：所属章节 / 类型 / X-Y 轴 / 颜色分组 / 排序 / 下钻 / 交互 JSON */
+  function renderChartCfgEditor(t) {
+    if (!arState.chartCfgEdit || !t) return '';
+    var c = chartCfgById(t, arState.chartCfgEdit);
+    if (!c) return '';
+    var sel = function (id, opts, val) {
+      return '<select id="' + id + '">' + opts.map(function (o) {
+        var v = Array.isArray(o) ? o[0] : o, lab = Array.isArray(o) ? o[1] : o;
+        return '<option value="' + e(v) + '"' + (String(v) === String(val) ? ' selected' : '') + '>' + e(lab) + '</option>';
+      }).join('') + '</select>';
+    };
+    var row = function (label, ctrl) { return '<div class="form-group"><label>' + label + '</label>' + ctrl + '</div>'; };
+    var chapters = CHAPTER_META.map(function (m) { return [m.id, '第' + m.no + '章 ' + m.title]; });
+    var drillTargets = ['', '癌种 → 年龄组', '设区市 → 区县', '性别 → 年龄组', '年度 → 设区市'];
+    return '<div class="ar-modal"><div class="ar-modal-mask" onclick="arCloseChartCfg()"></div>' +
+      '<div class="ar-modal-box" style="width:760px"><div class="ar-modal-hd">图表配置 · ' + e(c.no + ' ' + c.title) +
+      '<button class="ar-modal-x" onclick="arCloseChartCfg()">×</button></div>' +
+      '<div class="ar-modal-bd">' +
+      '<div class="ar-form-grid">' +
+      row('所属章节', sel('cfChapter', chapters, c.chapterId)) +
+      row('图表类型', sel('cfType', DEFAULT_CHART_TYPES, c.type)) +
+      row('X 轴维度', sel('cfX', CHART_X_FIELDS, c.xField)) +
+      row('Y 轴指标', sel('cfY', CHART_Y_FIELDS, c.yField)) +
+      row('颜色分组字段', sel('cfColor', CHART_COLOR_FIELDS, c.colorField)) +
+      row('默认排序', sel('cfSort', CHART_SORT_OPTIONS, c.sort)) +
+      row('标题', '<input type="text" id="cfTitle" value="' + e(c.title) + '">') +
+      row('副标题', '<input type="text" id="cfSubtitle" value="' + e(c.subtitle || '') + '" placeholder="如：单位：例">') +
+      row('是否下钻', sel('cfDrill', [['0', '不下钻'], ['1', '支持下钻']], c.drill ? '1' : '0')) +
+      row('下钻目标维度', sel('cfDrillTarget', drillTargets, c.drillTarget || '')) +
+      '</div>' +
+      '<div class="ar-detail-block"><div class="ar-detail-t">交互配置（JSON）</div>' +
+      '<textarea id="cfInteraction" rows="5" style="width:100%;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12px;border:1px solid #d1d8e0;border-radius:6px;padding:8px">' +
+      e(JSON.stringify(c.interaction || {}, null, 2)) + '</textarea>' +
+      '<div class="ar-hint" style="margin-top:6px">常用键：tooltip / legend / zoom / exportDpi，保存时校验 JSON 合法性。</div></div>' +
+      '</div>' +
+      '<div class="ar-modal-ft"><button class="btn btn-ghost" onclick="arCloseChartCfg()">取消</button>' +
+      '<button class="btn btn-primary" onclick="arSaveChartCfg(\'' + c.id + '\')">保存配置</button></div></div></div>';
+  }
+  window.arEditChartCfg = function (id) { arState.chartCfgEdit = id; renderPage('ar-workbench'); };
+  window.arCloseChartCfg = function () { arState.chartCfgEdit = null; renderPage('ar-workbench'); };
+  window.arSaveChartCfg = function (id) {
+    var t = curTask(); if (!t) return;
+    var c = chartCfgById(t, id); if (!c) return;
+    var g = function (k) { var el = document.getElementById(k); return el ? el.value : ''; };
+    var raw = g('cfInteraction');
+    var interaction = {};
+    try { interaction = raw ? JSON.parse(raw) : {}; }
+    catch (err) { toast('交互配置不是合法 JSON：' + err.message, 'error'); return; }
+    var drill = g('cfDrill') === '1';
+    var target = g('cfDrillTarget');
+    if (drill && !target) { toast('开启下钻后必须指定下钻目标维度', 'error'); return; }
+    c.chapterId = g('cfChapter'); c.type = g('cfType');
+    c.xField = g('cfX'); c.yField = g('cfY'); c.colorField = g('cfColor'); c.sort = g('cfSort');
+    c.title = g('cfTitle').trim() || c.title; c.subtitle = g('cfSubtitle').trim();
+    c.drill = drill; c.drillTarget = drill ? target : '';
+    c.interaction = interaction;
+    t.updatedAt = nowStr(); arState.chartCfgEdit = null; touch(t);
+    stay('图表 ' + c.no + ' 配置已保存');
+  };
+
   /* 统计表 / 图表查看弹层：工作台级渲染，任何阶段都能回看已生成的统计产物 */
   function renderStatViewer(t) {
     if (!arState.statView || !t) return '';
@@ -2071,7 +2719,7 @@
     var body;
     if (v.kind === 'chart') {
       var ch = (stats.charts || []).filter(function (x) { return x.id === v.id; })[0];
-      body = ch ? chartPreviewHtml(ch) : '<div class="ar-hint">图表不存在或尚未生成</div>';
+      body = ch ? chartPreviewHtml(ch, t) : '<div class="ar-hint">图表不存在或尚未生成</div>';
     } else {
       var tb = (stats.tables || []).filter(function (x) { return x.id === v.id; })[0];
       body = tb ? statTableHtml(tb, t) : '<div class="ar-hint">统计表不存在或尚未生成</div>';
@@ -2178,7 +2826,131 @@
       '<div class="table-wrap"><table class="data-table" style="width:100%;min-width:0"><thead>' + head + '</thead><tbody>' + body + '</tbody></table></div>';
   }
 
-  function chartPreviewHtml(ch) {
+  /* ---------- 表5 v2：按图表配置真实渲染（轴映射 / 排序 / 分组 / tooltip / 缩放 / 点击下钻） ----------
+     旧版预览按图表 ID 硬编码 6 套静态 HTML，配置改了也不生效。这里改为读
+     chartConfigs：X 轴决定数据维度、Y 轴决定取值口径、sort/color/interaction/drill 全部生效。
+     数据仍取自模块内的汇总常量（与统计表同一口径），接真实接口时替换 chartSeries 即可。 */
+  var CHART_COLORS = ['#2563eb', '#0891b2', '#7c3aed', '#db2777', '#ea580c', '#059669', '#475569', '#b45309'];
+  function chartSeries(t, cfg) {
+    var y = cfg.yField || '发病例数', x = cfg.xField || '癌种';
+    var deathSide = y.indexOf('死亡') >= 0;
+    var rateSide = y.indexOf('率') >= 0;
+    var arr = [];
+    var incBy = {}, dthBy = {};
+    ((t && t.indicators) || []).forEach(function (it) {
+      if (it.type !== '地区对比') return;
+      if (it.id.indexOf('INC-CITY-') === 0) incBy[it.id.slice(9)] = it.value;
+      else if (it.id.indexOf('MOR-CITY-') === 0) dthBy[it.id.slice(9)] = it.value;
+    });
+    if (x === '设区市') {
+      REGIONS.filter(function (r) { return r.level === 'city'; }).forEach(function (r) {
+        var v = deathSide ? (dthBy[r.id] != null ? dthBy[r.id] : r.deathRate) : (incBy[r.id] != null ? incBy[r.id] : r.incRate);
+        arr.push({ key: r.id, name: r.name, value: v, note: '覆盖人口 ' + fmt(r.pop) + ' 人' });
+      });
+    } else if (x === '年度') {
+      TREND.forEach(function (r) {
+        arr.push({ key: String(r.year), name: String(r.year) + ' 年', value: deathSide ? (rateSide ? r.deathRate : r.death) : (rateSide ? r.incRate : r.inc), note: '发病 ' + fmt(r.inc) + ' 例 / 死亡 ' + fmt(r.death) + ' 例' });
+      });
+    } else if (x === '年龄组') {
+      AGE18.forEach(function (a, i) { arr.push({ key: a, name: a + ' 岁', value: (CN2000_W[i] + SEGI_W[i]) / 20, note: '中标权重 ' + CN2000_W[i] + ' · 世标权重 ' + SEGI_W[i] }); });
+    } else if (x === '性别') {
+      arr = [
+        { key: '男', name: '男性', value: deathSide ? (rateSide ? 121.5 : 28010) : (rateSide ? 195.8 : 43900), note: '全省分性别汇总' },
+        { key: '女', name: '女性', value: deathSide ? (rateSide ? 82.1 : 18287) : (rateSide ? 151.2 : 34605), note: '全省分性别汇总' }
+      ];
+    } else {
+      SITES.forEach(function (s) {
+        arr.push({ key: s.name, name: s.name, value: deathSide ? (rateSide ? s.death / 453000 * 100 : s.death) : (rateSide ? s.inc / 453000 * 100 : s.inc), note: s.icd });
+      });
+    }
+    if (y === '五年生存率') arr.forEach(function (a) { a.value = +(35 + Math.abs(hashNum(a.key)) % 55).toFixed(1); a.note = '生存率（%）'; });
+    if (y === 'MV%' || y === 'DCO%') arr.forEach(function (a) { a.value = y === 'MV%' ? QC_PROV.mv : QC_PROV.dco; a.note = '全省质控指标'; });
+    // 默认排序
+    if (cfg.sort === '按指标值降序') arr.sort(function (a, b) { return b.value - a.value; });
+    else if (cfg.sort === '按指标值升序') arr.sort(function (a, b) { return a.value - b.value; });
+    else if (cfg.sort === '按病例数降序') arr.sort(function (a, b) { return b.value - a.value; });
+    return arr;
+  }
+  function hashNum(s) { var h = 0; String(s || '').split('').forEach(function (c) { h = (h * 31 + c.charCodeAt(0)) % 9973; }); return h; }
+  /* 下钻明细：与站内 county-drill.js 的省→市→区县口径一致，按主维度确定性派生 */
+  function chartDrillRows(cfg, key) {
+    var target = cfg.drillTarget || '';
+    var rows = [];
+    if (target.indexOf('区县') >= 0) {
+      var city = REGIONS.filter(function (r) { return r.id === key; })[0] || { name: key, incRate: 173.3, deathRate: 102.2 };
+      var base = cfg.yField.indexOf('死亡') >= 0 ? city.deathRate : city.incRate;
+      [['城区', 1.08], ['近郊', 0.97], ['县域', 0.91]].forEach(function (p, i) {
+        rows.push({ name: city.name + ' · ' + p[0], value: +(base * p[1]).toFixed(1), note: '区县层级 · 确定性派生（因子 ' + p[1] + '）', color: CHART_COLORS[i] });
+      });
+    } else if (target.indexOf('年龄组') >= 0) {
+      AGE18.forEach(function (a, i) {
+        rows.push({ name: a + ' 岁', value: +((CN2000_W[i] / 1000) * 12).toFixed(1), note: '年龄组层级 · ' + (cfg.xField === '癌种' ? key : cfg.xField), color: CHART_COLORS[i % CHART_COLORS.length] });
+      });
+    } else if (target.indexOf('设区市') >= 0) {
+      REGIONS.filter(function (r) { return r.level === 'city'; }).forEach(function (r, i) {
+        rows.push({ name: r.name, value: cfg.yField.indexOf('死亡') >= 0 ? r.deathRate : r.incRate, note: '设区市层级', color: CHART_COLORS[i % CHART_COLORS.length] });
+      });
+    } else {
+      rows.push({ name: key, value: 0, note: '该下钻目标暂未接入明细数据', color: CHART_COLORS[0] });
+    }
+    return rows;
+  }
+  function configuredChartHtml(t, ch, cfg) {
+    var series = chartSeries(t, cfg);
+    var max = Math.max.apply(null, series.map(function (x) { return Math.abs(x.value); }).concat([1]));
+    var zoom = Number(arState.chartZoom || 100);
+    var inter = cfg.interaction || {};
+    var groupColors = cfg.colorField && cfg.colorField !== '无分组';
+    var bars = series.map(function (s, i) {
+      var h = Math.max(4, Math.round(Math.abs(s.value) / max * 100));
+      var color = groupColors ? CHART_COLORS[i % CHART_COLORS.length] : CHART_COLORS[0];
+      var tip = inter.tooltip === false ? '' : ' title="' + e(s.name + ' · ' + f1(s.value) + ' · ' + s.note) + '"';
+      var click = cfg.drill ? ' onclick="arChartDrill(\'' + cfg.id + '\',\'' + e(s.key) + '\')" style="cursor:pointer"' : '';
+      return '<div style="flex:1;min-width:22px;display:flex;flex-direction:column;align-items:center;gap:4px"' + tip + click + '>' +
+        '<span style="font-size:10.5px;color:#475569;white-space:nowrap">' + e(f1(s.value)) + '</span>' +
+        '<i style="display:block;width:70%;height:' + h + '%;min-height:3px;background:' + color + ';border-radius:3px 3px 0 0"></i>' +
+        '<b style="font-size:10.5px;font-weight:500;color:#64748b;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%">' + e(s.name) + '</b></div>';
+    }).join('');
+    var legend = (inter.legend !== false && groupColors)
+      ? '<div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:8px;font-size:11px;color:#64748b">' +
+        '<span>颜色分组：<b>' + e(cfg.colorField) + '</b></span>' +
+        series.slice(0, 6).map(function (s, i) { return '<span><i style="display:inline-block;width:9px;height:9px;background:' + CHART_COLORS[i % CHART_COLORS.length] + ';border-radius:2px"></i> ' + e(s.name) + '</span>'; }).join('') + '</div>' : '';
+    var zoomBar = inter.zoom === false ? '' :
+      '<div style="display:flex;gap:6px;align-items:center;margin-bottom:8px;font-size:11.5px;color:#64748b">' +
+      '<span>缩放</span>' + [60, 80, 100, 130, 160].map(function (z) {
+        return '<button class="btn ' + (zoom === z ? 'btn-primary' : 'btn-ghost') + ' btn-xs" onclick="arChartZoom(' + z + ')">' + z + '%</button>';
+      }).join('') + '<span>（导出分辨率 ' + (inter.exportDpi || 150) + ' DPI）</span></div>';
+    var drillTip = cfg.drill ? '<div class="ar-hint" style="margin-top:8px">已开启下钻（' + e(cfg.drillTarget) + '）：点击任意柱条查看下一级明细。</div>' : '';
+    var drillPanel = '';
+    if (cfg.drill && arState.chartDrill && arState.chartDrill.chartId === cfg.id) {
+      var rows = chartDrillRows(cfg, arState.chartDrill.key);
+      drillPanel = '<div class="ar-detail-block" style="border:1px solid var(--border);border-radius:7px;padding:12px;margin-top:12px">' +
+        '<div style="display:flex;align-items:center;gap:8px;margin-bottom:8px"><b style="font-size:12.5px;color:#1f2937">下钻明细 · ' + e(arState.chartDrill.key) + ' → ' + e(cfg.drillTarget) + '</b>' +
+        '<button class="btn btn-ghost btn-xs" style="margin-left:auto" onclick="arChartDrillBack()">返回上层</button></div>' +
+        '<table class="data-table" style="width:100%"><thead><tr><th class="txt">下钻维度</th><th class="num">指标值</th><th class="txt">说明</th></tr></thead><tbody>' +
+        rows.map(function (r) { return '<tr><td class="txt" style="font-size:12px"><i style="display:inline-block;width:8px;height:8px;background:' + r.color + ';border-radius:2px;margin-right:6px"></i>' + e(r.name) + '</td><td class="num" style="font-size:12px">' + f1(r.value) + '</td><td class="txt" style="font-size:11.5px;color:#64748b">' + e(r.note) + '</td></tr>'; }).join('') +
+        '</tbody></table></div>';
+    }
+    return '<div class="ar-table-caption">' + e(cfg.title) + '<span class="ar-table-note">' + e(cfg.subtitle || '') +
+      ' · X 轴 ' + e(cfg.xField) + ' / Y 轴 ' + e(cfg.yField) + ' · ' + e(cfg.sort) + '</span></div>' +
+      zoomBar +
+      '<div style="display:flex;align-items:flex-end;gap:4px;height:' + Math.round(220 * zoom / 100) + 'px;border-bottom:1px solid #e2e8f0;padding:0 6px;transition:height .18s">' + bars + '</div>' +
+      legend + drillTip + drillPanel;
+  }
+  window.arChartDrill = function (chartId, key) {
+    var t = curTask(); if (!t) return;
+    var cfg = chartCfgById(t, chartId);
+    if (!cfg || !cfg.drill) { toast('该图表未开启下钻', 'warning'); return; }
+    arState.chartDrill = { chartId: chartId, key: key };
+    renderPage('ar-workbench');
+  };
+  window.arChartDrillBack = function () { arState.chartDrill = null; renderPage('ar-workbench'); };
+  window.arChartZoom = function (z) { arState.chartZoom = z; renderPage('ar-workbench'); };
+
+  function chartPreviewHtml(ch, t) {
+    var cfg = chartCfgById(t, ch.id);
+    // 有配置时按配置渲染（交互 / 下钻生效）；无配置回退到旧版静态预览
+    if (cfg) return configuredChartHtml(t, ch, cfg);
     if (ch.id === 'f1' || ch.id === 'f2' || ch.id === 'f3') {
       return ch.id === 'f1' ? chartPyramid() : (ch.id === 'f2' ? chartRank() : chartRankDeath());
     }
@@ -2376,15 +3148,16 @@
       (t.status === 'submitted' ? ' <button class="btn btn-success btn-sm" onclick="arApprove()">审核通过</button> <button class="btn btn-warning btn-sm" onclick="arReturn()">退回修改</button>' : '') +
       '</div></div></div>';
 
-    return submitPanel + '<div class="panel" style="margin-bottom:16px"><div class="panel-header">审核意见单' +
+    var roundsPanel = submitPanel + '<div class="panel" style="margin-bottom:16px"><div class="panel-header">审核意见单' +
       '<span class="ph-sub">' + r.rounds.length + ' 轮审核 · ' + r.pending + ' 条待回复</span></div>' +
-      '<div class="panel-body">' + roundsHtml + '</div></div>' +
-      (t.corrections && t.corrections.length ? '<div class="panel" style="margin-bottom:16px"><div class="panel-header">修订记录</div>' +
+      '<div class="panel-body">' + roundsHtml + '</div></div>';
+    var correctionsPanel = (t.corrections && t.corrections.length ? '<div class="panel" style="margin-bottom:16px"><div class="panel-header">修订记录</div>' +
         '<div class="panel-body" style="padding-top:8px"><table class="data-table" style="width:100%;min-width:0"><thead><tr><th class="code" style="width:90px">版本</th><th class="code" style="width:150px">时间</th><th class="code" style="width:170px">操作人</th><th class="txt">说明</th></tr></thead><tbody>' +
         t.corrections.map(function (c) {
           return '<tr><td class="code">' + e(c.ver) + '</td><td class="code" style="font-size:12px;color:#64748b">' + e(c.at) + '</td>' +
             '<td class="code" style="font-size:12px;color:#64748b">' + e(c.by) + '</td><td class="txt" style="font-size:12.5px">' + e(c.note) + '</td></tr>';
         }).join('') + '</tbody></table></div></div>' : '');
+    return ar2Pick('review', { rounds: roundsPanel, corrections: correctionsPanel || '<div class="ar-hint">暂无修订记录。</div>' });
   }
 
   /* ---------- 阶段 7：发布归档 ---------- */
@@ -2392,6 +3165,9 @@
     var rel = AR().summaries.release(t);
     var r = t.release || {};
     var gate = AR().evalGate('release', t, ARH);
+    // 表6：本任务的发布 / 导出记录（归档后可见路径、发布范围、下载量、DOI）
+    var arcRec = null;
+    for (var ai = 0; ai < archives.length; ai++) if (archives[ai].taskId === t.id) { arcRec = archives[ai]; break; }
 
     var approvePanel = '<div class="panel" style="margin-bottom:16px"><div class="panel-header">① 发布审批' +
       (rel.approved ? '<span class="ph-sub">已批准 · ' + e(r.approvedAt) + '</span>' : '<span class="ph-sub">待审批</span>') + '</div>' +
@@ -2429,6 +3205,16 @@
       '<div class="panel-body">' +
       (rel.archivedAt
         ? '<div class="ar-ctx-line"><span>归档时间 <b>' + e(rel.archivedAt) + '</b></span><span>定稿版本 <b>' + e(t.version) + '</b></span></div>' +
+          (arcRec ? '<div class="ar-ctx-line" style="margin-top:8px">' +
+            '<span>发布ID <b>' + e(arcRec.id) + '</b></span>' +
+            '<span>发布人 <b>' + e(arcRec.publisher || arcRec.archivedBy) + '</b></span>' +
+            '<span>发布范围 <b>' + e(publishScopeLabel(arcRec.publishScope)) + '</b></span>' +
+            '<span>文件大小 <b>' + fmt(arcRec.sizeKB || 0) + ' KB</b></span>' +
+            '<span>下载次数 <b>' + fmt(arcRec.downloadCount || 0) + '</b></span>' +
+            '<span>DOI <b>' + e(arcRec.doi || '—') + '</b></span></div>' +
+            '<div class="ar-hint" style="margin-top:6px">存储路径：' + e(arcRec.storagePath || '—') + '　访问链接：' + e(arcRec.accessUrl || '—') + '</div>' : '') +
+          '<div style="margin-top:10px;display:flex;gap:8px;flex-wrap:wrap">' +
+          '<button class="btn btn-outline btn-sm" onclick="arGoPage(\'ar-archives\')">去归档记录维护发布信息</button></div>' +
           '<div class="ar-hint" style="margin-top:10px">归档后定稿只读，可在「归档记录」中预览与下载。</div>'
         : '<div class="ar-empty-inline">' + (gate.ok ? '前置条件已齐备，可执行归档。' : '尚不满足归档条件。') +
           '<button class="btn btn-primary btn-sm"' + (gate.ok ? '' : ' disabled') + ' onclick="arArchive()">归档入库</button></div>') +
@@ -2437,13 +3223,23 @@
     // 导出配置与上报记录
     var exportPanel = sectionExport(t);
 
-    return approvePanel + pkgPanel + receiptPanel + archivePanel +
-      '<div class="panel" style="margin-bottom:16px"><div class="panel-header">导出与上报配置</div><div class="panel-body">' + exportPanel + '</div></div>';
+    return ar2Pick('release', {
+      flow: approvePanel + pkgPanel + receiptPanel + archivePanel,
+      export: '<div class="panel" style="margin-bottom:16px"><div class="panel-header">导出与上报配置</div><div class="panel-body">' + exportPanel + '</div></div>'
+    });
   }
 
   /* ---------- 章节内容块引擎 ---------- */
   function arVars(t) {
     var r = AGG_RESULT;
+    /* 指标结果优先：统计阶段固化的指标值（含标化口径）作为正文变量取值，
+       避免「正文一套数、统计结果另一套数」。未统计时回退到默认汇总口径。 */
+    var iv = {};
+    ((t && t.indicators) || []).forEach(function (it) { iv[it.id] = it; });
+    var ivNum = function (id, digits) {
+      var it = iv[id];
+      return it ? Number(it.value).toFixed(digits == null ? 1 : digits) : null;
+    };
     var incRanked = SITES.slice().sort(function (a, b) { return b.inc - a.inc; });
     var deathRanked = SITES.slice().sort(function (a, b) { return b.death - a.death; });
     var totalDeath = SITES.reduce(function (s, x) { return s + x.death; }, 0);
@@ -2459,18 +3255,18 @@
       "多原发数": fmt(r.multiPrimary),
       "有效病例": fmt(r.valid),
       "死亡病例": fmt(r.death),
-      "粗发病率": (r.valid / r.pop * 100000).toFixed(1),
-      "粗死亡率": (r.death / r.pop * 100000).toFixed(1),
-      "MV": QC_PROV.mv + "%",
-      "DCO": QC_PROV.dco + "%",
-      "MI": String(QC_PROV.mi),
-      "UB": QC_PROV.ub + "%",
+      "粗发病率": ivNum('INC-CRUDE') || (r.valid / r.pop * 100000).toFixed(1),
+      "粗死亡率": ivNum('MOR-CRUDE') || (r.death / r.pop * 100000).toFixed(1),
+      "MV": ivNum('QCC-MV') != null ? ivNum('QCC-MV') + "%" : QC_PROV.mv + "%",
+      "DCO": ivNum('QCC-DCO') != null ? ivNum('QCC-DCO') + "%" : QC_PROV.dco + "%",
+      "MI": ivNum('QCC-MI', 2) != null ? ivNum('QCC-MI', 2) : String(QC_PROV.mi),
+      "UB": ivNum('QCC-UB') != null ? ivNum('QCC-UB') + "%" : QC_PROV.ub + "%",
       "首位癌种": incRanked[0].name,
       "首位癌种发病数": fmt(incRanked[0].inc),
       "前五发病占比": (incRanked.slice(0, 5).reduce(function (s, x) { return s + x.inc; }, 0) / r.valid * 100).toFixed(1) + "%",
       "首位死因癌种": deathRanked[0].name,
       "前五死亡占比": (deathRanked.slice(0, 5).reduce(function (s, x) { return s + x.death; }, 0) / totalDeath * 100).toFixed(1) + "%",
-      "五年生存率": (SURVIVAL[0] ? SURVIVAL[0].rate : 40.5) + "%",
+      "五年生存率": ivNum('SUR-5Y') != null ? ivNum('SUR-5Y') + "%" : ((SURVIVAL[0] ? SURVIVAL[0].rate : 40.5) + "%"),
       "起始年度": String(first.year),
       "末年度": String(last.year),
       "起始发病数": fmt(first.inc),
@@ -2792,8 +3588,10 @@
         (tp.isDefault ? '' : '<button class="btn btn-ghost btn-xs" onclick="arSetDefaultTemplate(\'' + tp.id + '\')">设默认</button> ') +
         '<button class="btn btn-ghost btn-xs" onclick="arToggleTemplate(\'' + tp.id + '\')">' + (tp.enabled ? '停用' : '启用') + '</button> ' +
         '<button class="btn btn-outline btn-xs" onclick="arManageChapterTemplates(\'' + tp.id + '\')">章节模板</button> ' +
+        '<button class="btn btn-ghost btn-xs" onclick="arTemplateVersions(\'' + tp.id + '\')">版本历史 (' + ((tp.versions || []).length) + ')</button> ' +
         (tp.isDefault ? '' : '<button class="btn btn-ghost btn-xs" onclick="arDeleteTemplate(\'' + tp.id + '\')">删除</button>');
-      return '<tr><td class="txt" style="font-size:13px;color:#1f2937;font-weight:600">' + e(tp.name) + (tp.isDefault ? ' ' + badge('accent', '默认') : '') + '</td>' +
+      return '<tr><td class="txt" style="font-size:13px;color:#1f2937;font-weight:600">' + e(tp.name) + (tp.isDefault ? ' ' + badge('accent', '默认') : '') +
+        '<span class="td-sub">' + e(tp.standard || '未设置适用规范') + ' · ' + langLabel(tp.lang) + ' · 默认图表 ' + e(tp.defaultChartType || '—') + '</span></td>' +
         '<td class="code" style="font-size:12px;color:#64748b">' + tplTypeName(tp.type) + '</td>' +
         '<td class="txt" style="font-size:12px;color:#64748b">' + tp.cycle + ' / ' + tp.volume + '</td>' +
         '<td class="num" style="font-size:12px;color:#64748b">' + tp.chapters.length + ' 章</td>' +
@@ -2807,7 +3605,28 @@
       '<button class="btn btn-primary" onclick="arNewTemplate()">新增模板</button>' + '</div>' +
       '<div class="table-wrap"><table class="data-table" style="width:100%;min-width:1080px"><colgroup><col><col style="width:96px"><col><col style="width:104px"><col style="width:96px"><col style="width:96px"><col style="width:170px"><col style="width:190px"></colgroup><thead><tr>' +
       '<th class="txt">模板名称</th><th class="code">类型</th><th class="txt">周期 / 范围</th><th class="num">章节数</th><th class="code">状态</th><th class="code">版本</th><th class="code">更新时间 / 人</th><th class="ops">操作</th>' +
-      '</tr></thead><tbody>' + rows + '</tbody></table></div></div></div>';
+      '</tr></thead><tbody>' + rows + '</tbody></table></div></div></div>' + renderTemplateVersionsPanel();
+  }
+
+  /* 模板版本历史面板：列出每次保存前的快照，支持回滚 */
+  function renderTemplateVersionsPanel() {
+    if (!arState.tplVersionsId) return '';
+    var tp = tplById(arState.tplVersionsId);
+    if (!tp) return '';
+    var list = tp.versions || [];
+    var rows = list.map(function (v, i) {
+      return '<tr><td class="code">' + e(v.version) + '</td><td class="code">' + e(v.savedAt) + '</td>' +
+        '<td class="txt">' + e(v.name) + '<span class="td-sub">' + e(v.standard || '—') + ' · ' + langLabel(v.lang) + ' · ' + (v.chapters || []).length + ' 章</span></td>' +
+        '<td class="code">' + e(v.savedBy) + '</td>' +
+        '<td class="ops"><button class="btn btn-outline btn-xs" onclick="arRollbackTemplate(\'' + tp.id + '\',' + i + ')">回滚到此版本</button></td></tr>';
+    }).join('');
+    return '<div class="panel" style="margin-bottom:16px;border-color:var(--primary)"><div class="panel-header">模板版本历史 · ' + e(tp.name) +
+      '<div class="toolbar-actions"><button class="btn btn-ghost btn-xs" onclick="arCloseTemplateVersions()">关闭</button></div></div>' +
+      '<div class="panel-body">' +
+      '<div class="ar-hint" style="margin-bottom:10px">每次保存模板或章节内容前自动留存快照（最多 20 个）。回滚会先把当前 ' + e(tp.version) + ' 存入历史，再恢复所选版本内容并升新版本号。</div>' +
+      (rows ? '<div class="table-wrap"><table class="data-table" style="width:100%;min-width:820px"><thead><tr><th class="code">版本</th><th class="code">留存时间</th><th class="txt">模板名称 / 配置</th><th class="code">留存人</th><th class="ops">操作</th></tr></thead><tbody>' + rows + '</tbody></table></div>'
+        : '<div class="ar-empty-inline">暂无历史版本。编辑并保存模板后，这里会出现可回滚的快照。</div>') +
+      '</div></div>';
   }
 
   function renderTemplateForm() {
@@ -2825,6 +3644,9 @@
       '<div class="form-group"><label>模板类型</label><select id="tplType">' + TPL_TYPES.map(function (tt) { return '<option value="' + tt.id + '"' + ((tp ? tp.type : 'annual') === tt.id ? ' selected' : '') + '>' + tt.name + '</option>'; }).join('') + '</select></div>' +
       '<div class="form-group"><label>编制周期</label><input id="tplCycle" value="' + e(tp ? tp.cycle : '年度') + '"></div>' +
       '<div class="form-group"><label>统计范围</label><input id="tplVolume" value="' + e(tp ? tp.volume : '') + '"></div>' +
+      '<div class="form-group"><label>适用规范 *</label><input id="tplStandard" value="' + e(tp ? (tp.standard || '') : '《中国肿瘤登记工作指导手册（2016）》') + '" placeholder="如：《中国肿瘤登记年报编写指南》"></div>' +
+      '<div class="form-group"><label>语言</label><select id="tplLang">' + LANGS.map(function (l) { return '<option value="' + l.id + '"' + ((tp ? tp.lang : 'zh') === l.id ? ' selected' : '') + '>' + l.label + '</option>'; }).join('') + '</select></div>' +
+      '<div class="form-group"><label>默认图表类型</label><select id="tplDefaultChart">' + DEFAULT_CHART_TYPES.map(function (ct) { return '<option value="' + ct + '"' + ((tp ? (tp.defaultChartType || '柱状图') : '柱状图') === ct ? ' selected' : '') + '>' + ct + '</option>'; }).join('') + '</select></div>' +
       '<div class="form-group full"><label>模板说明</label><textarea id="tplDesc" style="min-height:72px;border:1px solid #d1d8e0;border-radius:6px;padding:10px;font-size:13px">' + e(tp ? tp.desc : '') + '</textarea></div>' +
       chHtml +
       '<div class="form-group"><label>状态</label><select id="tplEnabled"><option value="1"' + (tp ? (tp.enabled ? ' selected' : '') : ' selected') + '>启用</option><option value="0"' + (tp && !tp.enabled ? ' selected' : '') + '>停用</option></select></div>' +
@@ -2888,20 +3710,115 @@
 
   function renderArchives() {
     var rows = archives.map(function (a) {
-      return '<tr><td class="txt" style="font-size:13px;color:#1f2937">' + e(a.fileName) + '<span class="td-sub">来源任务 ' + e(a.taskId || '—') + '</span></td>' +
-        '<td class="code" style="font-size:12px;color:#64748b">' + a.year + ' · ' + a.version + '</td>' +
-        '<td class="num" style="font-size:12px;color:#64748b">' + a.pages + ' 页</td>' +
-        '<td class="num" style="font-size:12px;color:#64748b">' + a.size + '</td>' +
-        '<td class="code">' + badge('neutral', a.status) + '</td>' +
-        '<td class="txt" style="font-size:12px;color:#64748b">' + a.archivedAt + ' · ' + a.archivedBy + '</td>' +
-        '<td class="ops"><button class="btn btn-ghost btn-xs" onclick="arPreviewArchive(\'' + a.id + '\')">预览</button> <button class="btn btn-ghost btn-xs" onclick="arDownloadArchive(\'' + a.id + '\')">下载</button> <button class="btn btn-ghost btn-xs" onclick="arDeleteArchive(\'' + a.id + '\')">删除</button></td></tr>';
+      return '<tr><td class="txt" style="font-size:13px;color:#1f2937">' + e(a.fileName) +
+        '<span class="td-sub">' + e(a.taskId || '—') + ' · ' + e(a.archivedAt || '—') + '</span></td>' +
+        '<td class="code" style="font-size:12px;color:#64748b">' + e(a.year) + ' · ' + e(a.version) + '</td>' +
+        '<td class="code">' + badge(a.publishScope === 'internal' ? 'neutral' : 'info', publishScopeLabel(a.publishScope)) + '</td>' +
+        '<td class="num" style="font-size:12px;color:#64748b">' + fmt(a.downloadCount || 0) + '</td>' +
+        '<td class="code" style="font-size:11.5px;color:#64748b">' + (a.doi ? e(a.doi) : '—') + '</td>' +
+        '<td class="ops">' +
+        '<button class="btn btn-ghost btn-xs" onclick="arDownloadArchive(\'' + a.id + '\')">下载</button> ' +
+        '<button class="btn btn-outline btn-xs" onclick="arShowArchiveDetail(\'' + a.id + '\')">详情</button></td></tr>';
     }).join('');
-    return pageToolbar('归档记录') + '<div class="panel" style="margin-bottom:16px"><div class="panel-body">' +
-      (rows ? '<div class="table-wrap"><table class="data-table" style="width:100%;min-width:1080px"><colgroup><col><col style="width:130px"><col style="width:90px"><col style="width:96px"><col style="width:100px"><col style="width:230px"><col style="width:196px"></colgroup><thead><tr>' +
-      '<th class="txt">文件名 / 来源任务</th><th class="code">年度 / 版本</th><th class="num">页数</th><th class="num">大小</th><th class="code">状态</th><th class="txt">归档时间 / 人</th><th class="ops">操作</th>' +
+    var totalKb = archives.reduce(function (s, a) { return s + (Number(a.sizeKB) || 0); }, 0);
+    var totalDl = archives.reduce(function (s, a) { return s + (Number(a.downloadCount) || 0); }, 0);
+    var doiN = archives.filter(function (a) { return !!a.doi; }).length;
+    var statHtml = '<div class="ar-stat-row">' +
+      '<div class="ar-stat primary"><div class="v">' + archives.length + '</div><div class="l">归档文件数</div></div>' +
+      '<div class="ar-stat"><div class="v">' + fmt(totalKb) + '</div><div class="l">总大小（KB）</div></div>' +
+      '<div class="ar-stat"><div class="v">' + fmt(totalDl) + '</div><div class="l">累计下载次数</div></div>' +
+      '<div class="ar-stat"><div class="v">' + doiN + '</div><div class="l">已登记 DOI</div></div>' +
+      '</div>';
+    return pageToolbar('归档记录') +
+      '<div class="panel" style="margin-bottom:16px"><div class="panel-body">' + statHtml +
+      (rows ? '<div class="table-wrap"><table class="data-table" style="width:100%;min-width:1000px"><colgroup><col><col style="width:110px"><col style="width:180px"><col style="width:90px"><col style="width:180px"><col style="width:150px"></colgroup><thead><tr>' +
+      '<th class="txt">文件名 / 来源任务</th><th class="code">年度 · 版本</th><th class="code">发布范围</th><th class="num">下载次数</th><th class="code">学术引用 DOI</th><th class="ops">操作</th>' +
       '</tr></thead><tbody>' + rows + '</tbody></table></div>' : '<div style="text-align:center;color:#94a3b8;padding:44px;font-size:13px">暂无归档记录</div>') +
+      '</div></div>' + renderArchiveDetailModal() + renderPublishInfoModal();
+  }
+
+  /* 表6 详情：发布与导出记录的全部字段 */
+  function renderArchiveDetailModal() {
+    if (!arState.archiveDetail) return '';
+    var a = null;
+    for (var i = 0; i < archives.length; i++) if (archives[i].id === arState.archiveDetail) a = archives[i];
+    if (!a) return '';
+    var line = function (k, v) { return '<div style="display:flex;gap:10px;padding:9px 0;border-bottom:1px dashed #eef2f6;font-size:12.5px"><span style="flex:0 0 116px;color:#667085">' + k + '</span><span style="flex:1;color:#1f2937;word-break:break-all">' + e(v) + '</span></div>'; };
+    var fields = [
+      ['发布ID', a.id], ['年报任务ID', a.taskId || '—'], ['导出格式', String(a.fileType || 'pdf').toUpperCase()],
+      ['文件名', a.fileName], ['存储路径', a.storagePath || '—'], ['文件大小（KB）', fmt(a.sizeKB || 0)],
+      ['生成时间', a.generatedAt || '—'], ['发布人', a.publisher || a.archivedBy || '—'],
+      ['发布范围', publishScopeLabel(a.publishScope)], ['访问链接', a.accessUrl || '—'],
+      ['下载次数', fmt(a.downloadCount || 0)], ['是否用于政府报告', a.govReport ? '是' : '否'],
+      ['学术引用 DOI', a.doi || '—'], ['归档时间 / 人', a.archivedAt + ' · ' + a.archivedBy],
+      ['页数', (a.pages || 0) + ' 页'], ['定稿版本', a.version]
+    ];
+    return '<div class="ar2-drawer-mask" onclick="arCloseArchiveDetail()"></div>' +
+      '<div class="ar2-drawer"><div class="ar2-drawer-h">发布与导出记录 · ' + e(a.id) +
+      '<button class="ar-modal-x" onclick="arCloseArchiveDetail()">×</button></div>' +
+      '<div class="ar2-drawer-b">' + fields.map(function (r) { return line(r[0], r[1]); }).join('') +
+      '<div style="margin-top:14px"><button class="btn btn-ghost btn-xs" onclick="arCopyArchiveLink(\'' + a.id + '\')">复制访问链接</button></div>' +
+      '</div><div class="ar2-drawer-f">' +
+      '<button class="btn btn-ghost btn-sm" onclick="arDeleteArchive(\'' + a.id + '\')">删除记录</button>' +
+      '<button class="btn btn-outline btn-sm" onclick="arEditPublishInfo(\'' + a.id + '\')">编辑发布信息</button>' +
+      '<button class="btn btn-primary btn-sm" onclick="arDownloadArchive(\'' + a.id + '\')">下载文件</button>' +
       '</div></div>';
   }
+
+  /* 表6 编辑：存储路径 / 生成时间 / 发布人 / 发布范围 / 访问链接 / 政府报告 / DOI */
+  function renderPublishInfoModal() {
+    if (!arState.editArchive) return '';
+    var a = null;
+    for (var i = 0; i < archives.length; i++) if (archives[i].id === arState.editArchive) a = archives[i];
+    if (!a) return '';
+    var f = function (label, ctrl, full) { return '<div class="form-group' + (full ? ' full' : '') + '"><label>' + label + '</label>' + ctrl + '</div>'; };
+    return '<div class="ar2-drawer-mask" onclick="arClosePublishInfo()"></div>' +
+      '<div class="ar2-drawer"><div class="ar2-drawer-h">编辑发布信息 · ' + e(a.id) +
+      '<button class="ar-modal-x" onclick="arClosePublishInfo()">×</button></div>' +
+      '<div class="ar2-drawer-b"><div class="ar-form-grid">' +
+      f('文件名', '<input type="text" value="' + e(a.fileName) + '" disabled>') +
+      f('文件大小（KB）', '<input type="number" id="pnSizeKB" min="0" value="' + (a.sizeKB || 0) + '">') +
+      f('存储路径', '<input type="text" id="pnPath" value="' + e(a.storagePath || '') + '" placeholder="archive/2024/xxx.pdf">', true) +
+      f('生成时间', '<input type="text" id="pnGeneratedAt" value="' + e(a.generatedAt || '') + '" placeholder="2026-06-05 16:40">') +
+      f('发布人', '<input type="text" id="pnPublisher" value="' + e(a.publisher || a.archivedBy || '') + '">') +
+      f('发布范围', '<select id="pnScope">' + PUBLISH_SCOPES.map(function (p) { return '<option value="' + p.id + '"' + (a.publishScope === p.id ? ' selected' : '') + '>' + p.label + '</option>'; }).join('') + '</select>') +
+      f('访问链接', '<input type="text" id="pnAccessUrl" value="' + e(a.accessUrl || '') + '">', true) +
+      f('学术引用 DOI', '<input type="text" id="pnDoi" value="' + e(a.doi || '') + '" placeholder="10.3978/j.issn.xxxx.2026.001">') +
+      f('用于政府报告', '<select id="pnGov"><option value="0"' + (!a.govReport ? ' selected' : '') + '>否</option><option value="1"' + (a.govReport ? ' selected' : '') + '>是</option></select>') +
+      '</div><div class="ar-hint" style="margin-top:10px">发布范围选择「学术引用」或「政府报告」时建议登记 DOI，便于外部引用与考核留痕。</div>' +
+      '</div><div class="ar2-drawer-f"><button class="btn btn-ghost btn-sm" onclick="arClosePublishInfo()">取消</button>' +
+      '<button class="btn btn-primary btn-sm" onclick="arSavePublishInfo(\'' + a.id + '\')">保存</button></div></div>';
+  }
+  window.arShowArchiveDetail = function (id) { arState.archiveDetail = id; arState.editArchive = null; renderPage('ar-archives'); };
+  window.arCloseArchiveDetail = function () { arState.archiveDetail = null; renderPage('ar-archives'); };
+  window.arEditPublishInfo = function (id) { arState.editArchive = id; renderPage('ar-archives'); };
+  window.arClosePublishInfo = function () { arState.editArchive = null; renderPage('ar-archives'); };
+  window.arSavePublishInfo = function (id) {
+    var a = null;
+    for (var i = 0; i < archives.length; i++) if (archives[i].id === id) a = archives[i];
+    if (!a) return;
+    var g = function (k) { var el = document.getElementById(k); return el ? el.value : ''; };
+    var doi = g('pnDoi').trim();
+    if (doi && !/^10\.\S+\/\S+$/.test(doi)) { toast('DOI 格式不正确，应以 10. 开头，如 10.3978/j.issn.xxxx.2026.001', 'error'); return; }
+    a.sizeKB = Number(g('pnSizeKB')) || 0;
+    a.storagePath = g('pnPath').trim();
+    a.generatedAt = g('pnGeneratedAt').trim();
+    a.publisher = g('pnPublisher').trim();
+    a.publishScope = g('pnScope');
+    a.accessUrl = g('pnAccessUrl').trim();
+    a.govReport = g('pnGov') === '1';
+    a.doi = doi;
+    persist(); arState.editArchive = null; arState.archiveDetail = id;
+    renderPage('ar-archives'); toast('发布信息已保存');
+  };
+  window.arCopyArchiveLink = function (id) {
+    var a = null;
+    for (var i = 0; i < archives.length; i++) if (archives[i].id === id) a = archives[i];
+    if (!a) return;
+    var url = (location.origin || '') + (a.accessUrl || '');
+    try { if (navigator.clipboard) navigator.clipboard.writeText(url); } catch (err) {}
+    toast('访问链接已复制：' + url);
+  };
 
   /* ===================== 14. 动作 ===================== */
   function goPage(page) {
@@ -2912,7 +3829,7 @@
   window.arGoPage = function (page) { goPage(page); };
 
   /* 旧 5 段分区跳转 → 映射到新阶段工作区，保持老代码里的 arGoSection('quality') 等调用仍可用 */
-  var SECTION_TO_STAGE = { overview: 'data', quality: 'qc', metrics: 'stats', report: 'draft', export: 'release' };
+  var SECTION_TO_STAGE = { overview: 'data', quality: 'data', metrics: 'draft', report: 'draft', export: 'release' };
   window.arGoSection = function (n) {
     var key = String(n);
     if (SECTION_TO_STAGE[key]) return window.arGoStage(SECTION_TO_STAGE[key]);
@@ -2981,9 +3898,8 @@
     AR().markStage(t, id);
     AR().logStage(t, '阶段回退', cur, id, reason || '回退至「' + stage.name + '」重新处理', t.createdBy || '省级上报岗');
     // 回退即作废该阶段及其后续产物，避免带着旧产物往前走
-    if (AR().indexOf(id) <= AR().indexOf('data')) { t.agg = { done: false, result: null }; }
-    if (AR().indexOf(id) <= AR().indexOf('qc')) { t.qc = Object.assign({}, t.qc, { done: false, issues: [], kpis: [] }); t.valid = { done: false, result: null }; }
-    if (AR().indexOf(id) <= AR().indexOf('stats')) { t.stats = seedStats(false); }
+    if (AR().indexOf(id) <= AR().indexOf('data')) { t.agg = { done: false, result: null }; t.valid = { done: false, result: null }; }
+
     if (AR().indexOf(id) <= AR().indexOf('draft')) { t.chapters = {}; }
     if (AR().indexOf(id) <= AR().indexOf('review')) { t.review = { rounds: [] }; }
     if (t.status !== 'draft' && AR().indexOf(id) <= AR().indexOf('review')) { t.status = 'draft'; }
@@ -3040,27 +3956,33 @@
     };
     var box = '<div class="ar-modal" id="arNewTaskModal">' +
       '<div class="ar-modal-mask" onclick="arCloseNewTask()"></div>' +
-      '<div class="ar-modal-box">' +
+      '<div class="ar-modal-box" style="width:1040px;max-width:96vw;max-height:92vh">' +
       '<div class="ar-modal-hd"><span>新建年报 · 确认编制口径</span><button class="ar-modal-x" onclick="arCloseNewTask()" title="关闭">×</button></div>' +
       '<div class="ar-modal-bd">' +
-      '<div class="ar-modal-tip">年报按 <b>建立任务 → 跨库取数 → 质量校验 → 生成八章正文 → 提交审核 → 审核发布 → 归档入库</b> 逐级推进。' +
-      '此处口径决定取数范围与计算分母，<b>创建后仅草稿状态可调整</b>，提交审核后锁定。确认口径即可开始自动取数生成。</div>' +
+      '<div class="ar-modal-tip">以下口径决定本年报的<b>取数范围、计算分母与纳入病例</b>；' +
+      '创建后仅草稿状态可调整，提交审核后锁定。全部字段均为必填。</div>' +
+      /* 单步表单：所有字段同屏，两列排布；id 全部保留，arCreateTask 按 id 统一读取 */
       '<div class="ar-form-grid">' +
-      f('报告年度', sel('ntYear', years.map(function (y) { return [y, y + ' 年度']; }), years[0]), '默认取最近一个完整年度') +
+      f('报告年度', '<select id="ntYear" onchange="arNtYearSync(this.value)">' + years.map(function (y) { return '<option value="' + y + '">' + y + ' 年度</option>'; }).join('') + '</select>', '默认取最近一个完整年度') +
       f('报告模板', sel('ntTpl', enabledTpls.map(function (tp) { return [tp.id, tp.name + '（' + tp.volume + '）']; }), defTpl.id), '决定章节结构与内容块') +
+      f('年报标题', '<input type="text" id="ntTitle" value="' + e(years[0] + ' 年江西省肿瘤登记年报') + '" oninput="arNtTitleEdit()">', '留空将按年度与范围自动生成', true) +
       f('覆盖范围', '<div class="ar-radio">' +
         '<label><input type="radio" name="ntScope" value="jx" checked onchange="arNtScope(this.value)">全省（11 设区市）</label>' +
         '<label><input type="radio" name="ntScope" value="city" onchange="arNtScope(this.value)">按设区市选择</label></div>') +
-      f('癌种范围', sel('ntCancer', [['全部恶性肿瘤', '全部恶性肿瘤（ICD C00–C97）'], ['主要恶性肿瘤', '主要恶性肿瘤（前 10 位顺位）'], ['消化器官', '消化系统恶性肿瘤'], ['呼吸系统', '呼吸系统恶性肿瘤']], '全部恶性肿瘤')) +
+      f('行政层级', sel('ntAdmin', ADMIN_LEVELS.map(function (x) { return [x, x]; }), '省级'), '年报覆盖的行政层级') +
+      f('数据时间范围', '<div style="display:flex;align-items:center;gap:8px">' +
+        '<input type="date" id="ntPeriodStart" value="' + years[0] + '-01-01">' +
+        '<span class="ar-hint">至</span>' +
+        '<input type="date" id="ntPeriodEnd" value="' + years[0] + '-12-31"></div>', '病例纳入区间（按确诊 / 死亡日期），默认整个自然年') +
       f('人口口径', sel('ntPopCal', [['usual', '常住人口（与国家年报一致）'], ['household', '户籍人口']], 'usual'), '影响发病率 / 死亡率分母') +
       f('标准人口', sel('ntStdPop', [['cn', '中国 2000 年标准人口'], ['world', 'Segi 世界标准人口']], 'cn'), '影响世界 / 中国标化率') +
-      f('年报标题', '<input type="text" id="ntTitle" value="' + e(years[0] + ' 年江西省肿瘤登记年报') + '" oninput="arNtTitleEdit()">', '留空将按年度与范围自动生成', true) +
+      f('癌种范围', sel('ntCancer', [['全部恶性肿瘤', '全部恶性肿瘤（ICD C00–C97）'], ['主要恶性肿瘤', '主要恶性肿瘤（前 10 位顺位）'], ['消化器官', '消化系统恶性肿瘤'], ['呼吸系统', '呼吸系统恶性肿瘤']], '全部恶性肿瘤')) +
       '</div>' +
       '<div class="ar-form-group full" id="ntCityWrap" style="display:none"><label>选择设区市<span style="color:#b42318"> *</span></label>' +
       '<div class="ar-city-wrap" id="ntCityBoxes">' + cityBoxes + '</div>' +
       '<div class="fh">至少选择一个设区市；已选数量将同步进标题。</div></div>' +
       '</div>' +
-      '<div class="ar-modal-ft"><span class="ft-hint">创建后立即进入工作台并自动开始跨库取数</span>' +
+      '<div class="ar-modal-ft"><span class="ft-hint">全部字段必填 · 创建后自动完成数据准备</span>' +
       '<button class="btn btn-ghost" onclick="arCloseNewTask()">取消</button>' +
       '<button class="btn btn-primary" onclick="arCreateTask()">创建并进入编制</button></div>' +
       '</div></div>';
@@ -3074,6 +3996,13 @@
     var m = document.getElementById('arNewTaskModal'); if (m) m.parentNode.removeChild(m);
   };
   window.arNtTitleEdit = function () { arState.ntTitleEdited = 1; };
+  // 年度切换：同步数据时间范围与登记库版本候选，避免出现「2023 年度 + 2024 版登记库」
+  window.arNtYearSync = function (year) {
+    var ps = document.getElementById('ntPeriodStart'), pe = document.getElementById('ntPeriodEnd');
+    if (ps) ps.value = year + '-01-01';
+    if (pe) pe.value = year + '-12-31';
+    arNtTouch();
+  };
   window.arNtScope = function (v) {
     var w = document.getElementById('ntCityWrap'); if (w) w.style.display = v === 'city' ? 'block' : 'none';
     arNtTouch();
@@ -3108,26 +4037,41 @@
     var id = 'AR-' + year + '-' + pad4(seq + 1);
     var titleEl = document.getElementById('ntTitle');
     var title = (titleEl && titleEl.value.trim()) || (year + ' 年江西省肿瘤登记年报');
+    // 口径：数据时间范围 / 行政层级（登记库版本由系统按年度固定）
+    // 「是否公开」「医疗机构等级」已从新建流程移除：公开与否在归档发布时按发布范围决定，
+    // 年报统计口径不含医院等级维度。字段本身保留（历史数据兼容），此处给默认值。
+    var orgLevels = [];
+    var periodStart = (document.getElementById('ntPeriodStart') || {}).value || (year + '-01-01');
+    var periodEnd = (document.getElementById('ntPeriodEnd') || {}).value || (year + '-12-31');
+    if (periodStart > periodEnd) { toast('数据时间范围的起始日期不能晚于结束日期', 'error'); return; }
+    var isPublic = false;
+    var adminLevel = (document.getElementById('ntAdmin') || {}).value || (scope === 'city' ? '市级' : '省级');
+    var registryVersionId = 'REG-JX-' + year + '-V3';
     var task = {
       id: id, title: title, year: String(year), scope: scope, cities: cities,
       templateId: tpl.id, templateSnapshot: templateSnapshotForTask(tpl), status: 'draft', version: 'V0.1',
       popCal: document.getElementById('ntPopCal').value, stdPop: document.getElementById('ntStdPop').value,
       cancer: document.getElementById('ntCancer').value,
-      // 阶段化模型：新任务从「建立任务」开工，各阶段产物留空由用户逐阶段完成
-      stage: 'task', dataVersion: 'DV-' + year + '-M',
+      orgLevels: orgLevels, adminLevel: adminLevel, periodStart: periodStart, periodEnd: periodEnd,
+      isPublic: isPublic, registryVersionId: registryVersionId,
+      // 新建弹窗已一次性收集全部编制基准，创建即视为「建立任务」完成，
+      // 工作位直接进入「数据准备」，避免用户进工作台后再填一遍同样的口径表单。
+      stage: 'data', dataVersion: 'DV-' + year + '-M',
       dataPrep: { sources: seedDataSources('none'), dedupDone: false, dupRemoved: 0, multiPrimary: 0, unlocated: 0, fieldsChecked: false },
       qc: { done: false, issues: [], kpis: [] },
       stats: { done: false, tables: [], charts: [], snapshotAt: '', dataVersion: '' },
       review: { rounds: [] }, release: {},
       agg: { done: false, result: null }, valid: { done: false, result: null }, chapters: {}, corrections: [],
-      stageLog: [{ at: nowStr(), action: '创建任务', from: '', to: 'task', note: year + ' 年度年报编制任务建立，口径：' + (scope === 'jx' ? '全省' : '按设区市') + ' · ' + (document.getElementById('ntPopCal').value === 'household' ? '户籍人口' : '常住人口') + ' · ' + (document.getElementById('ntStdPop').value === 'world' ? 'Segi 世界标准人口' : '中国 2000 年标准人口'), by: '省级上报岗' }],
+      stageLog: [{ at: nowStr(), action: '创建任务并确认编制基准', from: '', to: 'data', note: year + ' 年度年报编制任务建立，口径：' + (scope === 'jx' ? '全省' : '按设区市') + ' · ' + (document.getElementById('ntPopCal').value === 'household' ? '户籍人口' : '常住人口') + ' · ' + (document.getElementById('ntStdPop').value === 'world' ? 'Segi 世界标准人口' : '中国 2000 年标准人口') + ' · 数据区间 ' + periodStart + '~' + periodEnd, by: '省级上报岗' }],
       exportCfg: { format: 'pdf', ci5: true, channels: ['nccr'] },
       createdAt: nowStr(), updatedAt: nowStr(), createdBy: "省级上报岗"
     };
+    autoPrepareData(task);   // 数据已预接入：创建即完成取数/核对/剔重/字段检查，用户只需核对快照
     tasks.unshift(task);
     arState.currentTaskId = id; arState.section = 'overview'; arState.reportPreview = null; arState.viewStage = '';
+    arState.taskBaselineEdit = false; arState.stageTab = {};
     persist(); arCloseNewTask(); goPage('ar-workbench');
-    toast('已新建 ' + id + '，请从「建立任务」阶段开始编制');
+    toast('已新建 ' + id + '，编制基准已确认，请从「数据准备」开始');
   };
   function pad4(n) { var s = String(n); while (s.length < 4) s = '0' + s; return s; }
 
@@ -3142,7 +4086,7 @@
   /* ---------- 正文章节生成（保留：被「正文编制」阶段的 arGenerateChapters 调用） ----------
      旧版这里是「一键生成流水线」：定时器一口气跑完取数→校验→指标→八章正文。
      阶段化后该流水线已删除——它会绕过阶段闸门，导致质控、统计、审核形同虚设。
-     现在各阶段的产物由各自的阶段动作生成（arRunDataPrep / arRunQC / arRunStats / arGenerateChapters）。 */
+     数据类产物由 autoPrepareData() 随数据快照自动就位；正文由 arGenerateChapters() 生成。 */
   function generateChapters(t, overwrite) {
     t.chapters = t.chapters || {}; t.corrections = t.corrections || [];
     var chs = activeTemplateChapters(t), made = 0;
@@ -3246,17 +4190,17 @@
       t.dataVersion = 'DV-' + t.year + '-' + String((t.dataPrep.dedupAt || '').replace(/[^0-9]/g, '').slice(-4) || '01');
       if (t.stats && t.stats.done) { t.stats.stale = true; }
       t.updatedAt = nowStr(); touch(t);
-      stay('剔重完成：删除重复卡 ' + fmt(AGG_RESULT.dup) + ' 张，识别多原发 ' + AGG_RESULT.multiPrimary + ' 例，合并后有效病例 ' + fmt(AGG_RESULT.valid));
+      stay('已确定纳入统计的病例数：合并重复上报 ' + fmt(AGG_RESULT.dup) + ' 张、识别一人多癌 ' + AGG_RESULT.multiPrimary + ' 例，有效病例 ' + fmt(AGG_RESULT.valid) + ' 例（全部率值分子）');
     };
     if (redo) {
-      showConfirm('重新执行剔重', '重新剔重会作废已生成的质控、统计与正文产物，需重新走后续阶段。确定继续？', doIt);
+      showConfirm('重新计算病例数', '重新计算会作废已生成的质控、统计与正文产物，需重新走后续阶段。确定继续？', doIt);
       return;
     }
     doIt();
   };
   window.arCheckFields = function () {
     var t = curTask(); if (!t) return;
-    if (!t.dataPrep.dedupDone) { toast('请先执行剔重与多原发识别', 'error'); return; }
+    if (!t.dataPrep.dedupDone) { toast('请先确定纳入统计的有效病例数', 'error'); return; }
     var total = t.dataPrep.validCards || AGG_RESULT.valid;
     // 逐字段缺失统计（接真实数据时替换为按字段扫描）
     t.dataPrep.fieldStats = [
@@ -3271,22 +4215,22 @@
     var bad = t.dataPrep.fieldStats.filter(function (x) { return x.rate > x.max; });
     t.updatedAt = nowStr(); touch(t);
     stay(bad.length
-      ? '字段检查完成：' + bad.length + ' 个字段缺失率超标（' + bad.map(function (x) { return x.name; }).join('、') + '），建议先补数据'
-      : '字段检查完成：' + t.dataPrep.fieldStats.length + ' 个必填字段缺失率全部在阈值内',
+      ? '关键字段完整度检查完成：' + bad.length + ' 个字段缺失率超标（' + bad.map(function (x) { return x.name; }).join('、') + '），会影响对应指标，建议先补数据'
+      : '关键字段完整度检查完成：' + t.dataPrep.fieldStats.length + ' 个字段全部在允许范围内，可进入正式统计',
       bad.length ? 'warning' : undefined);
   };
 
   /* —— 阶段3 质量校验 —— */
   window.arRunQC = function (redo) {
     var t = curTask(); if (!t) return;
-    if (!(t.dataPrep && t.dataPrep.dedupDone)) { toast('请先完成数据准备阶段的剔重处理', 'error'); return; }
+    if (!(t.dataPrep && t.dataPrep.dedupDone)) { toast('请先确定纳入统计的有效病例数（数据准备阶段）', 'error'); return; }
     var doIt = function () {
       t.qc = { done: true, runAt: nowStr(), issues: seedQcIssues('open'), kpis: seedQcKpis(true) };
       t.valid = { done: true, result: { ok: 6, warn: 0, bad: 2 } };
       t.updatedAt = nowStr(); touch(t);
-      stay('质量校验完成：6 项国家考核指标达标，发现 ' + t.qc.issues.length + ' 项问题（错误 2 / 警告 2），请整改后闭环');
+      stay('数据质量评价结论已生成：6 项指标达标，另附 ' + t.qc.issues.length + ' 项问题（错误 2 / 警告 2），供评价结论参考');
     };
-    if (redo) { showConfirm('重新执行质量校验', '重新校验会覆盖当前问题处置状态（已闭环/已豁免记录将重置），确定继续？', doIt); return; }
+    if (redo) { showConfirm('重新生成评价结论', '重新生成会覆盖当前评价结论，确定继续？', doIt); return; }
     doIt();
   };
   window.arShowIssue = function (id) {
@@ -3295,14 +4239,61 @@
     renderPage('ar-workbench');
   };
   window.arCloseIssueView = function () { arState.issueView = null; renderPage('ar-workbench'); };
+  /* 表4：严重等级 高 / 中 / 低。level（错误 / 警告）仍保留给阶段闸门判定，
+     severity 是面向人工分级与检索的三级标签，两者独立不冲突。 */
+  function issueSeverity(it) {
+    if (it && (it.severity === '高' || it.severity === '中' || it.severity === '低')) return it.severity;
+    return it && it.level === 'bad' ? '高' : '中';
+  }
+  window.arSetQcFilter = function (key, val) {
+    arState.qcFilter = arState.qcFilter || { level: '', state: '', keyword: '' };
+    if (key === 'kw') arState.qcFilter.keyword = val || '';
+    else arState.qcFilter[key] = val || '';
+    renderPage('ar-workbench');
+  };
+  window.arResetQcFilter = function () {
+    arState.qcFilter = { level: '', state: '', keyword: '' };
+    renderPage('ar-workbench');
+  };
+  window.arSetIssueSeverity = function (id, val) {
+    var t = curTask(); if (!t) return;
+    var it = ((t.qc || {}).issues || []).filter(function (x) { return x.id === id; })[0];
+    if (!it) return;
+    var before = issueSeverity(it);
+    if (['高', '中', '低'].indexOf(val) < 0 || before === val) return;
+    it.severity = val;
+    logIssue(it, '调整严重等级', before, val, '严重等级由 ' + before + ' 调整为 ' + val, t.createdBy || '省级上报岗');
+    t.updatedAt = nowStr(); touch(t);
+    stay('严重等级已调整为「' + val + '」');
+  };
+  // 表4：问题级操作日志（发现 / 整改 / 豁免 / 闭环 / 撤销）逐条留痕
+  function logIssue(it, action, from, to, note, by) {
+    it.issueLog = it.issueLog || [];
+    it.issueLog.unshift({ at: nowStr(), by: by || '省级上报岗', action: action, from: from || '', to: to || '', note: note || '' });
+    if (it.issueLog.length > 50) it.issueLog.length = 50;
+  }
+  window.arSaveIssueCases = function (id) {
+    var t = curTask(); if (!t) return;
+    var it = (t.qc.issues || []).filter(function (x) { return x.id === id; })[0];
+    if (!it) return;
+    var el = document.getElementById('arIssueCases');
+    var list = String((el && el.value) || '').split(/[,，;；\s]+/).map(function (s) { return s.trim(); }).filter(Boolean);
+    var before = (it.caseIds || []).slice();
+    it.caseIds = list;
+    logIssue(it, '修改关联病例', before.length + ' 例', list.length + ' 例', '原：' + (before.join(', ') || '空') + '；新：' + (list.join(', ') || '空'));
+    t.updatedAt = nowStr(); touch(t);
+    stay('关联病例列表已更新（' + list.length + ' 例）');
+  };
   window.arCloseIssue = function (id) {
     var t = curTask(); if (!t) return;
     var it = (t.qc.issues || []).filter(function (x) { return x.id === id; })[0];
     if (!it) return;
     var noteEl = document.getElementById('arFixNote');
     var note = noteEl && noteEl.value ? String(noteEl.value).trim() : '';
+    var fromState = it.state;
     it.state = 'closed'; it.closedAt = nowStr(); it.closedBy = t.createdBy || '省级上报岗';
     if (note) it.fixNote = note;
+    logIssue(it, '闭环', fromState, 'closed', note || it.fixNote || '标记整改闭环', it.closedBy);
     var open = (t.qc.issues || []).filter(function (x) { return x.state !== 'closed' && x.state !== 'waived'; });
     t.valid = { done: true, result: { ok: 6, warn: open.filter(function (x) { return x.level !== 'bad'; }).length, bad: open.filter(function (x) { return x.level === 'bad'; }).length } };
     arState.issueView = null;
@@ -3313,7 +4304,9 @@
     var t = curTask(); if (!t) return;
     var it = (t.qc.issues || []).filter(function (x) { return x.id === id; })[0];
     if (!it) return;
+    var prevState = it.state, prevBy = it.closedBy || it.waivedBy || '';
     it.state = 'open'; it.closedAt = ''; it.closedBy = ''; it.waivedAt = ''; it.waivedBy = ''; it.waiveNote = '';
+    logIssue(it, '撤销处置', prevState, 'open', '撤销 ' + (prevBy || '原处置') + ' 的处置记录', t.createdBy || '省级上报岗');
     var open = (t.qc.issues || []).filter(function (x) { return x.state !== 'closed' && x.state !== 'waived'; });
     t.valid = { done: true, result: { ok: 6, warn: open.filter(function (x) { return x.level !== 'bad'; }).length, bad: open.filter(function (x) { return x.level === 'bad'; }).length } };
     t.updatedAt = nowStr(); touch(t);
@@ -3328,8 +4321,10 @@
     if (!list.length) { toast('没有待处理的该类问题', 'warning'); return; }
     showConfirm('批量闭环', '将 ' + list.length + ' 项' + (kind === 'bad' ? '错误' : '警告') + '级问题标记为已闭环，处置人记为当前用户。确定继续？', function () {
       list.forEach(function (it) {
+        var fromState = it.state;
         it.state = 'closed'; it.closedAt = nowStr(); it.closedBy = t.createdBy || '省级上报岗';
         it.fixNote = '批量闭环';
+        logIssue(it, '批量闭环', fromState, 'closed', '批量闭环', it.closedBy);
       });
       var open = (t.qc.issues || []).filter(function (x) { return x.state !== 'closed' && x.state !== 'waived'; });
       t.valid = { done: true, result: { ok: 6, warn: open.filter(function (x) { return x.level !== 'bad'; }).length, bad: open.filter(function (x) { return x.level === 'bad'; }).length } };
@@ -3341,10 +4336,12 @@
     var t = curTask(); if (!t) return;
     var list = (t.qc.issues || []).filter(function (x) { return x.level !== 'bad' && x.state !== 'closed' && x.state !== 'waived'; });
     if (!list.length) { toast('没有待处理的警告级问题', 'warning'); return; }
-    showConfirm('批量豁免', '将 ' + list.length + ' 项警告级问题批量豁免，需在质控报告中留痕。确定继续？', function () {
+    showConfirm('批量豁免', '将 ' + list.length + ' 项警告级问题批量豁免，需在数据质量评价中留痕。确定继续？', function () {
       list.forEach(function (it) {
-        it.state = 'waived'; it.waivedAt = nowStr(); it.waivedBy = t.createdBy || '省级上岗岗';
+        var fromState = it.state;
+        it.state = 'waived'; it.waivedAt = nowStr(); it.waivedBy = t.createdBy || '省级质控岗';
         it.waiveNote = '经省级质控岗评估，属登记机构常见编码差异，不影响统计口径，批量予以豁免';
+        logIssue(it, '批量豁免', fromState, 'waived', it.waiveNote, it.waivedBy);
       });
       var open = (t.qc.issues || []).filter(function (x) { return x.state !== 'closed' && x.state !== 'waived'; });
       t.valid = { done: true, result: { ok: 6, warn: open.filter(function (x) { return x.level !== 'bad'; }).length, bad: open.filter(function (x) { return x.level === 'bad'; }).length } };
@@ -3352,8 +4349,22 @@
       stay('已批量豁免 ' + list.length + ' 项警告级问题');
     });
   };
+  /* 表2 导出：核心指标结果 CSV（含当前筛选、Z-score 与标准化方法） */
+  window.arSetIndFilter = function (type) { arState.indFilter = type || ''; renderPage('ar-workbench'); };
+  window.arExportIndicators = function () {
+    var t = curTask();
+    if (!t || !(t.indicators || []).length) { toast('指标结果尚未生成', 'error'); return; }
+    var list = arState.indFilter ? t.indicators.filter(function (x) { return x.type === arState.indFilter; }) : t.indicators;
+    var rows = [['指标ID', '指标类型', '维度组合', '分子值', '分母值', '指标值', '95%置信区间', '是否经标化', 'Z-score', '标准化方法说明', '计算方法说明', '数据来源病例数']];
+    list.forEach(function (it) {
+      rows.push([it.id, it.type, it.dim, it.numerator, it.denominator, indicatorValueText(it), it.ci, it.std ? '是' : '否',
+        it.zScore == null ? '' : it.zScore, it.standardMethod || '', it.method, it.sourceCases]);
+    });
+    downloadTextFile(t.title.replace(/[^\u4e00-\u9fa5A-Za-z0-9]/g, '_') + '_核心指标结果.csv', toCsv(rows));
+    toast('已导出核心指标结果（' + list.length + ' 条）');
+  };
   window.arExportQcReport = function () {
-    var t = curTask(); if (!t || !t.qc || !t.qc.done) { toast('尚未执行质量校验', 'error'); return; }
+    var t = curTask(); if (!t || !t.qc || !t.qc.done) { toast('尚未生成数据质量评价结论', 'error'); return; }
     var rows = [];
     rows.push(['江西省肿瘤登记年报 · 质量控制报告']);
     rows.push(['任务编号', t.id, '报告年度', t.year, '覆盖范围', scopeLabel(t)]);
@@ -3363,11 +4374,11 @@
     rows.push(['考核指标', '本省值', '国家要求', '判定']);
     (t.qc.kpis || []).forEach(function (k) { rows.push([k.name, k.value, k.require, k.pass ? '达标' : '未达标']); });
     rows.push([]);
-    rows.push(['二、质控问题清单']);
-    rows.push(['报告卡号', '地区', '触发规则', '级别', '问题描述', '状态', '处置人', '处置时间', '整改说明']);
+    rows.push(['二、记录级异常明细（只读）']);
+    rows.push(['报告卡号', '关联病例ID', '地区', '触发规则', '严重等级', '问题描述', '状态', '处置人', '处置时间', '整改说明']);
     (t.qc.issues || []).forEach(function (it) {
       var st = { open: '待整改', fixing: '整改中', closed: '已闭环', waived: '已豁免' }[it.state] || it.state;
-      rows.push([it.no, it.region, it.rule, it.level === 'bad' ? '错误' : '警告', it.detail, st,
+      rows.push([it.no, (it.caseIds || []).join(' | '), it.region, it.rule, issueSeverity(it), it.detail, st,
         it.closedBy || it.waivedBy || '', it.closedAt || it.waivedAt || '', it.fixNote || it.waiveNote || '']);
     });
     rows.push([]);
@@ -3378,17 +4389,19 @@
     });
     rows.push([]);
     rows.push(['剔重删除重复卡', ((t.dataPrep || {}).dupRemoved || 0), '识别多原发', ((t.dataPrep || {}).multiPrimary || 0), '未定位', ((t.dataPrep || {}).unlocated || 0)]);
-    downloadTextFile(t.title.replace(/[^\u4e00-\u9fa5A-Za-z0-9]/g, '_') + '_质控报告.csv', toCsv(rows));
-    toast('已导出质控报告');
+    downloadTextFile(t.title.replace(/[^\u4e00-\u9fa5A-Za-z0-9]/g, '_') + '_数据质量评价表.csv', toCsv(rows));
+    toast('已导出数据质量评价表');
   };
   window.arWaiveIssue = function (id) {
     var t = curTask(); if (!t) return;
     var it = (t.qc.issues || []).filter(function (x) { return x.id === id; })[0];
     if (!it) return;
     if (it.level === 'bad') { toast('错误级问题不可豁免，必须整改闭环', 'error'); return; }
-    showConfirm('申请豁免', '对警告级问题「' + it.detail + '」提交豁免说明，需在质控报告中留痕。确定继续？', function () {
+    showConfirm('申请豁免', '对警告级问题「' + it.detail + '」提交豁免说明，需在数据质量评价中留痕。确定继续？', function () {
+      var fromState = it.state;
       it.state = 'waived'; it.waivedAt = nowStr(); it.waivedBy = t.createdBy || '省级上报岗';
       it.waiveNote = '经省级质控岗评估，属登记机构常见编码差异，不影响统计口径，予以豁免';
+      logIssue(it, '豁免', fromState, 'waived', it.waiveNote, it.waivedBy);
       var open = (t.qc.issues || []).filter(function (x) { return x.state !== 'closed' && x.state !== 'waived'; });
       t.valid = { done: true, result: { ok: 6, warn: open.filter(function (x) { return x.level !== 'bad'; }).length, bad: open.filter(function (x) { return x.level === 'bad'; }).length } };
       arState.issueView = null;
@@ -3397,24 +4410,12 @@
     });
   };
 
-  /* —— 阶段4 统计分析 —— */
-  window.arRunStats = function () {
-    var t = curTask(); if (!t) return;
-    var q = AR().summaries.qc(t);
-    if (!(t.qc && t.qc.done)) { toast('请先执行质量校验', 'error'); return; }
-    if (q.openBad > 0) { toast('存在 ' + q.openBad + ' 项错误级质控问题未整改，无法统计', 'error'); return; }
-    t.stats = { done: true, tables: STAT_TABLES.slice(), charts: STAT_CHARTS.slice(), snapshotAt: nowStr(), dataVersion: t.dataVersion };
-    t.agg = { done: true, result: AGG_RESULT };
-    t.updatedAt = nowStr(); touch(t);
-    stay('统计分析完成：生成 ' + STAT_TABLES.length + ' 张统计表、' + STAT_CHARTS.length + ' 张图表，快照 ' + t.dataVersion);
-  };
-
   /* —— 阶段5 正文编制 —— */
   window.arGenerateChapters = function () {
     var t = curTask(); if (!t) return;
     var s = AR().summaries.stats(t);
-    if (!s.done) { toast('请先完成统计分析，正文引用需以统计产物为准', 'error'); return; }
-    if (s.stale) { toast('统计快照已过期，请先重新统计', 'error'); return; }
+    if (!s.done) { toast('统计产物未就位，请刷新数据快照', 'error'); return; }
+    if (s.stale) { toast('统计快照已过期，请刷新数据快照', 'error'); return; }
     var made = generateChapters(t, true);
     t.corrections = t.corrections || [];
     t.corrections.unshift({ ver: t.version, at: nowStr(), by: t.createdBy || '省级上报岗', note: '按统计产物生成 ' + made + ' 章正文' });
@@ -3504,28 +4505,37 @@
     if (!(t.release && t.release.approvedAt)) { toast('请先完成发布审批', 'error'); return; }
     var d = AR().summaries.draft(t, chapterTotal, chapterDone);
     if (!d.complete) { toast('正文尚未齐备（' + d.done + '/' + d.total + ' 章），无法生成上报数据包', 'error'); return; }
-    /* 真实产出：正文（HTML，可被 Word 打开）+ 统计附表（CSV）+ 质控报告（CSV）。
-       原型里这里只写了个文件名，用户拿不到任何东西。 */
+    /* 真实产出：按「导出格式选择」决定主文件类型（Word / Excel / PDF 打印版）。
+       PDF 无法在纯前端真正合成，产出可打印 HTML（浏览器打印 → 另存 PDF）。 */
     var base = t.title.replace(/[^\u4e00-\u9fa5A-Za-z0-9]/g, '_');
-    var made = [];
-    if (downloadTextFile(base + '_正文.html', buildReportDocumentHtml(t), 'text/html')) made.push('正文');
-    var statTables = ((t.stats || {}).tables || []);
-    if (statTables.length) {
-      var allRows = [];
-      statTables.forEach(function (tb, i) {
-        if (i > 0) allRows.push([]);
-        allRows.push([tb.no + ' ' + tb.name]);
-        var csv = statTableCsv(t, tb.id);
-        if (csv) csv.split('\r\n').forEach(function (line) { allRows.push(line.split(',')); });
-      });
-      if (downloadTextFile(base + '_统计附表.csv', toCsv(allRows))) made.push('统计附表');
-    }
     var cfg = t.exportCfg || { format: 'pdf', ci5: true, channels: ['nccr'] };
+    var fmt = cfg.format || 'pdf';
+    var made = [];
+    var statTables = ((t.stats || {}).tables || []);
+    var allRows = [];
+    statTables.forEach(function (tb, i) {
+      if (i > 0) allRows.push([]);
+      allRows.push([tb.no + ' ' + tb.name]);
+      var csv = statTableCsv(t, tb.id);
+      if (csv) csv.split('\r\n').forEach(function (line) { allRows.push(line.split(',')); });
+    });
+    if (fmt === 'excel') {
+      var rows = [['年报名称', t.title], ['年度', t.year], ['定稿版本', t.version], ['导出格式', 'Excel（CSV）'], []];
+      rows = rows.concat(allRows);
+      if (downloadTextFile(base + '_年报主表.csv', toCsv(rows), 'text/csv')) made.push('年报主表（CSV / Excel 可打开）');
+    } else if (fmt === 'word') {
+      if (downloadTextFile(base + '_正文.doc', buildReportDocumentHtml(t), 'application/msword')) made.push('正文（Word 可打开）');
+      if (allRows.length && downloadTextFile(base + '_统计附表.csv', toCsv(allRows), 'text/csv')) made.push('统计附表');
+    } else {
+      if (downloadTextFile(base + '_正文_可打印PDF.html', buildReportDocumentHtml(t), 'text/html')) made.push('正文（浏览器打印可另存 PDF）');
+      if (allRows.length && downloadTextFile(base + '_统计附表.csv', toCsv(allRows), 'text/csv')) made.push('统计附表');
+    }
     if (cfg.ci5) {
       if (downloadTextFile(base + '_CI5.csv', buildCi5Csv(t))) made.push('CI5/IARC 数据');
     }
 
     t.release.packageBuiltAt = nowStr();
+    t.release.packageFormat = fmt;
     t.release.packageName = base + '_NCCR.zip';
     t.release.files = made;
     if (t.status === 'approved') {
@@ -3656,7 +4666,25 @@
     t.status = 'archived'; t.archivedAt = nowStr(); t.updatedAt = nowStr();
     var seq = 0; archives.forEach(function (a) { if (String(a.year) === String(t.year)) { var n = parseInt(a.id.slice(a.id.lastIndexOf('-') + 1), 10); if (!isNaN(n) && n > seq) seq = n; } });
     var pages = 82;
-    archives.unshift({ id: 'AC-' + t.year + '-' + pad4(seq + 1), taskId: t.id, year: t.year, version: t.version, fileName: t.title + '.pdf', fileType: 'pdf', pages: pages, size: ((7.2 + (pages - 80) * 0.04).toFixed(1)) + ' MB', status: '已归档', archivedAt: nowStr(), archivedBy: '省级上报岗' });
+    var sizeKB = Math.round((7.2 + (pages - 80) * 0.04) * 1024);
+    var cfg = t.exportCfg || {};
+    var fmtExt = { pdf: 'html', word: 'doc', excel: 'csv' }[cfg.format] || 'html';
+    var fileName = t.title + '.' + fmtExt;
+    var rec = {
+      id: 'AC-' + t.year + '-' + pad4(seq + 1), taskId: t.id, year: t.year, version: t.version,
+      fileName: fileName, fileType: cfg.format || 'pdf', pages: pages, size: (sizeKB / 1024).toFixed(1) + ' MB', sizeKB: sizeKB,
+      storagePath: 'archive/' + t.year + '/' + fileName,
+      generatedAt: (t.release && t.release.packageBuiltAt) || nowStr(),
+      publishedAt: nowStr(), publisher: t.createdBy || '省级上报岗',
+      publishScope: cfg.govFiling ? 'gov' : (t.isPublic ? 'public' : 'internal'),
+      accessUrl: '/archive/' + t.year + '/' + encodeURIComponent(fileName),
+      downloadCount: 0, govReport: !!cfg.govFiling, doi: '',
+      status: '已归档', archivedAt: nowStr(), archivedBy: t.createdBy || '省级上报岗'
+    };
+    archives.unshift(rec);
+    // 表6：同一份文件同时写入任务的导出记录（含后续下载 / DOI 变更留痕）
+    t.exports = t.exports || [];
+    t.exports.unshift(Object.assign({}, rec, { type: 'export' }));
     AR().logStage(t, '归档入库', 'release', 'archived', '取得回执 ' + ((t.release || {}).receiptNo || '—') + '，定稿归档', '省级上报岗');
     persist(); renderPage('ar-workbench'); toast('已归档入库，可在归档记录中查看');
   };
@@ -3798,11 +4826,15 @@
   window.arSetTaskCancer = function (v) { var t = curTask(); if (!t) return; t.cancer = v; markStale(t); touch(t); renderPage('ar-workbench'); };
 
   /* 模板管理动作 */
-  window.arNewTemplate = function () { arState.tplEditingId = null; arState.tplView = 'form'; renderPage('ar-templates'); };
+  window.arNewTemplate = function () { arState.tplEditingId = null; arState.tplEditSnapshot = null; arState.tplView = 'form'; renderPage('ar-templates'); };
   window.arManageChapterTemplates = function (id) { if (!tplById(id)) { toast('模板不存在或已删除', 'error'); return; } arState.tplEditingId = id; arState.tplView = 'chapter-list'; renderPage('ar-templates'); };
   window.arEditChapterTemplate = function (id) { var tp = tplById(arState.tplEditingId); if (!tp || !chapterIdsForTemplate(tp).some(function (x) { return x === id; })) { toast('章节不存在或已被停用', 'error'); return; } arState.editChapter = id; arState.tplView = 'chapter-form'; renderPage('ar-templates'); };
   window.arChapterTemplateList = function () { arState.tplView = 'chapter-list'; renderPage('ar-templates'); };
-  window.arEditTemplate = function (id) { arState.tplEditingId = id; arState.tplView = 'form'; renderPage('ar-templates'); };
+  window.arEditTemplate = function (id) {
+    arState.tplEditingId = id; arState.tplView = 'form';
+    arState.tplEditSnapshot = templateVersionSnapshot(tplById(id));
+    renderPage('ar-templates');
+  };
   window.arTplList = function () { arState.tplView = 'list'; arState.tplEditingId = null; renderPage('ar-templates'); };
   window.arSaveChapterTemplate = function () {
     var tp = tplById(arState.tplEditingId); if (!tp) return;
@@ -3821,10 +4853,52 @@
     bumpTemplate(tp);
     persist(); arState.tplPreview = null; arState.tplView = 'chapter-list'; renderPage('ar-templates'); toast('章节模板已保存，模板版本已升级');
   };
+  /* 表3：模板版本快照 / 历史 / 回滚 */
+  function templateVersionSnapshot(tp) {
+    if (!tp) return null;
+    return {
+      version: tp.version || 'v1', savedAt: nowStr(), savedBy: tp.updatedBy || '省级上报岗',
+      name: tp.name, type: tp.type, cycle: tp.cycle, volume: tp.volume, desc: tp.desc,
+      standard: tp.standard, lang: tp.lang, defaultChartType: tp.defaultChartType,
+      enabled: tp.enabled, isDefault: tp.isDefault,
+      chapters: (tp.chapters || []).slice(),
+      chapterConfigs: cloneTemplateValue(templateChapterConfigs(tp)),
+      chapterTemplates: cloneTemplateValue(tp.chapterTemplates || {})
+    };
+  }
+  function pushTemplateVersion(tp, snap) {
+    if (!tp || !snap) return;
+    tp.versions = tp.versions || [];
+    tp.versions.unshift(snap);
+    if (tp.versions.length > 20) tp.versions.length = 20;
+  }
   function bumpTemplate(tp) {
     tp.updatedAt = nowStr(); tp.updatedBy = "省级上报岗";
     tp.version = 'v' + ((parseInt(String(tp.version).replace(/[^0-9]/g, ''), 10) || 0) + 1);
   }
+  window.arTemplateVersions = function (id) {
+    var tp = tplById(id); if (!tp) return;
+    arState.tplVersionsId = id;
+    renderPage('ar-templates');
+  };
+  window.arCloseTemplateVersions = function () { arState.tplVersionsId = null; renderPage('ar-templates'); };
+  window.arRollbackTemplate = function (id, idx) {
+    var tp = tplById(id); if (!tp || !tp.versions || !tp.versions[idx]) return;
+    var v = tp.versions[idx];
+    showConfirm('回滚模板版本', '将「' + tp.name + '」回滚到 ' + v.version + '（' + v.savedAt + '）。当前 ' + tp.version + ' 会先存入版本历史，可再次回滚。确定继续？', function () {
+      pushTemplateVersion(tp, templateVersionSnapshot(tp));
+      ['name', 'type', 'cycle', 'volume', 'desc', 'standard', 'lang', 'defaultChartType', 'enabled', 'isDefault'].forEach(function (k) {
+        if (v[k] !== undefined) tp[k] = v[k];
+      });
+      tp.chapters = (v.chapters || []).slice();
+      tp.chapterConfigs = cloneTemplateValue(v.chapterConfigs || []);
+      tp.chapterTemplates = cloneTemplateValue(v.chapterTemplates || {});
+      tp.updatedAt = nowStr(); tp.updatedBy = '省级上报岗';
+      tp.version = 'v' + ((parseInt(String(tp.version).replace(/[^0-9]/g, ''), 10) || 0) + 1);
+      persist(); arState.tplVersionsId = null; renderPage('ar-templates');
+      toast('已回滚到 ' + v.version + ' 的内容（当前版本升为 ' + tp.version + '）');
+    });
+  };
   function curChapterTpl() {
     var tp = tplById(arState.tplEditingId); if (!tp) return null;
     return { tp: tp, ct: chapterTemplate(tp, arState.editChapter) };
@@ -3837,7 +4911,9 @@
   }
   /* 小节维护 */
   window.arEditSection = function (id) {
-    arState.editSectionId = id; arState.tplView = 'section-form'; renderPage('ar-templates');
+    arState.editSectionId = id; arState.tplView = 'section-form';
+    arState.tplSectionSnapshot = templateVersionSnapshot(tplById(arState.tplEditingId));
+    renderPage('ar-templates');
   };
   window.arBackToChapterForm = function () { arState.tplView = 'chapter-form'; arState.editSectionId = null; renderPage('ar-templates'); };
   window.arAddSection = function () {
@@ -3930,6 +5006,8 @@
     if (tb && String(tb.value || '').trim()) h.sec.title = String(tb.value).trim();
     else { toast('请填写小节标题', 'error'); return; }
     readBlocksFromDom(h.sec);
+    pushTemplateVersion(h.tp, arState.tplSectionSnapshot || templateVersionSnapshot(h.tp));
+    arState.tplSectionSnapshot = null;
     bumpTemplate(h.tp); persist(); arState.tplView = 'chapter-form'; renderPage('ar-templates'); toast('小节内容已保存，模板版本已升级');
   };
   window.arPreviewChapterTpl = function () {
@@ -3952,6 +5030,9 @@
     var cycle = document.getElementById('tplCycle').value.trim() || '年度';
     var volume = document.getElementById('tplVolume').value.trim() || '全省全癌种';
     var desc = document.getElementById('tplDesc').value.trim();
+    var standard = (document.getElementById('tplStandard').value || '').trim();
+    var lang = document.getElementById('tplLang').value;
+    var defaultChartType = document.getElementById('tplDefaultChart').value;
     var enabled = document.getElementById('tplEnabled').value === '1';
     var isDefault = document.getElementById('tplDefault').checked;
     var chapterConfigs = [];
@@ -3970,16 +5051,20 @@
     if (isDefault) templates.forEach(function (x) { x.isDefault = false; });
     if (arState.tplEditingId) {
       var tp = tplById(arState.tplEditingId);
-      if (tp) { tp.name = name; tp.type = type; tp.cycle = cycle; tp.volume = volume; tp.desc = desc; tp.enabled = enabled; tp.isDefault = isDefault; tp.chapters = chs; tp.chapterConfigs = chapterConfigs; tp.version = 'v' + ((parseInt(String(tp.version).replace(/[^0-9]/g, ''), 10) || 0) + 1); tp.updatedAt = now; tp.updatedBy = "省级上报岗"; }
+      if (tp) {
+        pushTemplateVersion(tp, arState.tplEditSnapshot || templateVersionSnapshot(tp));
+        arState.tplEditSnapshot = null;
+        tp.name = name; tp.type = type; tp.cycle = cycle; tp.volume = volume; tp.desc = desc; tp.standard = standard; tp.lang = lang; tp.defaultChartType = defaultChartType; tp.enabled = enabled; tp.isDefault = isDefault; tp.chapters = chs; tp.chapterConfigs = chapterConfigs; tp.version = 'v' + ((parseInt(String(tp.version).replace(/[^0-9]/g, ''), 10) || 0) + 1); tp.updatedAt = now; tp.updatedBy = "省级上报岗";
+      }
     } else {
-      templates.unshift({ id: 'TPL-' + Date.now(), name: name, type: type, cycle: cycle, volume: volume, desc: desc, enabled: enabled, isDefault: isDefault, version: 'v1', updatedAt: now, updatedBy: "省级上报岗", chapters: chs, chapterConfigs: chapterConfigs });
+      templates.unshift({ id: 'TPL-' + Date.now(), name: name, type: type, cycle: cycle, volume: volume, desc: desc, standard: standard, lang: lang, defaultChartType: defaultChartType, enabled: enabled, isDefault: isDefault, version: 'v1', updatedAt: now, updatedBy: "省级上报岗", chapters: chs, chapterConfigs: chapterConfigs });
     }
     persist(); arState.tplView = 'list'; arState.tplEditingId = null; renderPage('ar-templates'); toast('模板已保存');
   };
   window.arDuplicateTemplate = function (id) {
     var tp = tplById(id); if (!tp) return;
     var now = nowStr();
-    templates.unshift({ id: 'TPL-' + Date.now(), name: tp.name + '（副本）', type: tp.type, cycle: tp.cycle, volume: tp.volume, desc: tp.desc, enabled: true, isDefault: false, version: 'v1', updatedAt: now, updatedBy: "省级上报岗", chapters: tp.chapters.slice(), chapterConfigs: cloneTemplateValue(templateChapterConfigs(tp)), chapterTemplates: cloneTemplateValue(tp.chapterTemplates || {}) });
+    templates.unshift({ id: 'TPL-' + Date.now(), name: tp.name + '（副本）', type: tp.type, cycle: tp.cycle, volume: tp.volume, desc: tp.desc, standard: tp.standard, lang: tp.lang, defaultChartType: tp.defaultChartType, enabled: true, isDefault: false, version: 'v1', updatedAt: now, updatedBy: "省级上报岗", chapters: tp.chapters.slice(), chapterConfigs: cloneTemplateValue(templateChapterConfigs(tp)), chapterTemplates: cloneTemplateValue(tp.chapterTemplates || {}) });
     persist(); renderPage('ar-templates'); toast('已复制模板');
   };
   window.arSetDefaultTemplate = function (id) {
@@ -4029,8 +5114,48 @@
   window.arPreviewArchive = function (id) {
     for (var i = 0; i < archives.length; i++) if (archives[i].id === id) { toast('预览：' + archives[i].fileName); return; }
   };
+  /* 表6 v2：归档下载改为真实产出文件（按导出格式生成），不再只弹提示 */
+  function archiveFile(a, t) {
+    var fmt = a.fileType || (t && t.exportCfg && t.exportCfg.format) || 'pdf';
+    var base = String(a.fileName || '年报').replace(/\.[^.]+$/, '');
+    var meta = [
+      ['发布ID', a.id], ['年报任务ID', a.taskId], ['年度', a.year], ['定稿版本', a.version],
+      ['导出格式', fmt], ['发布人', a.publisher || a.archivedBy], ['发布范围', publishScopeLabel(a.publishScope)],
+      ['生成时间', a.generatedAt], ['归档时间', a.archivedAt], ['存储路径', a.storagePath],
+      ['访问链接', a.accessUrl], ['下载次数', a.downloadCount], ['是否用于政府报告', a.govReport ? '是' : '否'],
+      ['学术引用 DOI', a.doi || '—']
+    ];
+    if (fmt === 'excel') {
+      var rows = meta.map(function (r) { return [r[0], r[1]]; });
+      rows.push([]);
+      rows.push(['指标ID', '指标类型', '维度组合', '分子值', '分母值', '指标值', '95%置信区间', '是否经标化', 'Z-score', '计算方法说明', '来源病例数']);
+      ((t && t.indicators) || []).forEach(function (it) {
+        rows.push([it.id, it.type, it.dim, it.numerator, it.denominator, indicatorValueText(it), it.ci,
+          it.std ? '是' : '否', it.zScore == null ? '' : it.zScore, it.method, it.sourceCases]);
+      });
+      return { name: base + '.csv', content: toCsv(rows), mime: 'text/csv' };
+    }
+    var body = t ? buildReportDocumentHtml(t) : '<h1>' + e(a.fileName) + '</h1><p>（关联任务已删除，仅导出归档元数据）</p>';
+    var html = '<!doctype html><html><head><meta charset="utf-8"><title>' + e(base) + '</title></head><body>' +
+      '<h1>' + e(base) + '</h1><table border="1" cellpadding="6" cellspacing="0" style="border-collapse:collapse;font-size:13px">' +
+      meta.map(function (r) { return '<tr><th style="text-align:left;background:#f1f5f9">' + e(r[0]) + '</th><td>' + e(r[1]) + '</td></tr>'; }).join('') +
+      '</table><hr>' + body + '</body></html>';
+    return fmt === 'word'
+      ? { name: base + '.doc', content: html, mime: 'application/msword' }
+      : { name: base + '.html', content: html, mime: 'text/html' };
+  }
   window.arDownloadArchive = function (id) {
-    for (var i = 0; i < archives.length; i++) if (archives[i].id === id) { toast('开始下载：' + archives[i].fileName); return; }
+    for (var i = 0; i < archives.length; i++) if (archives[i].id === id) {
+      var a = archives[i];
+      a.downloadCount = (Number(a.downloadCount) || 0) + 1;
+      var t = taskById(a.taskId);
+      if (t && t.exports) t.exports.forEach(function (x) { if (x.id === a.id) x.downloadCount = a.downloadCount; });
+      var out = archiveFile(a, t);
+      var ok = downloadTextFile(out.name, out.content, out.mime);
+      persist(); renderPage('ar-archives');
+      toast(ok ? '已导出 ' + out.name + '（累计下载 ' + a.downloadCount + ' 次）' : '导出失败，请重试', ok ? '' : 'error');
+      return;
+    }
   };
   window.arDeleteArchive = function (id) {
     for (var i = 0; i < archives.length; i++) if (archives[i].id === id) {
@@ -4057,6 +5182,7 @@
   var AR_CHILDREN = [
     { id: 'ar-tasks', label: '年报记录' },
     { id: 'ar-workbench', label: '编制工作台' },
+    { id: 'ar-templates', label: '模板管理' },
     { id: 'ar-archives', label: '归档记录' }
   ];
   var OWNED_IDS = ['annual-report', 'ar-tasks', 'ar-workbench', 'ar-view', 'ar-templates', 'ar-submissions', 'ar-archives'];

@@ -34,41 +34,27 @@
     },
     {
       id: 'data', no: 2, name: '数据准备', short: '数据准备',
-      desc: '多源数据接入核对、字段齐备性检查、剔重 / 多原发 / 定位处理',
+      desc: '确认本年报纳入哪些病例：合并重复上报、识别一人多癌、核对关键字段填写完整度',
       owner: '省级上报岗',
-      artifacts: ['数据源接入台账', '剔重与多原发处理记录', '数据核对单'],
-      hint: '各数据源须全部核对到位，未到位源将被阻断。'
+      artifacts: ['纳入病例数口径', '有效病例分子', '关键字段完整度'],
+      hint: '系统已预接入全部数据并自动完成处理，本阶段只需核对，无需手动操作。'
     },
     {
-      id: 'qc', no: 3, name: '质量校验', short: '质控',
-      desc: '分级质控（完整性 / 逻辑 / 查重 / 国家考核指标），问题整改闭环',
-      owner: '质控岗',
-      artifacts: ['质控报告', '问题清单闭环记录'],
-      hint: '存在未闭环的错误级问题不得放行；警告级需提交豁免说明。'
-    },
-    {
-      id: 'stats', no: 4, name: '统计分析', short: '统计',
-      desc: '按癌种 / 性别 / 年龄 / 地区 / 年份多维统计，标化率与生存率计算',
-      owner: '统计分析岗',
-      artifacts: ['统计表清单', '图表清单', '标化率计算底稿'],
-      hint: '统计口径须与质控通过的数据快照一致，数据变更后需重算。'
-    },
-    {
-      id: 'draft', no: 5, name: '正文编制', short: '编制',
+      id: 'draft', no: 3, name: '正文编制', short: '编制',
       desc: '按标准章节结构编排正文，引用统计产物，交叉核对',
       owner: '省级上报岗',
       artifacts: ['章节树', '正文定稿', '引用一致性核对'],
       hint: '正文引用的指标须与统计产物一致，不一致会被标红。'
     },
     {
-      id: 'review', no: 6, name: '审核', short: '审核',
+      id: 'review', no: 4, name: '审核', short: '审核',
       desc: '多级审核（初审 / 复审），意见留痕与修订版本管理',
       owner: '审核岗',
       artifacts: ['审核意见单', '修订记录'],
       hint: '存在未回复的审核意见不得通过。'
     },
     {
-      id: 'release', no: 7, name: '发布归档', short: '发布归档',
+      id: 'release', no: 5, name: '发布归档', short: '发布归档',
       desc: '发布审批、生成上报数据包、跟踪国家平台回执、归档入库',
       owner: '省级上报岗',
       artifacts: ['发布审批单', '上报数据包', '国家平台回执'],
@@ -197,36 +183,8 @@
         w.push(warn('数据源「' + s.name + '」较上一版差异 ' + (s.diff.delta > 0 ? '+' : '') + s.diff.delta + ' 条，请在备注中说明原因'));
       });
       var dp = t.dataPrep || {};
-      if (!dp.dedupDone) b.push(blocker('尚未执行剔重与多原发识别', '执行剔重处理', 'arRunDataPrep'));
-      if (!dp.fieldsChecked) b.push(blocker('尚未完成必填字段齐备性检查', '执行字段检查', 'arCheckFields'));
-      return { ok: !b.length, blockers: b, warns: w };
-    },
-
-    /* 进入「统计分析」：质控问题须闭环 */
-    qc: function (t) {
-      var b = [], w = [];
-      var q = qcSummary(t);
-      if (!t.qc || !t.qc.done) {
-        b.push(blocker('尚未执行质量校验', '执行质量校验', 'arRunQC'));
-        return { ok: false, blockers: b, warns: w };
-      }
-      if (q.openBad > 0) b.push(blocker('存在 ' + q.openBad + ' 项错误级质控问题未整改', '去整改问题', 'arGoStage', 'qc'));
-      if (q.openWarn > 0) w.push(warn('存在 ' + q.openWarn + ' 项警告级问题未闭环，可提交豁免说明后放行'));
-      var failKpi = (t.qc.kpis || []).filter(function (k) { return k.pass === false; });
-      failKpi.forEach(function (k) {
-        b.push(blocker('国家考核指标「' + k.name + '」未达标（' + k.value + '，要求 ' + k.require + '）', '查看质控详情', 'arGoStage', 'qc'));
-      });
-      return { ok: !b.length, blockers: b, warns: w };
-    },
-
-    /* 进入「正文编制」：统计产物须齐备且未过期 */
-    stats: function (t) {
-      var b = [], w = [];
-      var s = statsSummary(t);
-      if (!s.done) { b.push(blocker('尚未生成统计产物', '执行统计分析', 'arRunStats')); return { ok: false, blockers: b, warns: w }; }
-      if (!s.tableN) b.push(blocker('统计表清单为空', '去补统计表', 'arGoStage', 'stats'));
-      if (!s.chartN) w.push(warn('图表清单为空，正文将缺少图示'));
-      if (s.stale) b.push(blocker('统计数据快照已过期（数据版本已变更），需重新统计', '重新统计', 'arRunStats'));
+      if (!dp.dedupDone) b.push(blocker('尚未确认纳入统计的有效病例数（需先合并重复上报）', '查看病例数口径', 'arRunDataPrep'));
+      if (!dp.fieldsChecked) b.push(blocker('尚未核对关键字段填写完整度', '查看字段完整度', 'arCheckFields'));
       return { ok: !b.length, blockers: b, warns: w };
     },
 
@@ -277,8 +235,6 @@
     switch (id) {
       case 'task': return GATES.task(t).ok;
       case 'data': return GATES.data(t).ok;
-      case 'qc': return !!(t.qc && t.qc.done) && qcSummary(t).openBad === 0;
-      case 'stats': return statsSummary(t).done && !statsSummary(t).stale;
       case 'draft': return draftSummary(t, helpers.chapterTotal, helpers.chapterDone).complete;
       case 'review': return reviewSummary(t).passed;
       case 'release': return !!(t.release && t.release.receiptNo && t.status === 'archived');
@@ -290,7 +246,7 @@
    * 用户「正在工作的阶段」。
    *
    * t.stage 一旦设定即为权威——阶段只能通过 markStage（由「完成本阶段」或「回退」动作调用）改变。
-   * 绝不能因为产物齐备就自动前进：否则数据准备一做完，工作位立刻跳到「质量校验」，
+   * 绝不能因为产物齐备就自动前进：否则数据准备一做完，工作位立刻跳到「正文编制」，
    * 「完成本阶段 · 进入下一阶段」按钮根本没机会出现，阶段流转也就写不进留痕。
    *
    * 只有 t.stage 缺失（新任务未初始化 / 老数据未迁移）时才退回按产物推导。

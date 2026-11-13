@@ -22,10 +22,142 @@
   window.renderDictCommon=()=>{const data=dictCommonData[dictCommonState.currentType],q=dictCommonState.keyword||'',types=dictCommonTypes.map(x=>({v:x.type,t:x.name}));const list=data.filter(x=>!q||x.code.includes(q)||x.name.includes(q)).sort((a,b)=>a.sort-b.sort);const body=rows(list,9,(r,n)=>{const i=data.indexOf(r);return '<tr><td>'+(n+1)+'</td><td>'+esc(r.code)+'</td><td>'+esc(r.name)+'</td><td>'+r.sort+'</td><td>'+badge(r.status)+'</td><td>'+badge(r.mergeStatus)+'</td><td>'+esc(r.mergeCode||'-')+'</td><td>'+esc(r.remark||'-')+'</td><td class="ops"><button class="btn btn-primary btn-xs" onclick="dictCommonEdit('+i+')">编辑</button> <button class="btn btn-danger btn-xs" onclick="dictCommonDelete('+i+')">删除</button></td></tr>'});const filter='<div class="filter-toolbar">'+select('字典类型','dcType',types,dictCommonState.currentType,'onchange="dictCommonState.currentType=this.value;dictCommonState.keyword=\'\';renderPage(\'dict-common\')"')+'<div class="form-group search-group"><label>检索内容</label><input value="'+esc(q)+'" placeholder="代码 / 名称" oninput="dictCommonState.keyword=this.value"></div><div class="filter-actions"><button class="btn btn-primary btn-sm" onclick="renderPage(\'dict-common\')">查询</button><button class="btn btn-ghost btn-sm" onclick="dictCommonState.keyword=\'\';renderPage(\'dict-common\')">重置</button><button class="btn btn-primary btn-sm" onclick="dictCommonAdd()">+ 添加</button></div></div>';return shell('常规字典管理',filter,['序号','代码','名称','排序','状态','撤并状态','撤并编码','备注','操作'],body)};
   window.dictCommonAdd=()=>commonForm(null); window.dictCommonEdit=i=>commonForm(i); window.dictCommonDelete=i=>{const d=dictCommonData[dictCommonState.currentType],r=d[i];if(r.mergeStatus!=='已撤并')return toast('请先完成撤并操作后再删除','error');showConfirm('确认删除','确定要删除已撤并字典项「'+r.name+'」吗？',()=>{d.splice(i,1);toast('删除成功');renderPage('dict-common')})};
 
-  function codeForm(kind,index){const anatomy=kind==='anatomy',data=anatomy?dictAnatomyData:dictPathologyData,r=index==null?{code:'',name:'',level:1,parent:'',group:'',category:'',sort:data.length+1,status:'启用',mergeStatus:'未撤并',mergeCode:''}:data[index];const targets=[{v:'',t:'请选择目标项'}].concat(data.filter(x=>x.status==='启用'&&x.code!==r.code).map(x=>({v:x.code,t:x.code+' - '+x.name})));const parents=[{v:'',t:'无（一级部位）'}].concat(dictAnatomyData.filter(x=>x.level===1&&x.status==='启用'&&x.code!==r.code).map(x=>({v:x.code,t:x.code+' - '+x.name})));let body='<div class="form-grid">'+input('编码','dCode',r.code,'text',true)+input('名称','dName',r.name,'text',true);if(anatomy)body+=select('层级','dLevel',[{v:1,t:'部位'},{v:2,t:'亚部位'}],r.level,'onchange="dictParentToggle()"')+select('父级部位','dParent',parents,r.parent)+input('分组','dGroup',r.group)+input('类目','dCategory',r.category);else body+=input('分组','dGroup',r.group);body+=input('排序','dSort',r.sort,'number')+select('状态','dStatus',['启用','禁用'],r.status)+select('撤并状态','dMerge',['未撤并','已撤并'],r.mergeStatus,'onchange="dictMergeToggle()"')+select('撤并至','dMergeCode',targets,r.mergeCode)+'</div>';modal((index==null?'新增':'编辑')+(anatomy?'解剖部位':'病理类型'),body,()=>{const code=value('dCode'),name=value('dName'),level=anatomy?Number(value('dLevel')):0,parent=anatomy?value('dParent'):'';if(!code||!name)return toast('请填写编码和名称','error');if(data.some((x,i)=>x.code===code&&i!==index))return toast('编码已存在','error');if(anatomy&&level===2&&!parent)return toast('亚部位必须选择父级部位','error');const merged=value('dMerge')==='已撤并',target=value('dMergeCode');if(merged&&(!target||target===code))return toast('请选择其他启用项作为撤并目标','error');const item={code,name,group:value('dGroup'),sort:Number(value('dSort'))||0,status:merged?'禁用':value('dStatus'),mergeStatus:merged?'已撤并':'未撤并',mergeCode:merged?target:''};if(anatomy)Object.assign(item,{level,parent:level===2?parent:'',category:value('dCategory')});index==null?data.push(item):Object.assign(data[index],item);close();toast('保存成功');renderPage(anatomy?'dict-anatomy':'dict-pathology')})}
+  function codeForm(kind,index){const anatomy=kind==='anatomy',data=anatomy?dictAnatomyData:dictPathologyData,r=index==null?{code:'',name:'',level:1,parent:'',group:'',category:'',sort:data.length+1,status:'启用',mergeStatus:'未撤并',mergeCode:''}:data[index];const targets=[{v:'',t:'请选择目标项'}].concat(data.filter(x=>x.status==='启用'&&x.code!==r.code).map(x=>({v:x.code,t:x.code+' - '+x.name})));const parents=[{v:'',t:'无（一级部位）'}].concat(dictAnatomyData.filter(x=>x.level===1&&x.status==='启用'&&x.code!==r.code).map(x=>({v:x.code,t:x.code+' - '+x.name})));let body='<div class="form-grid">'+input('编码','dCode',r.code,'text',true)+input('名称','dName',r.name,'text',true);if(anatomy)body+=select('层级','dLevel',[{v:1,t:'部位'},{v:2,t:'亚部位'}],r.level,'onchange="dictParentToggle()"')+select('父级部位','dParent',parents,r.parent)+input('分组','dGroup',r.group)+input('类目','dCategory',r.category);else body+=input('分组','dGroup',r.group);body+=input('排序','dSort',r.sort,'number')+select('状态','dStatus',['启用','禁用'],r.status)+select('撤并状态','dMerge',['未撤并','已撤并'],r.mergeStatus,'onchange="dictMergeToggle()"')+select('撤并至','dMergeCode',targets,r.mergeCode)+'</div>';modal((index==null?'新增':'编辑')+(anatomy?'解剖部位':'病理类型'),body,()=>{const code=value('dCode'),name=value('dName'),level=anatomy?Number(value('dLevel')):0,parent=anatomy?value('dParent'):'';if(!code||!name)return toast('请填写编码和名称','error');if(data.some((x,i)=>x.code===code&&i!==index))return toast('编码已存在','error');if(anatomy&&level===2&&!parent)return toast('亚部位必须选择父级部位','error');const merged=value('dMerge')==='已撤并',target=value('dMergeCode');if(merged&&(!target||target===code))return toast('请选择其他启用项作为撤并目标','error');const item={code,name,group:value('dGroup'),sort:Number(value('dSort'))||0,status:merged?'禁用':value('dStatus'),mergeStatus:merged?'已撤并':'未撤并',mergeCode:merged?target:''};if(anatomy)Object.assign(item,{level,parent:level===2?parent:'',category:value('dCategory')});const before=index!=null?Object.assign({},data[index]):null;index==null?data.push(item):Object.assign(data[index],item);const cr=codeChangeRecord(anatomy?'anatomy':'pathology',before,item);pushDictLog(anatomy?'B1':'B2',index==null?'新增':'修改',cr.fromValue,cr.toValue);close();toast('保存成功');renderPage(anatomy?'dict-anatomy':'dict-pathology')})}
   window.dictParentToggle=()=>{const second=Number(value('dLevel'))===2;document.getElementById('dParent').disabled=!second;if(!second)document.getElementById('dParent').value=''};
   function renderCode(kind){const anatomy=kind==='anatomy',state=anatomy?dictAnatomyState:dictPathologyState,data=anatomy?dictAnatomyData:dictPathologyData,q=state.keyword||'',list=data.filter(x=>!q||x.code.includes(q)||x.name.includes(q));const heads=anatomy?['序号','编码','名称','层级','分组','排序','类目','状态','撤并状态','操作']:['序号','编码','名称','分组','排序','状态','撤并状态','操作'];const body=rows(list,heads.length,(r,n)=>{const i=data.indexOf(r),name=(anatomy&&r.level===2?'└ ':'')+r.name;return '<tr><td>'+(n+1)+'</td><td>'+r.code+'</td><td style="padding-left:'+(anatomy&&r.level===2?'28':'12')+'px">'+name+'</td>'+(anatomy?'<td>'+(r.level===1?'部位':'亚部位')+'</td>':'')+'<td>'+esc(r.group||'-')+'</td><td>'+r.sort+'</td>'+(anatomy?'<td>'+esc(r.category||'-')+'</td>':'')+'<td>'+badge(r.status)+'</td><td>'+badge(r.mergeStatus)+'</td><td class="ops"><button class="btn btn-primary btn-xs" onclick="dictCodeEdit(\''+kind+'\','+i+')">编辑</button> <button class="btn btn-danger btn-xs" onclick="dictCodeDelete(\''+kind+'\','+i+')">删除</button></td></tr>'});const id=anatomy?'dict-anatomy':'dict-pathology',filter='<div class="filter-toolbar"><div class="form-group search-group"><label>检索内容</label><input value="'+esc(q)+'" placeholder="编码 / 名称" oninput="'+(anatomy?'dictAnatomyState':'dictPathologyState')+'.keyword=this.value"></div><div class="filter-actions"><button class="btn btn-primary btn-sm" onclick="renderPage(\''+id+'\')">查询</button><button class="btn btn-ghost btn-sm" onclick="'+(anatomy?'dictAnatomyState':'dictPathologyState')+'.keyword=\'\';renderPage(\''+id+'\')">重置</button><button class="btn btn-primary btn-sm" onclick="dictCodeEdit(\''+kind+'\',null)">+ 添加</button></div></div>';return shell(anatomy?'解剖部位管理':'病理类型管理',filter,heads,body)}
-  window.renderDictAnatomy=()=>renderCode('anatomy');window.renderDictPathology=()=>renderCode('pathology');window.dictAnatomyAdd=()=>codeForm('anatomy',null);window.dictAnatomyEdit=i=>codeForm('anatomy',i);window.dictPathologyAdd=()=>codeForm('pathology',null);window.dictPathologyEdit=i=>codeForm('pathology',i);window.dictCodeEdit=(k,i)=>codeForm(k,i);window.dictCodeDelete=(k,i)=>{const data=k==='anatomy'?dictAnatomyData:dictPathologyData,r=data[i];if(k==='anatomy'&&dictAnatomyData.some(x=>x.parent===r.code))return toast('请先处理该部位的亚部位','error');if(r.mergeStatus!=='已撤并')return toast('请先完成撤并操作后再删除','error');showConfirm('确认删除','确定要删除「'+r.name+'」吗？',()=>{data.splice(i,1);toast('删除成功');renderPage(k==='anatomy'?'dict-anatomy':'dict-pathology')})};
+  window.renderDictAnatomy=()=>renderCode('anatomy');window.renderDictPathology=()=>renderCode('pathology');window.dictAnatomyAdd=()=>codeForm('anatomy',null);window.dictAnatomyEdit=i=>codeForm('anatomy',i);window.dictPathologyAdd=()=>codeForm('pathology',null);window.dictPathologyEdit=i=>codeForm('pathology',i);window.dictCodeEdit=(k,i)=>codeForm(k,i);window.dictCodeDelete=(k,i)=>{const data=k==='anatomy'?dictAnatomyData:dictPathologyData,r=data[i];if(k==='anatomy'&&dictAnatomyData.some(x=>x.parent===r.code))return toast('请先处理该部位的亚部位','error');if(r.mergeStatus!=='已撤并')return toast('请先完成撤并操作后再删除','error');showConfirm('确认删除','确定要删除「'+r.name+'」吗？',()=>{const kind=k==='anatomy'?'anatomy':'pathology',snapshot=Object.assign({},r);data.splice(i,1);pushDictLog(k==='anatomy'?'B1':'B2','删除',codeFieldString(kind,snapshot),'');toast('删除成功');renderPage(k==='anatomy'?'dict-anatomy':'dict-pathology')})};
+
+  /* ===== 码表变更记录（覆盖全部字典码表） ===== */
+  window.dictLogState={keyword:'',table:'',type:'',version:'',from:'',to:''};
+  const dictLogs=[
+    {id:'CHG-A2-20260115-001',tableId:'A2',version:'V1.0',type:'新增',fromValue:'',toValue:'新增码值 59 个（01 汉族…99 未确定）',operator:'省登记处 · 王敏',time:'2026-01-15 09:20:31',remark:'初始化版本，经省级管理员复核后发布'},
+    {id:'CHG-B1-20260115-002',tableId:'B1',version:'V1.0',type:'新增',fromValue:'',toValue:'新增一级部位 42 项；二级亚部位 168 项（C00–C80）',operator:'省登记处 · 王敏',time:'2026-01-15 10:02:18',remark:'经省级管理员复核后发布'},
+    {id:'CHG-B2-20260211-003',tableId:'B2',version:'V1.0',type:'新增',fromValue:'',toValue:'新增组织学码 8000–9999（含行为/分级后缀规则）',operator:'省登记处 · 王敏',time:'2026-02-11 15:20:44',remark:''},
+    {id:'CHG-B1-20260302-004',tableId:'B1',version:'V1.1',type:'修改',fromValue:'编码=C16.9；名称=胃，未特指；撤并状态=已撤并；撤并至=C16；状态=禁用',toValue:'编码=C16.9；名称=胃，未特指；撤并状态=未撤并；状态=启用',operator:'省登记处 · 王敏',time:'2026-03-02 14:05:12',remark:'关联问题单 JX-2026-0312'},
+    {id:'CHG-A8-20260318-005',tableId:'A8',version:'V1.1',type:'新增',fromValue:'',toValue:'新增设区市码 11 个：360100 南昌市…361100 上饶市',operator:'南昌市 · 李强',time:'2026-03-18 09:40:27',remark:'县区级码待补全，关联 Q2'},
+    {id:'CHG-B1-20260418-006',tableId:'B1',version:'V1.2',type:'新增',fromValue:'',toValue:'新增 C34.1=肺上叶；C34.9=肺，未特指（父级 C34）',operator:'南昌市 · 李强',time:'2026-04-18 10:42:56',remark:''},
+    {id:'CHG-B5-20260506-007',tableId:'B5',version:'V1.1',type:'修改',fromValue:'编码=C22；名称=肝和肝内胆管恶性肿瘤',toValue:'编码=C22；名称=肝和肝内胆管恶性肿瘤；备注=明确 D45–D46 不再单列',operator:'省登记处 · 赵芳',time:'2026-05-06 11:15:33',remark:''},
+    {id:'CHG-B1-20260609-008',tableId:'B1',version:'V1.3',type:'删除',fromValue:'编码=C00.2；名称=唇，未特指；状态=禁用',toValue:'',operator:'省登记处 · 王敏',time:'2026-06-09 16:30:08',remark:'已确认无历史报告卡引用'},
+    {id:'CHG-D1-20260721-009',tableId:'D1',version:'V1.1',type:'修改',fromValue:'名称=移居/迁出',toValue:'名称=移居/迁出（境外迁出按此填报）',operator:'省登记处 · 赵芳',time:'2026-07-21 10:05:47',remark:''}
+  ];
+  window.dictLogData=dictLogs;
+  const logPad=n=>String(n).padStart(2,'0');
+  function logNow(){const d=new Date();return d.getFullYear()+'-'+logPad(d.getMonth()+1)+'-'+logPad(d.getDate())+' '+logPad(d.getHours())+':'+logPad(d.getMinutes())+':'+logPad(d.getSeconds())}
+  const logToday=()=>logNow().slice(0,10);
+  function logUser(){const el=document.getElementById('currentUserName');const t=el?String(el.textContent||'').trim():'';return (t.replace(/（[^）]*）|\([^)]*\)/g,'').trim())||'系统管理员'}
+  const dictCatalogName=id=>{const c=(window.dictCatalogs||[]).find(d=>d.id===id);return c?c.name:''};
+  function latestTableVersion(tableId){let best='V1.0';dictLogs.forEach(x=>{if(x.tableId!==tableId)return;const v=String(x.version||'');if(/^V\d+(\.\d+)+$/.test(v)&&v.localeCompare(best,'zh',{numeric:true})>0)best=v});return best}
+  function nextTableVersion(tableId){if(!dictLogs.some(x=>x.tableId===tableId))return 'V1.0';const m=/^V(\d+)\.(\d+)$/.exec(latestTableVersion(tableId));return m?'V'+m[1]+'.'+(Number(m[2])+1):'V1.0'}
+  function newDictLogId(tableId){const d=new Date(),day=d.getFullYear()+logPad(d.getMonth()+1)+logPad(d.getDate());let seq=dictLogs.filter(x=>String(x.id).indexOf('CHG-'+tableId+'-'+day+'-')===0).length+1,id='CHG-'+tableId+'-'+day+'-'+String(seq).padStart(3,'0');while(dictLogs.some(x=>x.id===id)){seq++;id='CHG-'+tableId+'-'+day+'-'+String(seq).padStart(3,'0')}return id}
+  window.pushDictLog=function(tableId,type,fromValue,toValue){dictLogs.unshift({id:newDictLogId(tableId),tableId:tableId,version:nextTableVersion(tableId),type:type,fromValue:fromValue||'',toValue:toValue||'',operator:logUser(),time:logNow(),remark:''})};
+  function codeFieldString(kind,item){
+    const isPath=kind==='pathology';
+    const fields=isPath?[['code','编码'],['name','名称'],['group','分组'],['sort','排序'],['status','状态'],['mergeStatus','撤并状态'],['mergeCode','撤并至']]:[['code','编码'],['name','名称'],['level','层级'],['parent','父级部位'],['group','分组'],['category','类目'],['sort','排序'],['status','状态'],['mergeStatus','撤并状态'],['mergeCode','撤并至']];
+    const s=fields.filter(p=>String(item[p[0]]??'')!=='').map(p=>p[1]+'='+item[p[0]]).join('；');
+    return s||'（空）';
+  }
+  function codeChangeRecord(kind,before,item){
+    const noun=kind==='pathology'?'病理类型':'解剖部位';
+    if(!before)return {fromValue:'',toValue:'新增'+noun+'：'+codeFieldString(kind,item)};
+    return {fromValue:codeFieldString(kind,before),toValue:codeFieldString(kind,item)};
+  }
+  function dictLogList(){
+    const s=window.dictLogState,q=String(s.keyword||'').trim().toLowerCase();
+    return dictLogs.filter(x=>{
+      if(s.table&&x.tableId!==s.table)return false;
+      if(s.type&&x.type!==s.type)return false;
+      if(s.version&&x.version!==s.version)return false;
+      const day=String(x.time).slice(0,10);
+      if(s.from&&day<s.from)return false;
+      if(s.to&&day>s.to)return false;
+      if(!q)return true;
+      return [x.id,x.tableId,dictCatalogName(x.tableId),x.version,x.type,x.fromValue,x.toValue,x.operator,x.remark].join(' ').toLowerCase().indexOf(q)>=0;
+    }).slice().sort((a,b)=>String(b.time).localeCompare(String(a.time)));
+  }
+  const logTypeBadge=t=>'<span class="badge '+(t==='新增'?'badge-success':t==='删除'?'badge-danger':'badge-warning')+'">'+esc(t)+'</span>';
+  const detailItem=(k,v)=>'<div style="display:grid;grid-template-columns:110px 1fr;gap:10px;padding:9px 10px;border-bottom:1px dashed #e2e8f0;font-size:13px"><span style="color:#64748b">'+k+'</span><span style="color:#1e293b;word-break:break-all;line-height:1.6">'+v+'</span></div>';
+  window.renderDictChangeLog=()=>{
+    const list=dictLogList(),catalogs=(window.dictCatalogs||[]).filter(d=>!d.externalModule);
+    const versions=[...new Set(dictLogs.map(x=>x.version))].sort((a,b)=>b.localeCompare(a,'zh',{numeric:true}));
+    const tableIds=[...new Set(dictLogs.map(x=>x.tableId))];
+    const summary='<div style="display:flex;flex-wrap:wrap;gap:18px;padding:9px 12px;margin-bottom:10px;background:#f8fafc;border:1px solid #e2e8f0;border-radius:6px;font-size:12px;color:#475569">'+
+      '<span><b>涉及码表：</b>'+tableIds.length+' 类</span><span><b>变更记录：</b>'+dictLogs.length+' 条</span>'+
+      '<span><b>最近变更：</b>'+esc(dictLogs[0]?dictLogs[0].time:'-')+'</span>'+
+      '<span><b>说明：</b>各字典码表（含解剖部位、病理类型、常规字典库）的增删改均自动记录于此</span></div>';
+    const filter=summary+'<div class="filter-toolbar">'+
+      '<div class="form-group"><label>码表</label><select onchange="dictLogState.table=this.value"><option value="">全部码表</option>'+catalogs.map(d=>'<option value="'+esc(d.id)+'"'+(window.dictLogState.table===d.id?' selected':'')+'>'+esc(d.id+' · '+d.name)+'</option>').join('')+'</select></div>'+
+      '<div class="form-group"><label>变更类型</label><select onchange="dictLogState.type=this.value">'+['','新增','修改','删除'].map(v=>'<option value="'+v+'"'+(window.dictLogState.type===v?' selected':'')+'>'+(v||'全部类型')+'</option>').join('')+'</select></div>'+
+      '<div class="form-group"><label>版本号</label><select onchange="dictLogState.version=this.value">'+[''].concat(versions).map(v=>'<option value="'+esc(v)+'"'+(window.dictLogState.version===v?' selected':'')+'>'+(v?esc(v):'全部版本')+'</option>').join('')+'</select></div>'+
+      '<div class="form-group search-group"><label>检索内容</label><input value="'+esc(window.dictLogState.keyword)+'" placeholder="记录ID / 码表 / 摘要 / 原因 / 变更人" oninput="dictLogState.keyword=this.value"></div>'+
+      '<div class="form-group date-group"><label>变更时间</label><div style="display:flex;align-items:center;gap:6px"><input type="date" style="width:142px" value="'+esc(window.dictLogState.from)+'" onchange="dictLogState.from=this.value"><span>至</span><input type="date" style="width:142px" value="'+esc(window.dictLogState.to)+'" onchange="dictLogState.to=this.value"></div></div>'+
+      '<div class="filter-actions"><button class="btn btn-primary btn-sm" onclick="renderPage(\'dict-change-log\')">查询</button>'+
+      '<button class="btn btn-ghost btn-sm" onclick="dictLogState.keyword=\'\';dictLogState.table=\'\';dictLogState.type=\'\';dictLogState.version=\'\';dictLogState.from=\'\';dictLogState.to=\'\';renderPage(\'dict-change-log\')">重置</button>'+
+      '<button class="btn btn-outline btn-sm" onclick="dictLogExport()">导出</button>'+
+      '<button class="btn btn-primary btn-sm" onclick="dictLogAdd()">+ 新增变更记录</button></div></div>';
+    const body=rows(list,10,(r,n)=>{const i=dictLogs.indexOf(r);return '<tr><td>'+(n+1)+'</td><td style="white-space:nowrap">'+esc(r.id)+'</td><td style="white-space:nowrap"><b>'+esc(r.tableId)+'</b> · '+esc(dictCatalogName(r.tableId)||'-')+'</td><td><b>'+esc(r.version)+'</b></td><td>'+logTypeBadge(r.type)+'</td><td style="max-width:260px;min-width:180px">'+esc(r.fromValue||'—')+'</td><td style="max-width:260px;min-width:180px">'+esc(r.toValue||'—')+'</td><td style="white-space:nowrap">'+esc(r.operator)+'</td><td style="white-space:nowrap">'+esc(r.time)+'</td><td class="ops" style="white-space:nowrap"><button class="btn btn-primary btn-xs" onclick="dictLogDetail('+i+')">详情</button> <button class="btn btn-ghost btn-xs" onclick="dictLogEdit('+i+')">修改</button> <button class="btn btn-danger btn-xs" onclick="dictLogDelete('+i+')">删除</button></td></tr>'});
+    return shell('码表变更记录',filter,['序号','变更记录ID','码表','版本号','变更类型','原始值','改后值','变更人','变更时间','操作'],body);
+  };
+  function dictLogForm(index){
+    const catalogs=(window.dictCatalogs||[]).filter(d=>!d.externalModule);
+    const r=index==null?{id:newDictLogId(window.dictLogState.table||'B1'),tableId:window.dictLogState.table||'B1',version:nextTableVersion(window.dictLogState.table||'B1'),type:'新增',fromValue:'',toValue:'',operator:logUser(),time:logNow(),remark:''}:dictLogs[index];
+    if(index!=null){
+      const roField=(label,v)=>'<div class="form-group"><label>'+label+'</label><input value="'+esc(v)+'" readonly style="background:#f8fafc;color:#475569"></div>';
+      const roArea=(label,v)=>'<div class="form-group full"><label>'+label+'（只读）</label><textarea readonly style="background:#f8fafc;color:#475569">'+esc(v)+'</textarea></div>';
+      const body='<div style="padding:8px 10px;margin-bottom:10px;background:#fffbeb;border-left:3px solid #f59e0b;color:#7c5700;font-size:12px">变更记录创建后仅允许修改「备注」，其余字段为只读留痕。</div><div class="form-grid">'+
+        roField('变更记录ID',r.id)+roField('码表',r.tableId+' - '+dictCatalogName(r.tableId))+roField('版本号',r.version)+roField('变更类型',r.type)+
+        roField('变更人',r.operator)+roField('变更时间',r.time)+roArea('原始值',r.fromValue||'—')+roArea('改后值',r.toValue||'—')+
+        text('备注（可修改）','dlRemark',r.remark)+'</div>';
+      modal('修改变更记录 · '+r.id,body,()=>{
+        dictLogs[index].remark=value('dlRemark');
+        close();toast('备注已保存');renderPage('dict-change-log');
+      });
+      return;
+    }
+    const body='<div class="form-grid">'+
+      '<div class="form-group"><label>变更记录ID</label><input id="dlId" value="'+esc(r.id)+'" readonly style="background:#f8fafc"></div>'+
+      '<div class="form-group"><label>码表</label><select id="dlTable" onchange="dictLogTableChange()">'+catalogs.map(d=>'<option value="'+esc(d.id)+'"'+(d.id===r.tableId?' selected':'')+'>'+esc(d.id+' · '+d.name)+'</option>').join('')+'</select></div>'+
+      input('版本号','dlVersion',r.version,'text',true)+
+      select('变更类型','dlType',['新增','修改','删除'],r.type)+
+      input('变更人','dlOperator',r.operator,'text',true)+
+      input('变更时间','dlTime',r.time,'text',true)+
+      text('原始值','dlFrom',r.fromValue)+
+      text('改后值','dlTo',r.toValue)+
+      text('备注','dlRemark',r.remark)+'</div>';
+    modal('新增码表变更记录',body,()=>{
+      const table=document.getElementById('dlTable').value,version=value('dlVersion'),operator=value('dlOperator');
+      let time=value('dlTime');
+      if(!version||!operator||!time)return toast('版本号、变更人、变更时间为必填项','error');
+      if(dictLogs.some(x=>x.tableId===table&&x.version===version))return toast('该码表下版本号已存在，请填写新的版本号','error');
+      if(/^\d{4}-\d{2}-\d{2}$/.test(time))time+=' 00:00:00';
+      if(!/^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}$/.test(time))return toast('变更时间格式应为 YYYY-MM-DD HH:mm:ss','error');
+      dictLogs.unshift({id:newDictLogId(table),tableId:table,version,type:document.getElementById('dlType').value,fromValue:value('dlFrom'),toValue:value('dlTo'),operator,time,remark:value('dlRemark')});
+      close();toast('保存成功');window.dictLogState.table='';renderPage('dict-change-log');
+    });
+  }
+  window.dictLogTableChange=()=>{const t=document.getElementById('dlTable').value;document.getElementById('dlVersion').value=nextTableVersion(t);document.getElementById('dlId').value=newDictLogId(t)};
+  window.dictLogAdd=()=>dictLogForm(null);
+  window.dictLogEdit=i=>dictLogForm(i);
+  window.dictLogDetail=i=>{
+    const r=dictLogs[i];if(!r)return;
+    close();
+    const content=detailItem('变更记录ID',esc(r.id))+detailItem('码表',esc(r.tableId)+' · '+esc(dictCatalogName(r.tableId)||'-'))+detailItem('版本号','<b>'+esc(r.version)+'</b>')+detailItem('变更类型',logTypeBadge(r.type))+detailItem('原始值',esc(r.fromValue||'—'))+detailItem('改后值',esc(r.toValue||'—'))+detailItem('变更人',esc(r.operator))+detailItem('变更时间',esc(r.time))+detailItem('备注',esc(r.remark||'-'));
+    const o=document.createElement('div');
+    o.className='cd-overlay dict-modal';o.style.zIndex='10000';
+    o.innerHTML='<div class="cd-dialog" style="max-width:720px"><div class="cd-header"><span>码表变更记录详情</span><span class="cd-close" onclick="dictClose()">×</span></div><div class="cd-body" style="max-height:70vh;overflow:auto">'+content+'</div><div class="cd-header" style="border-top:1px solid #e2e8f0;border-bottom:0;justify-content:flex-end"><button class="btn btn-primary btn-sm" onclick="dictClose()">关闭</button></div></div>';
+    o.onclick=ev=>{if(ev.target===o)close()};
+    document.body.appendChild(o);
+  };
+  window.dictLogDelete=i=>{const r=dictLogs[i];if(!r)return;showConfirm('确认删除','确定要删除变更记录「'+r.id+'」吗？删除后不可恢复。',()=>{dictLogs.splice(i,1);toast('删除成功');renderPage('dict-change-log')})};
+  const logCsvCell=v=>{let s=String(v==null?'':v);if(/^[=+\-@]/.test(s))s="'"+s;return '"'+s.replace(/"/g,'""')+'"'};
+  window.dictLogExport=()=>{
+    const list=dictLogList();
+    if(!list.length)return toast('当前查询条件下没有可导出的变更记录','error');
+    const head=['变更记录ID','码表ID','码表名称','版本号','变更类型','原始值','改后值','变更人','变更时间','备注'];
+    const lines=[head.map(logCsvCell).join(',')].concat(list.map(r=>[r.id,r.tableId,dictCatalogName(r.tableId),r.version,r.type,r.fromValue,r.toValue,r.operator,r.time,r.remark].map(logCsvCell).join(',')));
+    const blob=new Blob(['\ufeff'+lines.join('\r\n')],{type:'text/csv;charset=utf-8;'}),url=URL.createObjectURL(blob),a=document.createElement('a');
+    a.href=url;a.download='码表变更记录_'+logToday()+'.csv';document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);
+    toast('已导出 '+list.length+' 条变更记录');
+  };
 
   const active=(data,predicate=x=>true)=>data.filter(x=>x.status==='启用'&&predicate(x)).map(x=>({v:x.code,t:x.code+' - '+x.name}));
   function logicForm(index){const r=index==null?{anatomy:'',pathology:'',status:'启用',remark:''}:dictLogicData[index];const body='<div class="form-grid">'+select('解剖部位（亚部位）','lAnatomy',[{v:'',t:'请选择'}].concat(active(dictAnatomyData,x=>x.level===2)),r.anatomy)+select('病理类型','lPathology',[{v:'',t:'请选择'}].concat(active(dictPathologyData)),r.pathology)+select('状态','lStatus',['启用','禁用'],r.status)+text('备注','lRemark',r.remark)+'</div>';modal(index==null?'新增逻辑字典':'编辑逻辑字典',body,()=>{const anatomy=value('lAnatomy'),pathology=value('lPathology');if(!anatomy||!pathology)return toast('请选择部位和病理类型','error');if(dictLogicData.some((x,i)=>x.anatomy===anatomy&&x.pathology===pathology&&i!==index))return toast('该组合已存在','error');const item={id:index==null?Date.now():dictLogicData[index].id,anatomy,pathology,status:value('lStatus'),remark:value('lRemark')};index==null?dictLogicData.push(item):Object.assign(dictLogicData[index],item);close();toast('保存成功');renderPage('dict-logic')})}
@@ -178,6 +310,7 @@
     {id:'Q-AGE0',name:'0岁组异常比例',def:'年龄<1岁且非幼年特有瘤种占比',target:'极低且符合出生队列',redline:'异常偏高',basis:'IARC年龄分布检验',th:null}
   ];
   window.dictQuality = QUALITY;
+  window.dictCatalogs = DICTIONARIES;
 
   var state = {domain:'', dictionary:'A1', keyword:'', ruleLevel:'', ruleNature:''};
   var auditResult = null;
@@ -327,6 +460,11 @@
   window.dictFinalSetDictionary = function (id) { state.dictionary = id; state.keyword = ''; renderPage('dict-common'); };
   window.stateDictKeyword = function (v) { state.keyword = v; };
   window.dictSetRuleFilter = function (key, value) { state[key] = value; renderPage('dict-validation'); };
+  function dictItemFieldString(item) {
+    var fields = [['code','代码'],['name','名称'],['sort','排序'],['status','状态'],['mergeStatus','撤并状态'],['mergeCode','撤并至'],['validFrom','生效日期'],['validTo','停用日期'],['remark','备注']];
+    var s = fields.filter(function (p) { return String(item[p[0]] == null ? '' : item[p[0]]) !== ''; }).map(function (p) { return p[1] + '=' + item[p[0]]; }).join('；');
+    return s || '（空）';
+  }
   window.dictFinalEditItem = function (index) {
     var d = dictionaryById(state.dictionary);
     if (d.status === '待确认') return toast('该字典关联待确认事项，确认前不得固化值域','error');
@@ -344,16 +482,18 @@
         if (d.items.some(function (x,i) { return x.code === code && i !== index; })) return toast('同一字典代码不可重复','error');
         if (merge === '已撤并' && (!mergeCode || mergeCode === code)) return toast('撤并目标必须是其他启用项','error');
         var item = {code:code,name:name,sort:Number(document.getElementById('dfSort').value)||0,status:merge === '已撤并' ? '禁用' : document.getElementById('dfStatus').value,mergeStatus:merge,mergeCode:merge === '已撤并' ? mergeCode : '',validFrom:document.getElementById('dfFrom').value,validTo:document.getElementById('dfTo').value,remark:document.getElementById('dfRemark').value.trim()};
+        var beforeItem = index == null ? null : Object.assign({}, d.items[index]);
         if (index == null) d.items.push(item); else d.items[index] = item;
         var result = validateAll();
         if (result.errors.length) return toast('保存后校验失败：' + result.errors[0],'error');
+        pushDictLog(d.id, index == null ? '新增' : '修改', index == null ? '' : dictItemFieldString(beforeItem), dictItemFieldString(item));
         dictFinalClose(); toast('保存成功，自动校验通过'); renderPage('dict-common');
       });
   };
   window.dictFinalDeleteItem = function (index) {
     var d = dictionaryById(state.dictionary), item = d.items[index];
     if (item.mergeStatus !== '已撤并') return toast('请先完成撤并后再删除','error');
-    showConfirm('确认删除','确定删除已撤并字典项「' + item.name + '」吗？',function () { d.items.splice(index,1); validateAll(); toast('删除成功，完整性已复核'); renderPage('dict-common'); });
+    showConfirm('确认删除','确定删除已撤并字典项「' + item.name + '」吗？',function () { d.items.splice(index,1); pushDictLog(d.id,'删除',dictItemFieldString(item),''); validateAll(); toast('删除成功，完整性已复核'); renderPage('dict-common'); });
   };
 
   var oldAnatomy = window.renderDictAnatomy, oldPathology = window.renderDictPathology;
@@ -416,6 +556,7 @@
     if (id === 'dict-overview') return renderDictOverview();
     if (id === 'dict-common') return renderDictCommon();
     if (id === 'dict-anatomy') return renderDictAnatomy();
+    if (id === 'dict-change-log') return renderDictChangeLog();
     if (id === 'dict-pathology') return renderDictPathology();
     if (id === 'dict-mapping') return renderDictMapping();
     if (id === 'dict-validation') return renderDictValidation();
